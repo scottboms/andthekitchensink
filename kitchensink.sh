@@ -80,19 +80,6 @@ sudo make install
 cd ~/${DIR}
 
 
-# Readline
-# http://tiswww.case.edu/php/chet/readline/rltop.html
-# ftp://ftp.gnu.org/gnu/readline/readline-5.2.tar.gz
-# echo "--------------------------------------------------"
-# echo "Installing Readline"
-# tar xzf readline-5.2.tar.gz
-# cd readline-5.2
-# ./configure --prefix=${PREFIX}
-# make static
-# sudo make install-static
-# cd ~/${DIR}
-
-
 # Expat
 # http://downloads.sourceforge.net
 # http://superb-east.dl.sourceforge.net/sourceforge/expat/expat-2.0.1.tar.gz
@@ -347,21 +334,6 @@ echo "Installing RMagick"
 sudo gem install rmagick
 
 
-# Apache 2
-# http://httpd.apache.org/
-# Will build a Universal Binary version
-# echo "--------------------------------------------------"
-# echo "Installing Apache 2"
-# curl -O http://www.apache.org/dist/httpd/httpd-2.2.9.tar.gz
-# tar xzf httpd-2.2.9.tar.gz
-# cd httpd-2.2.9
-# CFLAGS="-arch ppc -arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk"
-# ./configure --prefix=${PREFIX}/apache2 --with-included-apr --enable-mods-shared=all --enable-proxy-balancer --enable-proxy-ajp --enable-proxy-http --enable-proxy-ftp --enable-proxy-connect --enable-proxy --enable-ssl --enable-so
-# make
-# sudo make install
-# cd ~/${DIR}
-
-
 # Pound Load Balancer
 # http://www.apsis.ch/pound/Pound-2.4.3.tgz
 echo "--------------------------------------------------"
@@ -399,47 +371,6 @@ sudo make install
 cd ~/${DIR}
 
 
-# FreeImage
-# Required to compile the Image Science gem for Rails
-echo "--------------------------------------------------"
-echo "Installing FreeImage 3.1"
-unzip -q FreeImage3100.zip
-cd FreeImage
-
-# Be sure to change the following in the Makefile.osx file:
-
-# LIBRARIES_PPC = -Wl,-syslibroot /Developer/SDKs/MacOSX10.3.9.sdk
-# LIBRARIES_I386 = -Wl,-syslibroot /Developer/SDKs/MacOSX10.4u.sdk
- 
-# to this 
- 
-# LIBRARIES_PPC = -Wl,-syslibroot /Developer/SDKs/MacOSX10.3.9.sdk/usr/lib
-# LIBRARIES_I386 = -Wl,-syslibroot /Developer/SDKs/MacOSX10.4u.sdk/usr/lib
-
-# then run
-
-sudo make -f Makefile.osx
-sudo make install
-cd ~/${DIR}
-
-
-# RRDTool
-# http://oss.oetiker.ch/rrdtool/pub/rrdtool-1.2.23.tar.gz
-# http://oss.oetiker.ch/rrdtool/pub/rrdtool-1.3.0.tar.gz
-# echo "Installing RRDTool"
-# tar xzf rrdtool-1.3.0.tar.gz
-# cd rrdtool-1.3.0
-# sudo cp /usr/X11R6/include/ft2build.h /usr/X11R6/include/freetype2/ft2build.h
-# CPPFLAGS="-I/usr/X11R6/include/libpng -I/usr/X11R6/include/freetype2 -I/usr/local/lib -I/usr/local/include/libart-2.0 -I/usr/local -I/usr/X11R6"
-# LDFLAGS="-L/usr/X11R6/lib -L/usr/local/lib"
-# CFLAGS=-O1
-# export CPPFLAGS LDFLAGS CFLAGS
-# ./configure --prefix=${PREFIX} --includedir=${PREFIX}/include --libdir=${PREFIX}/lib
-# make
-# sudo make install
-# cd ~/${DIR}
-
-
 # Rails
 # http://www.rubyonrails.org
 echo "--------------------------------------------------"
@@ -453,18 +384,6 @@ sudo gem install rails -v 1.2.6
 echo "--------------------------------------------------"
 echo "Installing Mongrel Server"
 sudo gem install mongrel -y
-
-
-# Subversion 1.4.x
-# http://subversion.tigris.org/downloads/subversion-1.4.6.tar.gz
-# echo "--------------------------------------------------"
-# echo "Installing Subversion 1.4.x"
-# tar xzf subversion-1.4.6.tar.gz
-# cd subversion-1.4.6
-# ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-openssl --with-ssl --with-zlib
-# make
-# sudo make install
-# cd ~/${DIR}
 
 
 # Subversion 1.5.x
@@ -513,7 +432,6 @@ sudo launchctl load -w /Library/LaunchDaemons/com.mysql.mysqld.plist
 echo "--------------------------------------------------"
 echo "Installing MySQL Ruby Gem"
 sudo env ARCHFLAGS="-arch i386" gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
-# sudo env ARCHFLAGS="-arch ppc" gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
 
 # MySQL Python Driver
 # http://internap.dl.sourceforge.net/sourceforge/mysql-python/MySQL-python-1.2.2.tar.gz
@@ -528,7 +446,6 @@ cd ~/${DIR}
 
 
 # Django
-# http://media.djangoproject.com/releases/1.0/Django-1.0.tar.gz
 # http://media.djangoproject.com/releases/1.0.2/Django-1.0.2-final.tar.gz
 echo "--------------------------------------------------"
 echo "Installing Django"
