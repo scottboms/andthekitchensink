@@ -282,6 +282,7 @@ cd ~/${DIR}
 
 
 # LibTIFF
+# http://www.remotesensing.org/libtiff/
 # ftp://ftp.remotesensing.org/libtiff/tiff-3.8.2.tar.gz
 echo "--------------------------------------------------"
 echo "Installing TIFF"
@@ -360,11 +361,11 @@ cd ~/${DIR}
 
 
 # LibArt 2
-# http://ftp.acc.umu.se/pub/GNOME/sources/libart_lgpl/2.3/libart_lgpl-2.3.19.tar.gz
+# http://ftp.acc.umu.se/pub/GNOME/sources/libart_lgpl/2.3/libart_lgpl-2.3.20.tar.gz
 echo "--------------------------------------------------"
 echo "Installing LibArt 2"
-tar xzf libart_lgpl-2.3.19.tar.gz
-cd libart_lgpl-2.3.19
+tar xzf libart_lgpl-2.3.20.tar.gz
+cd libart_lgpl-2.3.20
 ./configure --prefix=${PREFIX}
 make
 sudo make install
