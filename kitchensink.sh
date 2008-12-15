@@ -57,9 +57,9 @@ DIR=web_dev_env
 cd ~/${DIR}
 
 # zlib 1.2.3
-# http://www.zlib.net/zlib-1.2.3.tar.gz
 echo "--------------------------------------------------"
 echo "Installing zlib"
+curl -O http://www.zlib.net/zlib-1.2.3.tar.gz
 tar zxf zlib-1.2.3.tar.gz
 cd zlib-1.2.3
 ./configure --prefix=${PREFIX}
@@ -69,9 +69,9 @@ cd ~/${DIR}
 
 
 # SQLite 3
-# http://www.sqlite.org/sqlite-3.6.6.2.tar.gz
 echo "--------------------------------------------------"
 echo "Installing SQLite3"
+curl -O http://www.sqlite.org/sqlite-3.6.6.2.tar.gz
 tar zxf sqlite-3.6.6.2.tar.gz
 cd sqlite-3.6.6.2
 ./configure --prefix=${PREFIX}
@@ -82,10 +82,9 @@ cd ~/${DIR}
 
 # Expat
 # http://downloads.sourceforge.net
-# http://superb-east.dl.sourceforge.net/sourceforge/expat/expat-2.0.1.tar.gz
 echo "--------------------------------------------------"
 echo "Installing expat Library"
-curl - O curl -O http://superb-east.dl.sourceforge.net/sourceforge/expat/expat-2.0.1.tar.gz
+curl -O http://superb-east.dl.sourceforge.net/sourceforge/expat/expat-2.0.1.tar.gz
 tar zxf expat-2.0.1.tar.gz
 cd expat-2.0.1
 ./configure --prefix=${PREFIX}
@@ -95,9 +94,9 @@ cd ~/${DIR}
 
 
 # MySQL for Intel Mac
-# http://mirror.csclub.uwaterloo.ca/mysql/Downloads/MySQL-5.0/mysql-5.0.67.tar.gz
 echo "--------------------------------------------------"
 echo "Installing MySQL Server"
+curl -O http://mirror.csclub.uwaterloo.ca/mysql/Downloads/MySQL-5.0/mysql-5.0.67.tar.gz
 tar zxf mysql-5.0.67.tar.gz
 cd mysql-5.0.67
 CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
@@ -113,9 +112,9 @@ sudo chown -R mysql data
 
 # Ruby
 # http://www.ruby-lang.org/en/
-# http://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.6-p114.tar.gz
 echo "--------------------------------------------------"
 echo "Installing Ruby"
+curl -O http://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.6-p114.tar.gz
 tar xzf ruby-1.8.6-p114.tar.gz 
 cd ruby-1.8.6-p114
 ./configure --prefix=${PREFIX} --enable-shared --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
@@ -127,9 +126,9 @@ cd ~/${DIR}
 
 # Rubygems
 # http://rubyforge.org/projects/rubygems/
-# http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz
 echo "--------------------------------------------------"
 echo "Installing Rubygems"
+curl -O http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz
 tar xzf rubygems-1.3.1.tgz
 cd rubygems-1.3.1
 sudo ${PREFIX}/bin/ruby setup.rb
@@ -137,9 +136,9 @@ cd ~/${DIR}
 
 
 # FastCGI
-# http://www.fastcgi.com/dist/fcgi-2.4.0.tar.gz
 echo "--------------------------------------------------"
 echo "Installing FastCGI"
+curl -O http://www.fastcgi.com/dist/fcgi-2.4.0.tar.gz
 tar xzf fcgi-2.4.0.tar.gz
 cd fcgi-2.4.0
 ./configure --prefix=${PREFIX}
@@ -150,9 +149,9 @@ cd ~/${DIR}
 
 # Ruby FastCGI Bindings
 # http://rubyforge.org/projects/fcgi/
-# http://rubyforge.iasi.roedu.net/files/fcgi/ruby-fcgi-0.8.7.tar.gz
 echo "--------------------------------------------------"
 echo "Installing Ruby FastCGI Bindings"
+curl -O http://rubyforge.iasi.roedu.net/files/fcgi/ruby-fcgi-0.8.7.tar.gz
 tar xzf ruby-fcgi-0.8.7.tar.gz
 cd ruby-fcgi-0.8.7
 ${PREFIX}/bin/ruby install.rb config --prefix=${PREFIX}
@@ -169,9 +168,9 @@ sudo gem install fcgi
 
 # gettext
 # http://www.icewalkers.com/Linux/Software/513960/gettext.html
-# ftp://ftp.gnu.org/gnu/gettext/gettext-0.17.tar.gz
 echo "--------------------------------------------------"
 echo "Installing gettext"
+curl -O ftp://ftp.gnu.org/gnu/gettext/gettext-0.17.tar.gz
 tar -zxf gettext-0.17.tar.gz
 cd gettext-0.17
 ./configure --prefix=${PREFIX}
@@ -182,9 +181,9 @@ cd ~/${DIR}
 
 # GIT
 # http://git.or.cz
-# http://kernel.org/pub/software/scm/git/git-1.6.0.5.tar.gz
 echo "--------------------------------------------------"
 echo "Installing GIT"
+curl -O http://kernel.org/pub/software/scm/git/git-1.6.0.5.tar.gz
 tar -zxf git-1.6.0.5.tar.gz
 cd git-1.6*
 ./configure --prefix=${PREFIX}
@@ -195,10 +194,10 @@ cd ~/${DIR}
 
 # PCRE
 # www.pcre.org
-# ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-7.2.tar.gz
 # CFLAGS=-01 is for Intel Macs, 02 is the default for PPC
 echo "--------------------------------------------------"
 echo "Installing PCRE"
+curl -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-7.2.tar.gz
 tar xzf pcre-7.2.tar.gz
 cd pcre-7.2
 ./configure --prefix=${PREFIX} CFLAGS=-01
@@ -208,9 +207,9 @@ cd ~/${DIR}
 
 
 # Lighttpd
-# http://www.lighttpd.net/download/lighttpd-1.4.20.tar.gz
 echo "--------------------------------------------------"
 echo "Installing Lighttpd"
+curl -O http://www.lighttpd.net/download/lighttpd-1.4.20.tar.gz
 tar xzf lighttpd-1.4.20.tar.gz
 cd lighttpd-1.4.20
 ./configure --prefix=${PREFIX} --with-pcre=${PREFIX}
@@ -221,9 +220,9 @@ cd ~/${DIR}
 
 # Ghostscript
 # http://pages.cs.wisc.edu/~ghost/
-# http://superb-east.dl.sourceforge.net/sourceforge/ghostscript/ghostscript-8.54-gpl.tar.gz
 echo "--------------------------------------------------"
 echo "Installing Ghostscript"
+curl -O http://superb-east.dl.sourceforge.net/sourceforge/ghostscript/ghostscript-8.54-gpl.tar.gz
 tar zfx ghostscript-8.54-gpl.tar.gz
 cd ghostscript-8.54-gpl/
 ./configure --prefix=${PREFIX}
@@ -234,8 +233,8 @@ cd ~/${DIR}
 
 # Ghostscript Fonts
 # http://sourceforge.net/projects/gs-fonts/
-# http://voxel.dl.sourceforge.net/sourceforge/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
 echo "--------------------------------------------------"
+curl -O http://voxel.dl.sourceforge.net/sourceforge/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
 echo "Installing Ghostscript-fonts"
 tar zxf ghostscript-fonts-std-8.11.tar.gz
 sudo mv fonts ${PREFIX}/share/ghostscript
@@ -244,9 +243,9 @@ cd ~/${DIR}
 
 # Freetype
 # http://www.freetype.org
-# http://download.savannah.gnu.org/releases/freetype/freetype-2.3.5.tar.gz
 echo "--------------------------------------------------"
 echo "Installing Freetype"
+curl -O http://download.savannah.gnu.org/releases/freetype/freetype-2.3.5.tar.gz
 tar xzf freetype-2.3.5.tar.gz
 cd freetype-2.3.5
 ./configure --prefix=${PREFIX}
@@ -257,9 +256,9 @@ cd ~/${DIR}
 
 # LibPNG
 # http://www.libpng.org
-# ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.33.tar.gz
 echo "--------------------------------------------------"
 echo "Installing LibPNG"
+curl -O ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.33.tar.gz
 tar zxf libpng-1.2.33.tar.gz
 cd libpng-1.2.33
 ./configure --prefix=${PREFIX}
@@ -269,9 +268,9 @@ cd ~/${DIR}
 
 
 # LibJPEG
-# http://www.ijg.org/files/jpegsrc.v6b.tar.gz
 echo "--------------------------------------------------"
 echo "Installing JPEG"
+curl -O http://www.ijg.org/files/jpegsrc.v6b.tar.gz
 tar xzf jpegsrc.v6b.tar.gz
 cd jpeg-6b
 ln -s /Developer/usr/bin/glibtool libtool
@@ -283,9 +282,9 @@ cd ~/${DIR}
 
 # LibTIFF
 # http://www.remotesensing.org/libtiff/
-# ftp://ftp.remotesensing.org/libtiff/tiff-3.8.2.tar.gz
 echo "--------------------------------------------------"
 echo "Installing TIFF"
+curl -O ftp://ftp.remotesensing.org/libtiff/tiff-3.8.2.tar.gz
 tar xzf tiff-3.8.2.tar.gz
 cd tiff-3.8.2
 ./configure --prefix=${PREFIX}
@@ -296,9 +295,9 @@ cd ~/${DIR}
 
 # LibWMF
 # http://wvware.sourceforge.net/libwmf.html
-# http://jaist.dl.sourceforge.net/sourceforge/wvware/libwmf-0.2.8.4.tar.gz
 echo "--------------------------------------------------"
 echo "Installing LibWMF"
+curl -O http://jaist.dl.sourceforge.net/sourceforge/wvware/libwmf-0.2.8.4.tar.gz
 tar xzf libwmf-0.2.8.4.tar.gz
 cd libwmf-0.2.8.4
 ./configure --prefix=${PREFIX}
@@ -308,9 +307,9 @@ cd ~/${DIR}
 
 
 # LCMS
-# http://www.littlecms.com/lcms-1.17.tar.gz
 echo "--------------------------------------------------"
 echo "Installing LCMS"
+curl -O http://www.littlecms.com/lcms-1.17.tar.gz
 tar xzf lcms-1.17.tar.gz
 cd lcms-1.17 
 ./configure --prefix=${PREFIX}
@@ -320,9 +319,9 @@ cd ~/${DIR}
 
 
 # ImageMagick
-# ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick.tar.gz
 echo "--------------------------------------------------"
 echo "Installing ImageMagick"
+curl -O ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick.tar.gz
 tar xzf ImageMagick.tar.gz
 cd ImageMagick-6.*
 ./configure --prefix=${PREFIX} --with-quantum-depth=16 --disable-dependency-tracking --with-x=yes --x-includes=/usr/X11R6/include --x-libraries=/usr/X11R6/lib --without-perl
@@ -336,9 +335,9 @@ sudo gem install rmagick
 
 
 # Pound Load Balancer
-# http://www.apsis.ch/pound/Pound-2.4.3.tgz
 echo "--------------------------------------------------"
 echo "Installing Pound"
+curl -O http://www.apsis.ch/pound/Pound-2.4.3.tgz
 CFLAGS=""
 tar xzf Pound-2.4.3.tgz
 cd Pound-2.4.3
@@ -349,9 +348,9 @@ cd ~/${DIR}
 
 
 # Neon
-# http://www.webdav.org/neon/neon-0.28.3.tar.gz
 echo "--------------------------------------------------"
 echo "Installing Neon"
+curl -O http://www.webdav.org/neon/neon-0.28.3.tar.gz
 tar xzf neon-0.28.3.tar.gz
 cd neon-0.28.3
 ./configure --prefix=${PREFIX} --enable-shared=yes --with-ssl=openssl --with-libxml2
@@ -361,9 +360,9 @@ cd ~/${DIR}
 
 
 # LibArt 2
-# http://ftp.acc.umu.se/pub/GNOME/sources/libart_lgpl/2.3/libart_lgpl-2.3.20.tar.gz
 echo "--------------------------------------------------"
 echo "Installing LibArt 2"
+curl -O http://ftp.acc.umu.se/pub/GNOME/sources/libart_lgpl/2.3/libart_lgpl-2.3.20.tar.gz
 tar xzf libart_lgpl-2.3.20.tar.gz
 cd libart_lgpl-2.3.20
 ./configure --prefix=${PREFIX}
@@ -388,9 +387,9 @@ sudo gem install mongrel -y
 
 
 # Subversion 1.5.x
-# http://subversion.tigris.org/downloads/subversion-1.5.4.tar.gz
 echo "--------------------------------------------------"
 echo "Installing Subversion 1.5.x"
+curl -O http://subversion.tigris.org/downloads/subversion-1.5.4.tar.gz
 tar xzf subversion-1.5.4.tar.gz
 cd subversion-1.5,4
 ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
@@ -407,39 +406,51 @@ sudo echo "bind-address = 127.0.0.1" >> /etc/my.cnf
 
 # MySQL Startup Item
 sudo touch /Library/LaunchDaemons/com.mysql.mysqld.plist
-sudo echo '<?xml version="1.0" encoding="UTF-8"?>'
-sudo echo '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">'
-sudo echo '<plist version="1.0">'
-sudo echo '<dict>'
-sudo echo '<key>KeepAlive</key>'
-sudo echo '<true/>'
-sudo echo '<key>Label</key>'
-sudo echo '<string>com.mysql.mysqld</string>'
-sudo echo '<key>Program</key>'
-sudo echo '<string>/usr/local/mysql/bin/mysqld_safe</string>'
-sudo echo '<key>RunAtLoad</key>'
-sudo echo '<true/>'
-sudo echo '<key>UserName</key>'
-sudo echo '<string>mysql</string>'
-sudo echo '<key>WorkingDirectory</key>'
-sudo echo '<string>/usr/local/mysql</string>'
-sudo echo '</dict>'
-sudo echo '</plist>'
+sudo cat > /Library/LaunchDaemons/com.mysql.mysqld.plist << "EOF"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>KeepAlive</key>
+  <true/>
+  <key>Label</key>
+  <string>com.mysql.mysqld</string>
+  <key>Program</key>
+  <string>/usr/local/mysql/bin/mysqld_safe</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>UserName</key>
+  <string>mysql</string>
+  <key>WorkingDirectory</key>
+  <string>/usr/local/mysql</string>
+</dict>
+</plist>
+EOF
 
 sudo launchctl load -w /Library/LaunchDaemons/com.mysql.mysqld.plist
 
 
-# MySQL Gem
+# Ruby MySQL Gem
 echo "--------------------------------------------------"
 echo "Installing MySQL Ruby Gem"
 sudo env ARCHFLAGS="-arch i386" gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
 
+
+# Ruby MySQL Gem Performance Patch
+echo "--------------------------------------------------"
+echo "Patching MySQL Ruby Gem"
+curl -O http://and-the-kitchen-sink-plus.googlecode.com/files/mysql-ruby-2.7-less-string-copies-in-each-hash.diff
+sudo patch /usr/local/lib/ruby/gems/1.8/gems/mysql-2.7/mysql.c.in ~/${DIR}/mysql-ruby-2.7-less-string-copies-in-each-hash.diff
+
+
 # MySQL Python Driver
 # http://internap.dl.sourceforge.net/sourceforge/mysql-python/MySQL-python-1.2.2.tar.gz
 # Note, if using source download, it needs to be patched to compile in Mac OS X  10.5.x
+# http://www.wishingline.com/downloads/kitchensink/mysql-python-1.2.2.zip
 echo "--------------------------------------------------"
+curl -O http://and-the-kitchen-sink-plus.googlecode.com/files/mysql-python-1.2.2.zip
 echo "Installing MySQL-python"
-unzip -q MySQL-python-1.2.2.zip
+unzip -q mysql-python-1.2.2.zip
 cd MySQL-python-1.2.2
 sudo python setup.py build
 sudo python setup.py install
@@ -447,8 +458,8 @@ cd ~/${DIR}
 
 
 # Django
-# http://media.djangoproject.com/releases/1.0.2/Django-1.0.2-final.tar.gz
 echo "--------------------------------------------------"
+curl -O http://media.djangoproject.com/releases/1.0.2/Django-1.0.2-final.tar.gz
 echo "Installing Django"
 tar -zxf Django-1.0.2-final.tar.gz
 cd Django-1.0.2-final
