@@ -56,6 +56,7 @@ DIR=web_dev_env
 # mkdir ~/${DIR}
 cd ~/${DIR}
 
+
 # zlib 1.2.3
 echo "--------------------------------------------------"
 echo "Installing zlib"
@@ -65,6 +66,50 @@ cd zlib-1.2.3
 ./configure --prefix=${PREFIX}
 make
 sudo make install
+cd ~/${DIR}
+
+
+# LibXML2 (with LibXSLT and lxml for Python)
+# Assumes the use of the default install of Python in Mac OS X
+echo "--------------------------------------------------"
+echo "Installing LibXML2"
+curl -O ftp://xmlsoft.org/libxml2/libxml2-2.7.2.tar.gz
+tar -zxf libxml2-2.7.2.tar.gz
+cd libxml2-2.7.2
+./configure --prefix=${PREFIX}/libxml2-2.7.2
+make
+sudo make install
+
+cd /Library/Python/2.5/site-packages
+sudo ln -s ${PREFIX}/libxml2-2.7.2/lib/python2.5/site-packages/*
+cd ~/${DIR}
+
+
+# LibXSLT
+echo "--------------------------------------------------"
+echo "Installing LibXML2"
+curl -O ftp://xmlsoft.org/libxml2/libxslt-1.1.24.tar.gz
+tar -zxf libxslt-1.1.24.tar.gz
+cd libxslt-1.1.24
+./configure --prefix=${PREFIX}/libxslt-1.1.24 --with-libxml-prefix=/usr/local/libxml2-2.7.2
+make
+sudo make install
+
+cd /Library/Python/2.5/site-packages
+sudo ln -s ${PREFIX}/libxslt-1.1.24/lib/python2.5/site-packages/*
+cd ~/${DIR}
+
+
+# lxml
+echo "--------------------------------------------------"
+echo "Installing lxml"
+curl -O http://codespeak.net/lxml/lxml-2.1.4.tgz
+tar -zxf lxml-2.1.4.tgz
+cd lxml-2.1.4
+
+sudo python setup.py install \
+--with-xml2-config=${PREFIX}/libxml2-2.7.0/bin/xml2-config \
+--with-xslt-config=${PREFIX}/libxslt-1.1.24/bin/xslt-config
 cd ~/${DIR}
 
 
