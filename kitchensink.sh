@@ -433,10 +433,10 @@ sudo gem install mongrel -y
 
 # Subversion 1.5.x
 echo "--------------------------------------------------"
-echo "Installing Subversion 1.5.x"
-curl -O http://subversion.tigris.org/downloads/subversion-1.5.4.tar.gz
-tar xzf subversion-1.5.4.tar.gz
-cd subversion-1.5,4
+echo "Installing Subversion 1.5"
+curl -O http://subversion.tigris.org/downloads/subversion-1.5.5.tar.gz
+tar xzf subversion-1.5.5.tar.gz
+cd subversion-1.5.5
 ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
 make
 sudo make install
