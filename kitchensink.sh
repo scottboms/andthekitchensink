@@ -228,8 +228,8 @@ cd ~/${DIR}
 # http://git.or.cz
 echo "--------------------------------------------------"
 echo "Installing GIT"
-curl -O http://kernel.org/pub/software/scm/git/git-1.6.0.5.tar.gz
-tar -zxf git-1.6.0.5.tar.gz
+curl -O http://kernel.org/pub/software/scm/git/git-1.6.1.tar.gz
+tar -zxf git-1.6.1.tar.gz
 cd git-1.6*
 ./configure --prefix=${PREFIX}
 make all
