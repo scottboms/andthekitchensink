@@ -53,7 +53,7 @@
 PREFIX=/usr/local
 DIR=web_dev_env
 
-# mkdir ~/${DIR}
+mkdir ~/${DIR}
 cd ~/${DIR}
 
 
