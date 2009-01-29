@@ -57,6 +57,51 @@ DIR=web_dev_env
 cd ~/${DIR}
 
 
+# Readline 5.2
+echo "--------------------------------------------------"
+curl -O ftp://ftp.gnu.org/gnu/readline/readline-5.2.tar.gz
+tar zxf readline-5.2.tar.gz
+cd readline-5.2
+
+mkdir patches
+cd patches
+echo "Downloading patch files for Readline (1-12)"
+curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-001
+curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-002
+curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-003
+curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-004
+curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-005
+curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-006
+curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-007
+curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-008
+curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-009
+curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-010
+curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-011
+curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-012
+
+echo "Patching Readline..."
+patch < patches/readline52-001
+patch < patches/readline52-002
+patch < patches/readline52-003
+patch < patches/readline52-004
+patch < patches/readline52-005
+patch < patches/readline52-006
+patch < patches/readline52-007
+patch < patches/readline52-008
+patch < patches/readline52-009
+patch < patches/readline52-010
+patch < patches/readline52-011
+patch support/shobj-conf patches/readline52-012
+
+echo "Done patching Readline..."
+cd ..
+
+./configure --prefix=${PREFIX}
+make
+sudo make install
+cd ~/${DIR}
+
+
 # zlib 1.2.3
 echo "--------------------------------------------------"
 echo "Installing zlib"
@@ -162,7 +207,7 @@ echo "Installing Ruby"
 curl -O ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.7-p72.tar.gz
 tar xzf ruby-1.8.7-p72.tar.gz 
 cd ruby-1.8.7-p72
-./configure --prefix=${PREFIX} --enable-shared --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
+./configure --prefix=${PREFIX} --enable-shared --with-readline-dir=${PREFIX} --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
 make
 sudo make install
 sudo make install-doc
