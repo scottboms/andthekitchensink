@@ -159,9 +159,9 @@ sudo chown -R mysql data
 # http://www.ruby-lang.org/en/
 echo "--------------------------------------------------"
 echo "Installing Ruby"
-curl -O http://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.6-p114.tar.gz
-tar xzf ruby-1.8.6-p114.tar.gz 
-cd ruby-1.8.6-p114
+curl -O ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.7-p72.tar.gz
+tar xzf ruby-1.8.7-p72.tar.gz 
+cd ruby-1.8.7-p72
 ./configure --prefix=${PREFIX} --enable-shared --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
 make
 sudo make install
