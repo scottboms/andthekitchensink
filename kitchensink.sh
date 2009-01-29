@@ -219,7 +219,7 @@ cd ~/${DIR}
 # http://rubyforge.org/projects/rubygems/
 echo "--------------------------------------------------"
 echo "Installing Rubygems"
-curl -O http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz
+curl -OL http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz
 tar xzf rubygems-1.3.1.tgz
 cd rubygems-1.3.1
 sudo ${PREFIX}/bin/ruby setup.rb
@@ -288,9 +288,9 @@ cd ~/${DIR}
 # CFLAGS=-01 is for Intel Macs, 02 is the default for PPC
 echo "--------------------------------------------------"
 echo "Installing PCRE"
-curl -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-7.2.tar.gz
-tar xzf pcre-7.2.tar.gz
-cd pcre-7.2
+curl -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-7.8.tar.gz
+tar xzf pcre-7.8.tar.gz
+cd pcre-7.8
 ./configure --prefix=${PREFIX} CFLAGS=-01
 make
 sudo make install
