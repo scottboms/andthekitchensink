@@ -79,6 +79,8 @@ curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-010
 curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-011
 curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-012
 
+cd ..
+
 echo "Patching Readline..."
 patch < patches/readline52-001
 patch < patches/readline52-002
@@ -94,7 +96,6 @@ patch < patches/readline52-011
 patch support/shobj-conf patches/readline52-012
 
 echo "Done patching Readline..."
-cd ..
 
 ./configure --prefix=${PREFIX}
 make
