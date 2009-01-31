@@ -162,9 +162,9 @@ cd ~/${DIR}
 # SQLite 3
 echo "--------------------------------------------------"
 echo "Installing SQLite3"
-curl -O http://www.sqlite.org/sqlite-3.6.7.tar.gz
-tar zxf sqlite-3.6.7.tar.gz
-cd sqlite-3.6.7
+curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.10.tar.gz
+tar zxf sqlite-amalgamation-3.6.10.tar.gz
+cd sqlite-amalgamation-3.6.10
 ./configure --prefix=${PREFIX}
 make
 sudo make install
