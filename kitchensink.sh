@@ -119,10 +119,10 @@ cd ~/${DIR}
 # Assumes the use of the default install of Python in Mac OS X
 echo "--------------------------------------------------"
 echo "Installing LibXML2"
-curl -O ftp://xmlsoft.org/libxml2/libxml2-2.7.2.tar.gz
-tar -zxf libxml2-2.7.2.tar.gz
-cd libxml2-2.7.2
-./configure --prefix=${PREFIX}/libxml2-2.7.2
+curl -O ftp://xmlsoft.org/libxml2/libxml2-2.7.3.tar.gz
+tar -zxf libxml2-2.7.3.tar.gz
+cd libxml2-2.7.3
+./configure --prefix=${PREFIX}/libxml2-2.7.3
 make
 sudo make install
 
@@ -149,9 +149,9 @@ cd ~/${DIR}
 # lxml
 echo "--------------------------------------------------"
 echo "Installing lxml"
-curl -O http://codespeak.net/lxml/lxml-2.1.4.tgz
-tar -zxf lxml-2.1.4.tgz
-cd lxml-2.1.4
+curl -O http://codespeak.net/lxml/lxml-2.1.5.tgz
+tar -zxf lxml-2.1.5.tgz
+cd lxml-2.1.5
 
 sudo python setup.py install \
 --with-xml2-config=${PREFIX}/libxml2-2.7.0/bin/xml2-config \
@@ -187,9 +187,9 @@ cd ~/${DIR}
 # MySQL for Intel Mac
 echo "--------------------------------------------------"
 echo "Installing MySQL Server"
-curl -O http://mirror.csclub.uwaterloo.ca/mysql/Downloads/MySQL-5.0/mysql-5.0.75.tar.gz
-tar zxf mysql-5.0.75.tar.gz
-cd mysql-5.0.75
+curl -O http://mirror.csclub.uwaterloo.ca/mysql/Downloads/MySQL-5.0/mysql-5.0.77.tar.gz
+tar zxf mysql-5.0.77.tar.gz
+cd mysql-5.0.77
 CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
 
 ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --localstatedir=${PREFIX}/mysql/data --libexecdir=${PREFIX}/mysql/bin --libdir=${PREFIX}/mysql/lib --with-server-suffix=-standard --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --with-archive-storage-engine --with-innodb --without-docs --without-bench 
@@ -271,7 +271,7 @@ cd ~/${DIR}
 
 
 # GIT
-# http://git.or.cz
+# http://git-scm.com
 echo "--------------------------------------------------"
 echo "Installing GIT"
 curl -O http://kernel.org/pub/software/scm/git/git-1.6.1.3.tar.gz
