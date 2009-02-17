@@ -300,9 +300,9 @@ cd ~/${DIR}
 # Lighttpd
 echo "--------------------------------------------------"
 echo "Installing Lighttpd"
-curl -O http://www.lighttpd.net/download/lighttpd-1.4.20.tar.gz
-tar xzf lighttpd-1.4.20.tar.gz
-cd lighttpd-1.4.20
+curl -O http://www.lighttpd.net/download/lighttpd-1.4.21.tar.gz
+tar xzf lighttpd-1.4.21.tar.gz
+cd lighttpd-1.4.21
 ./configure --prefix=${PREFIX} --with-pcre=${PREFIX}
 make
 sudo make install
