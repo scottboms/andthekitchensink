@@ -127,22 +127,22 @@ make
 sudo make install
 
 cd /Library/Python/2.5/site-packages
-sudo ln -s ${PREFIX}/libxml2-2.7.2/lib/python2.5/site-packages/*
+sudo ln -s ${PREFIX}/libxml2-2.7.3/lib/python2.5/site-packages/* .
 cd ~/${DIR}
 
 
 # LibXSLT
 echo "--------------------------------------------------"
-echo "Installing LibXML2"
+echo "Installing LibXSLT"
 curl -O ftp://xmlsoft.org/libxml2/libxslt-1.1.24.tar.gz
 tar -zxf libxslt-1.1.24.tar.gz
 cd libxslt-1.1.24
-./configure --prefix=${PREFIX}/libxslt-1.1.24 --with-libxml-prefix=/usr/local/libxml2-2.7.2
+./configure --prefix=${PREFIX}/libxslt-1.1.24 --with-libxml-prefix=${PREFIX}/libxml2-2.7.3
 make
 sudo make install
 
 cd /Library/Python/2.5/site-packages
-sudo ln -s ${PREFIX}/libxslt-1.1.24/lib/python2.5/site-packages/*
+sudo ln -s ${PREFIX}/libxslt-1.1.24/lib/python2.5/site-packages/* .
 cd ~/${DIR}
 
 
@@ -154,7 +154,7 @@ tar -zxf lxml-2.1.5.tgz
 cd lxml-2.1.5
 
 sudo python setup.py install \
---with-xml2-config=${PREFIX}/libxml2-2.7.0/bin/xml2-config \
+--with-xml2-config=${PREFIX}/libxml2-2.7.3/bin/xml2-config \
 --with-xslt-config=${PREFIX}/libxslt-1.1.24/bin/xslt-config
 cd ~/${DIR}
 
