@@ -162,9 +162,9 @@ cd ~/${DIR}
 # SQLite 3
 echo "--------------------------------------------------"
 echo "Installing SQLite3"
-curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.10.tar.gz
-tar zxf sqlite-amalgamation-3.6.10.tar.gz
-cd sqlite-amalgamation-3.6.10
+curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.11.tar.gz
+tar zxf sqlite-amalgamation-3.6.11.tar.gz
+cd sqlite-amalgamation-3.6.11
 ./configure --prefix=${PREFIX}
 make
 sudo make install
@@ -480,9 +480,9 @@ sudo gem install mongrel -y
 # Subversion 1.5.x
 echo "--------------------------------------------------"
 echo "Installing Subversion 1.5"
-curl -O http://subversion.tigris.org/downloads/subversion-1.5.5.tar.gz
-tar xzf subversion-1.5.5.tar.gz
-cd subversion-1.5.5
+curl -O http://subversion.tigris.org/downloads/subversion-1.5.6.tar.gz
+tar xzf subversion-1.5.6.tar.gz
+cd subversion-1.5.6
 ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
 make
 sudo make install
@@ -561,7 +561,7 @@ cd ~/${DIR}
 # Other Ruby Gems
 echo "--------------------------------------------------"
 echo "Installing Other Ruby Gems..."
-sudo gem install abstract activemerchant acts_as_ferret acts_as_searchable acts_as_taggable amazon-ec2 ambition aws-s3 bcrypt-ruby BlueCloth builder cached_model capazon capistrano character-encodings cheat chronic columnize dnssd erubis fcgi ferret flickraw god gruff haml has_many_through_generator highline hoe hpricot htmlentities htmltools image_science json_pure libxml-ruby linecache login_generator magic_multi_connections mailfactory memcache-client merb mime-types mini_magick mocha mofo money needle net-scp net-sftp net-ssh net-ssh-gateway openid_login_generator paginator ParseTree passenger payment piston rack radiant railsbench rapt rb-appscript rchardet rcov RedCloth rfeedparser rmagick rspec rubigen ruby-debug ruby-debug-base ruby-openid ruby-prof ruby-yadis ruby2ruby rubyforge RubyInline rubynode rubypants salted_login_generator scrobbler simple-rss sources sparklines sproutcore sqlite3-ruby starling syntax termios test-spec tidy tzinfo uuidtools xml-simple ZenTest
+sudo gem install activemerchant acts_as_ferret acts_as_searchable acts_as_taggable amazon-ec2 aws-s3 bcrypt-ruby BlueCloth builder capazon capistrano character-encodings chronic columnize fcgi ferret flickraw gruff has_many_through_generator hoe hpricot htmlentities htmltools json_pure libxml-ruby login_generator magic_multi_connections memcache-client mime-types mocha mofo money needle net-scp net-sftp net-ssh net-ssh-gateway openid_login_generator paginator passenger payment piston rack radiant rapt rb-appscript RedCloth rmagick rspec rubigen ruby-openid ruby-prof ruby-yadis ruby2ruby rubyforge rubynode rubypants salted_login_generator sources sparklines sqlite3-ruby termios tidy tzinfo uuidtools xml-simple
 
 # Closing Notes...
 echo "--------------------------------------------------"
