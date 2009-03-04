@@ -563,6 +563,16 @@ echo "--------------------------------------------------"
 echo "Installing Other Ruby Gems..."
 sudo gem install activemerchant acts_as_ferret acts_as_searchable acts_as_taggable amazon-ec2 aws-s3 bcrypt-ruby BlueCloth builder capazon capistrano character-encodings chronic columnize fcgi ferret flickraw gruff has_many_through_generator hoe hpricot htmlentities htmltools json_pure libxml-ruby login_generator magic_multi_connections memcache-client mime-types mocha mofo money needle net-scp net-sftp net-ssh net-ssh-gateway openid_login_generator paginator passenger payment piston rack radiant rapt rb-appscript RedCloth rmagick rspec rubigen ruby-openid ruby-prof ruby-yadis ruby2ruby rubyforge rubynode rubypants salted_login_generator sources sparklines sqlite3-ruby termios tidy tzinfo uuidtools xml-simple
 
+# Juicer
+# http://www.cjohansen.no/en/ruby/juicer_a_css_and_javascript_packaging_tool
+
+sudo gem install juicer
+sudo juicer install yui_compressor
+sudo juicer install jslint
+
+# Usage:
+# juicer merge myfile.css myotherfile.css css/third.css
+
 # Closing Notes...
 echo "--------------------------------------------------"
 echo "Done!"
