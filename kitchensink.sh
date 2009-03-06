@@ -196,9 +196,25 @@ CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-fram
 make
 sudo make install
 
-cd /usr/local/mysql
+cd ${PREFIX}/mysql
 sudo ./bin/mysql_install_db --user=mysql
 sudo chown -R mysql data
+
+
+# MySQL 5.1.x for Intel Mac (Optional)
+# echo "--------------------------------------------------"
+# curl -O http://mysql.mirror.rafal.ca/Downloads/MySQL-5.1/mysql-5.1.32.tar.gz
+# tar zxf mysql-5.1.32.tar.gz
+# cd mysql-5.1.32
+# CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
+# 
+# ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --localstatedir=${PREFIX}/mysql/data --libexecdir=${PREFIX}/mysql/bin --libdir=${PREFIX}/mysql/lib --with-server-suffix=-standard --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --with-archive-storage-engine --with-innodb --without-docs --without-bench 
+# make
+# sudo make install
+# 
+# cd ${PREFIX}/mysql
+# sudo ./bin/mysql_install_db --user=mysql
+# sudo chown -R mysql data
 
 
 # Ruby
@@ -524,7 +540,7 @@ sudo launchctl load -w /Library/LaunchDaemons/com.mysql.mysqld.plist
 # Ruby MySQL Gem
 echo "--------------------------------------------------"
 echo "Installing MySQL Ruby Gem"
-sudo env ARCHFLAGS="-arch i386" gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
+sudo env ARCHFLAGS="-arch i386" gem install mysql -- --with-mysql-config=${PREFIX}/mysql/bin/mysql_config
 
 
 # Ruby MySQL Gem Performance Patch
