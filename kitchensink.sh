@@ -290,8 +290,8 @@ cd ~/${DIR}
 # http://git-scm.com
 echo "--------------------------------------------------"
 echo "Installing GIT"
-curl -O http://kernel.org/pub/software/scm/git/git-1.6.2.tar.gz
-tar -zxf git-1.6.2.tar.gz
+curl -O http://kernel.org/pub/software/scm/git/git-1.6.2.1.tar.gz
+tar -zxf git-1.6.2..tar.gz
 cd git-1.6*
 ./configure --prefix=${PREFIX}
 make all
@@ -496,9 +496,9 @@ sudo gem install mongrel -y
 # Subversion 1.5.x
 echo "--------------------------------------------------"
 echo "Installing Subversion 1.5"
-curl -O http://subversion.tigris.org/downloads/subversion-1.5.6.tar.gz
-tar xzf subversion-1.5.6.tar.gz
-cd subversion-1.5.6
+curl -O http://subversion.tigris.org/downloads/subversion-1.6.0.tar.gz
+tar xzf subversion-1.6.0.tar.gz
+cd subversion-1.6.0
 ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
 make
 sudo make install
