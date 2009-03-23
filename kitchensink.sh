@@ -493,16 +493,28 @@ echo "Installing Mongrel Server"
 sudo gem install mongrel -y
 
 
-# Subversion 1.5.x
+# Subversion 1.5.x Series
 echo "--------------------------------------------------"
+echo "Requires neon version 0.28.3 in order to use HTTP or HTTPS connections"
 echo "Installing Subversion 1.5"
-curl -O http://subversion.tigris.org/downloads/subversion-1.6.0.tar.gz
-tar xzf subversion-1.6.0.tar.gz
-cd subversion-1.6.0
+curl -O http://subversion.tigris.org/downloads/subversion-1.5.6.tar.gz
+tar xzf subversion-1.5.6.tar.gz
+cd subversion-1.5.6
 ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
 make
 sudo make install
 cd ~/${DIR}
+
+# Subversion 1.6.x Series
+# echo "--------------------------------------------------"
+# echo "Installing Subversion 1.6"
+# curl -O http://subversion.tigris.org/downloads/subversion-1.6.0.tar.gz
+# tar xzf subversion-1.6.0.tar.gz
+# cd subversion-1.6.0
+# ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
+# make
+# sudo make install
+# cd ~/${DIR}
 
 
 # MySQL Config File
