@@ -196,6 +196,20 @@ CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-fram
 make
 sudo make install
 
+
+# MySQL for Intel Mac
+# echo "--------------------------------------------------"
+# echo "Installing MySQL Server"
+# curl -O http://mirror.csclub.uwaterloo.ca/mysql/Downloads/MySQL-5.1/mysql-5.1.33.tar.gz
+# tar zxf mysql-5.1.33.tar.gz
+# cd mysql-5.1.33
+# CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
+# 
+# ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --localstatedir=${PREFIX}/mysql/data --libexecdir=${PREFIX}/mysql/bin --libdir=${PREFIX}/mysql/lib --with-server-suffix=-standard --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --without-docs
+# make
+# sudo make install
+
+
 cd ${PREFIX}/mysql
 sudo ./bin/mysql_install_db --user=mysql
 sudo chown -R mysql data
@@ -290,8 +304,8 @@ cd ~/${DIR}
 # http://git-scm.com
 echo "--------------------------------------------------"
 echo "Installing GIT"
-curl -O http://kernel.org/pub/software/scm/git/git-1.6.2.1.tar.gz
-tar -zxf git-1.6.2.1.tar.gz
+curl -O http://kernel.org/pub/software/scm/git/git-1.6.2.2.tar.gz
+tar -zxf git-1.6.2.2.tar.gz
 cd git-1.6*
 ./configure --prefix=${PREFIX}
 make all
