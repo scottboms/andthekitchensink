@@ -162,9 +162,9 @@ cd ~/${DIR}
 # SQLite 3
 echo "--------------------------------------------------"
 echo "Installing SQLite3"
-curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.12.tar.gz
-tar zxf sqlite-amalgamation-3.6.12.tar.gz
-cd sqlite-amalgamation-3.6.12
+curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.13.tar.gz
+tar zxf sqlite-amalgamation-3.6.13.tar.gz
+cd sqlite-amalgamation-3.6.13
 ./configure --prefix=${PREFIX}
 make
 sudo make install
@@ -304,8 +304,8 @@ cd ~/${DIR}
 # http://git-scm.com
 echo "--------------------------------------------------"
 echo "Installing GIT"
-curl -O http://kernel.org/pub/software/scm/git/git-1.6.2.2.tar.gz
-tar -zxf git-1.6.2.2.tar.gz
+curl -O http://kernel.org/pub/software/scm/git/git-1.6.2.3.tar.gz
+tar -zxf git-1.6.2.3.tar.gz
 cd git-1.6*
 ./configure --prefix=${PREFIX}
 make all
