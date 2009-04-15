@@ -60,155 +60,151 @@ cd ~/${DIR}
 # Readline 5.2
 echo "--------------------------------------------------"
 curl -O ftp://ftp.gnu.org/gnu/readline/readline-5.2.tar.gz
-tar zxf readline-5.2.tar.gz
-cd readline-5.2
+if [ -f "readline-5.2.tar.gz" ]; then
+  tar zxf readline-5.2.tar.gz
+  cd readline-5.2
 
-mkdir patches
-cd patches
-echo "Downloading patch files for Readline (1-12)"
-curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-001
-curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-002
-curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-003
-curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-004
-curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-005
-curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-006
-curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-007
-curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-008
-curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-009
-curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-010
-curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-011
-curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-012
+  mkdir patches
+  cd patches
+  echo "Downloading patch files for Readline (1-12)"
+  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-001
+  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-002
+  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-003
+  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-004
+  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-005
+  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-006
+  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-007
+  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-008
+  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-009
+  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-010
+  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-011
+  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-012
 
-cd ..
+  cd ..
 
-echo "Patching Readline..."
-patch < patches/readline52-001
-patch < patches/readline52-002
-patch < patches/readline52-003
-patch < patches/readline52-004
-patch < patches/readline52-005
-patch < patches/readline52-006
-patch < patches/readline52-007
-patch < patches/readline52-008
-patch < patches/readline52-009
-patch < patches/readline52-010
-patch < patches/readline52-011
-patch support/shobj-conf patches/readline52-012
+  echo "Patching Readline..."
+  patch < patches/readline52-001
+  patch < patches/readline52-002
+  patch < patches/readline52-003
+  patch < patches/readline52-004
+  patch < patches/readline52-005
+  patch < patches/readline52-006
+  patch < patches/readline52-007
+  patch < patches/readline52-008
+  patch < patches/readline52-009
+  patch < patches/readline52-010
+  patch < patches/readline52-011
+  patch support/shobj-conf patches/readline52-012
 
-echo "Done patching Readline..."
+  echo "Done patching Readline..."
 
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # zlib 1.2.3
 echo "--------------------------------------------------"
 echo "Installing zlib"
 curl -O http://www.zlib.net/zlib-1.2.3.tar.gz
-tar zxf zlib-1.2.3.tar.gz
-cd zlib-1.2.3
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
+if [ -f "zlib-1.2.3.tar.gz" ]; then
+  tar zxf zlib-1.2.3.tar.gz
 
+  cd zlib-1.2.3
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # LibXML2 (with LibXSLT and lxml for Python)
 # Assumes the use of the default install of Python in Mac OS X
 echo "--------------------------------------------------"
 echo "Installing LibXML2"
 curl -O ftp://xmlsoft.org/libxml2/libxml2-2.7.3.tar.gz
-tar -zxf libxml2-2.7.3.tar.gz
-cd libxml2-2.7.3
-./configure --prefix=${PREFIX}/libxml2-2.7.3
-make
-sudo make install
+if [ -f "testfile" ]; then
+  tar -zxf libxml2-2.7.3.tar.gz
+  cd libxml2-2.7.3
+  ./configure --prefix=${PREFIX}/libxml2-2.7.3
+  make
+  sudo make install
 
-cd /Library/Python/2.5/site-packages
-sudo ln -s ${PREFIX}/libxml2-2.7.3/lib/python2.5/site-packages/* .
-cd ~/${DIR}
-
+  cd /Library/Python/2.5/site-packages
+  sudo ln -s ${PREFIX}/libxml2-2.7.3/lib/python2.5/site-packages/* .
+  cd ~/${DIR}
+fi
 
 # LibXSLT
 echo "--------------------------------------------------"
 echo "Installing LibXSLT"
 curl -O ftp://xmlsoft.org/libxml2/libxslt-1.1.24.tar.gz
-tar -zxf libxslt-1.1.24.tar.gz
-cd libxslt-1.1.24
-./configure --prefix=${PREFIX}/libxslt-1.1.24 --with-libxml-prefix=${PREFIX}/libxml2-2.7.3
-make
-sudo make install
+if [ -f "libxslt-1.1.24.tar.gz" ]; then
+  tar -zxf libxslt-1.1.24.tar.gz
+  cd libxslt-1.1.24
+  ./configure --prefix=${PREFIX}/libxslt-1.1.24 --with-libxml-prefix=${PREFIX}/libxml2-2.7.3
+  make
+  sudo make install
 
-cd /Library/Python/2.5/site-packages
-sudo ln -s ${PREFIX}/libxslt-1.1.24/lib/python2.5/site-packages/* .
-cd ~/${DIR}
-
+  cd /Library/Python/2.5/site-packages
+  sudo ln -s ${PREFIX}/libxslt-1.1.24/lib/python2.5/site-packages/* .
+  cd ~/${DIR}
+fi
 
 # lxml
 echo "--------------------------------------------------"
 echo "Installing lxml"
 curl -O http://codespeak.net/lxml/lxml-2.1.5.tgz
-tar -zxf lxml-2.1.5.tgz
-cd lxml-2.1.5
+if [ -f "lxml-2.1.5.tar.gz" ]; then
+  tar -zxf lxml-2.1.5.tgz
+  cd lxml-2.1.5
 
-sudo python setup.py install \
---with-xml2-config=${PREFIX}/libxml2-2.7.3/bin/xml2-config \
---with-xslt-config=${PREFIX}/libxslt-1.1.24/bin/xslt-config
-cd ~/${DIR}
-
+  sudo python setup.py install \
+    --with-xml2-config=${PREFIX}/libxml2-2.7.3/bin/xml2-config \
+    --with-xslt-config=${PREFIX}/libxslt-1.1.24/bin/xslt-config
+  cd ~/${DIR}
+fi
 
 # SQLite 3
 echo "--------------------------------------------------"
 echo "Installing SQLite3"
 curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.13.tar.gz
-tar zxf sqlite-amalgamation-3.6.13.tar.gz
-cd sqlite-3.6.13
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "sqlite-amalgamation-3.6.13.tar.gz" ]; then
+  tar zxf sqlite-amalgamation-3.6.13.tar.gz
+  cd sqlite-3.6.13
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # Expat
 # http://downloads.sourceforge.net
 echo "--------------------------------------------------"
 echo "Installing expat Library"
 curl -O http://superb-east.dl.sourceforge.net/sourceforge/expat/expat-2.0.1.tar.gz
-tar zxf expat-2.0.1.tar.gz
-cd expat-2.0.1
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "expat-2.0.1.tar.gz" ]; then
+  tar zxf expat-2.0.1.tar.gz
+  cd expat-2.0.1
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # MySQL for Intel Mac
 echo "--------------------------------------------------"
 echo "Installing MySQL Server"
 curl -O http://mirror.csclub.uwaterloo.ca/mysql/Downloads/MySQL-5.0/mysql-5.0.77.tar.gz
-tar zxf mysql-5.0.77.tar.gz
-cd mysql-5.0.77
-CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
+if [ -f "mysql-5.0.77.tar.gz" ]; then
+  tar zxf mysql-5.0.77.tar.gz
+  cd mysql-5.0.77
+  CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
 
-./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --localstatedir=${PREFIX}/mysql/data --libexecdir=${PREFIX}/mysql/bin --libdir=${PREFIX}/mysql/lib --with-server-suffix=-standard --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --with-archive-storage-engine --with-innodb --without-docs --without-bench 
-make
-sudo make install
-
-
-# MySQL for Intel Mac
-# echo "--------------------------------------------------"
-# echo "Installing MySQL Server"
-# curl -O http://mirror.csclub.uwaterloo.ca/mysql/Downloads/MySQL-5.1/mysql-5.1.33.tar.gz
-# tar zxf mysql-5.1.33.tar.gz
-# cd mysql-5.1.33
-# CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
-# 
-# ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --localstatedir=${PREFIX}/mysql/data --libexecdir=${PREFIX}/mysql/bin --libdir=${PREFIX}/mysql/lib --with-server-suffix=-standard --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --without-docs
-# make
-# sudo make install
-
+  ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --localstatedir=${PREFIX}/mysql/data --libexecdir=${PREFIX}/mysql/bin --libdir=${PREFIX}/mysql/lib --with-server-suffix=-standard --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --with-archive-storage-engine --with-innodb --without-docs --without-bench 
+  make
+  sudo make install
+fi
 
 cd ${PREFIX}/mysql
 sudo ./bin/mysql_install_db --user=mysql
@@ -217,9 +213,9 @@ sudo chown -R mysql data
 
 # MySQL 5.1.x for Intel Mac (Optional)
 # echo "--------------------------------------------------"
-# curl -O http://mysql.mirror.rafal.ca/Downloads/MySQL-5.1/mysql-5.1.32.tar.gz
-# tar zxf mysql-5.1.32.tar.gz
-# cd mysql-5.1.32
+# curl -O http://mysql.mirror.rafal.ca/Downloads/MySQL-5.1/mysql-5.1.33.tar.gz
+# tar zxf mysql-5.1.33.tar.gz
+# cd mysql-5.1.33
 # CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
 # 
 # ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --localstatedir=${PREFIX}/mysql/data --libexecdir=${PREFIX}/mysql/bin --libdir=${PREFIX}/mysql/lib --with-server-suffix=-standard --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --with-archive-storage-engine --with-innodb --without-docs --without-bench 
@@ -236,50 +232,54 @@ sudo chown -R mysql data
 echo "--------------------------------------------------"
 echo "Installing Ruby"
 curl -O ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.7-p72.tar.gz
-tar xzf ruby-1.8.7-p72.tar.gz 
-cd ruby-1.8.7-p72
-./configure --prefix=${PREFIX} --enable-shared --with-readline-dir=${PREFIX} --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
-make
-sudo make install
-sudo make install-doc
-cd ~/${DIR}
-
+if [ -f "ruby-1.8.7-p72.tar.gz" ]; then
+  tar xzf ruby-1.8.7-p72.tar.gz 
+  cd ruby-1.8.7-p72
+  ./configure --prefix=${PREFIX} --enable-shared --with-readline-dir=${PREFIX} --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
+  make
+  sudo make install
+  sudo make install-doc
+  cd ~/${DIR}
+fi
 
 # Rubygems
 # http://rubyforge.org/projects/rubygems/
 echo "--------------------------------------------------"
 echo "Installing Rubygems"
 curl -OL http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz
-tar xzf rubygems-1.3.1.tgz
-cd rubygems-1.3.1
-sudo ${PREFIX}/bin/ruby setup.rb
-cd ~/${DIR}
-
+if [ -f "rubygems-1.3.1.tgz" ]; then
+  tar xzf rubygems-1.3.1.tgz
+  cd rubygems-1.3.1
+  sudo ${PREFIX}/bin/ruby setup.rb
+  cd ~/${DIR}
+fi
 
 # FastCGI
 echo "--------------------------------------------------"
 echo "Installing FastCGI"
 curl -O http://www.fastcgi.com/dist/fcgi-2.4.0.tar.gz
-tar xzf fcgi-2.4.0.tar.gz
-cd fcgi-2.4.0
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "fcgi-2.4.0.tar.gz" ]; then
+  tar xzf fcgi-2.4.0.tar.gz
+  cd fcgi-2.4.0
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # Ruby FastCGI Bindings
 # http://rubyforge.org/projects/fcgi/
 echo "--------------------------------------------------"
 echo "Installing Ruby FastCGI Bindings"
 curl -O http://rubyforge.iasi.roedu.net/files/fcgi/ruby-fcgi-0.8.7.tar.gz
-tar xzf ruby-fcgi-0.8.7.tar.gz
-cd ruby-fcgi-0.8.7
-${PREFIX}/bin/ruby install.rb config --prefix=${PREFIX}
-${PREFIX}/bin/ruby install.rb setup
-sudo ${PREFIX}/bin/ruby install.rb install
-cd ~/${DIR}
-
+if [ -f "ruby-fcgi-0.8.7.tar.gz" ]; then
+  tar xzf ruby-fcgi-0.8.7.tar.gz
+  cd ruby-fcgi-0.8.7
+  ${PREFIX}/bin/ruby install.rb config --prefix=${PREFIX}
+  ${PREFIX}/bin/ruby install.rb setup
+  sudo ${PREFIX}/bin/ruby install.rb install
+  cd ~/${DIR}
+fi
 
 # Ruby FastCGI Gem
 echo "--------------------------------------------------"
@@ -292,26 +292,28 @@ sudo gem install fcgi
 echo "--------------------------------------------------"
 echo "Installing gettext"
 curl -O ftp://ftp.gnu.org/gnu/gettext/gettext-0.17.tar.gz
-tar -zxf gettext-0.17.tar.gz
-cd gettext-0.17
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "gettext-0.17.tar.gz" ]; then
+  tar -zxf gettext-0.17.tar.gz
+  cd gettext-0.17
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # GIT
 # http://git-scm.com
 echo "--------------------------------------------------"
 echo "Installing GIT"
 curl -O http://kernel.org/pub/software/scm/git/git-1.6.2.3.tar.gz
-tar -zxf git-1.6.2.3.tar.gz
-cd git-1.6*
-./configure --prefix=${PREFIX}
-make all
-sudo make install
-cd ~/${DIR}
-
+if [ -f "git-1.6.2.3.tar.gz" ]; then
+  tar -zxf git-1.6.2.3.tar.gz
+  cd git-1.6*
+  ./configure --prefix=${PREFIX}
+  make all
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # PCRE
 # www.pcre.org
@@ -319,48 +321,52 @@ cd ~/${DIR}
 echo "--------------------------------------------------"
 echo "Installing PCRE"
 curl -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-7.8.tar.gz
-tar xzf pcre-7.8.tar.gz
-cd pcre-7.8
-./configure --prefix=${PREFIX} CFLAGS=-01
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "pcre-7.8.tar.gz" ]; then
+  tar xzf pcre-7.8.tar.gz
+  cd pcre-7.8
+  ./configure --prefix=${PREFIX} CFLAGS=-01
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # Lighttpd
 echo "--------------------------------------------------"
 echo "Installing Lighttpd"
 curl -O http://www.lighttpd.net/download/lighttpd-1.4.22.tar.gz
-tar xzf lighttpd-1.4.22.tar.gz
-cd lighttpd-1.4.22
-./configure --prefix=${PREFIX} --with-pcre=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "lighttpd-1.4.22.tar.gz" ]; then
+  tar xzf lighttpd-1.4.22.tar.gz
+  cd lighttpd-1.4.22
+  ./configure --prefix=${PREFIX} --with-pcre=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # Ghostscript
 # http://pages.cs.wisc.edu/~ghost/
 echo "--------------------------------------------------"
 echo "Installing Ghostscript"
 curl -O http://superb-east.dl.sourceforge.net/sourceforge/ghostscript/ghostscript-8.54-gpl.tar.gz
-tar zfx ghostscript-8.54-gpl.tar.gz
-cd ghostscript-8.54-gpl/
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "ghostscript-8.54-gpl.tar.gz" ]; then
+  tar zfx ghostscript-8.54-gpl.tar.gz
+  cd ghostscript-8.54-gpl/
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # Ghostscript Fonts
 # http://sourceforge.net/projects/gs-fonts/
 echo "--------------------------------------------------"
-curl -O http://voxel.dl.sourceforge.net/sourceforge/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
 echo "Installing Ghostscript-fonts"
-tar zxf ghostscript-fonts-std-8.11.tar.gz
-sudo mv fonts ${PREFIX}/share/ghostscript
-cd ~/${DIR}
-
+curl -O http://voxel.dl.sourceforge.net/sourceforge/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
+if [ -f "ghostscript-fonts-std-8.11.tar.gz" ]; then
+  tar zxf ghostscript-fonts-std-8.11.tar.gz
+  sudo mv fonts ${PREFIX}/share/ghostscript
+  cd ~/${DIR}
+fi
 
 # Freetype
 # http://www.freetype.org
@@ -368,129 +374,139 @@ echo "--------------------------------------------------"
 echo "Installing Freetype"
 curl -O http://download.savannah.gnu.org/releases/freetype/freetype-2.3.5.tar.gz
 tar xzf freetype-2.3.5.tar.gz
-cd freetype-2.3.5
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "freetype-2.3.5.tar.gz" ]; then
+  cd freetype-2.3.5
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # LibPNG
 # http://www.libpng.org
 echo "--------------------------------------------------"
 echo "Installing LibPNG"
 curl -O ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.34.tar.gz
-tar zxf libpng-1.2.34.tar.gz
-cd libpng-1.2.34
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "libpng-1.2.34.tar.gz" ]; then
+  tar zxf libpng-1.2.34.tar.gz
+  cd libpng-1.2.34
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # LibJPEG
 echo "--------------------------------------------------"
 echo "Installing JPEG"
 curl -O http://www.ijg.org/files/jpegsrc.v6b.tar.gz
-tar xzf jpegsrc.v6b.tar.gz
-cd jpeg-6b
-ln -s /Developer/usr/bin/glibtool libtool
-./configure --enable-shared --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "jpegsrc.v6b.tar.gz" ]; then
+  tar xzf jpegsrc.v6b.tar.gz
+  cd jpeg-6b
+  ln -s /Developer/usr/bin/glibtool libtool
+  ./configure --enable-shared --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # LibTIFF
 # http://www.remotesensing.org/libtiff/
 echo "--------------------------------------------------"
 echo "Installing TIFF"
 curl -O ftp://ftp.remotesensing.org/libtiff/tiff-3.8.2.tar.gz
-tar xzf tiff-3.8.2.tar.gz
-cd tiff-3.8.2
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "tiff-3.8.2.tar.gz" ]; then
+  tar xzf tiff-3.8.2.tar.gz
+  cd tiff-3.8.2
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # LibWMF
 # http://wvware.sourceforge.net/libwmf.html
 echo "--------------------------------------------------"
 echo "Installing LibWMF"
 curl -O http://jaist.dl.sourceforge.net/sourceforge/wvware/libwmf-0.2.8.4.tar.gz
-tar xzf libwmf-0.2.8.4.tar.gz
-cd libwmf-0.2.8.4
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "libwmf-0.2.8.4.tar.gz" ]; then
+  tar xzf libwmf-0.2.8.4.tar.gz
+  cd libwmf-0.2.8.4
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # LCMS
 echo "--------------------------------------------------"
 echo "Installing LCMS"
 curl -O http://www.littlecms.com/lcms-1.17.tar.gz
-tar xzf lcms-1.17.tar.gz
-cd lcms-1.17 
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "lcms-1.17.tar.gz" ]; then
+  tar xzf lcms-1.17.tar.gz
+  cd lcms-1.17 
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # ImageMagick
 echo "--------------------------------------------------"
 echo "Installing ImageMagick"
 curl -O ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick.tar.gz
-tar xzf ImageMagick.tar.gz
-cd ImageMagick-6.*
-./configure --prefix=${PREFIX} --with-quantum-depth=16 --disable-dependency-tracking --with-x=yes --x-includes=/usr/X11R6/include --x-libraries=/usr/X11R6/lib --without-perl
-make
-sudo make install
-cd ~/${DIR}
+if [ -f "ImageMagick.tar.gz" ]; then
+  tar xzf ImageMagick.tar.gz
+  cd ImageMagick-6.*
+  ./configure --prefix=${PREFIX} --with-quantum-depth=16 --disable-dependency-tracking --with-x=yes --x-includes=/usr/X11R6/include --x-libraries=/usr/X11R6/lib --without-perl
+  make
+  sudo make install
+  cd ~/${DIR}
 
-echo "--------------------------------------------------"
-echo "Installing RMagick"
-sudo gem install rmagick
-
+  echo "--------------------------------------------------"
+  echo "Installing RMagick"
+  sudo gem install rmagick
+fi
 
 # Pound Load Balancer
 echo "--------------------------------------------------"
 echo "Installing Pound"
 curl -O http://www.apsis.ch/pound/Pound-2.4.4.tgz
-CFLAGS=""
-tar xzf Pound-2.4.4.tgz
-cd Pound-2.4.4
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "Pound-2.4.4.tar.gz" ]; then
+  CFLAGS=""
+  tar xzf Pound-2.4.4.tgz
+  cd Pound-2.4.4
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # Neon
 echo "--------------------------------------------------"
 echo "Installing Neon"
 curl -O http://www.webdav.org/neon/neon-0.28.3.tar.gz
-tar xzf neon-0.28.3.tar.gz
-cd neon-0.28.3
-./configure --prefix=${PREFIX} --enable-shared=yes --with-ssl=openssl --with-libxml2
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "neon-0.28.3.tar.gz" ]; then
+  tar xzf neon-0.28.3.tar.gz
+  cd neon-0.28.3
+  ./configure --prefix=${PREFIX} --enable-shared=yes --with-ssl=openssl --with-libxml2
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # LibArt 2
 echo "--------------------------------------------------"
 echo "Installing LibArt 2"
 curl -O http://ftp.acc.umu.se/pub/GNOME/sources/libart_lgpl/2.3/libart_lgpl-2.3.20.tar.gz
-tar xzf libart_lgpl-2.3.20.tar.gz
-cd libart_lgpl-2.3.20
-./configure --prefix=${PREFIX}
-make
-sudo make install
-cd ~/${DIR}
-
+if [ -f "libart_lgpl-2.3.20.tar.gz" ]; then
+  tar xzf libart_lgpl-2.3.20.tar.gz
+  cd libart_lgpl-2.3.20
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # Rails
 # http://www.rubyonrails.org
@@ -512,24 +528,27 @@ echo "--------------------------------------------------"
 echo "Requires neon version 0.28.3 in order to use HTTP or HTTPS connections"
 echo "Installing Subversion 1.5"
 curl -O http://subversion.tigris.org/downloads/subversion-1.5.6.tar.gz
-tar xzf subversion-1.5.6.tar.gz
-cd subversion-1.5.6
-./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
-make
-sudo make install
-cd ~/${DIR}
+if [ -f "subversion-1.5.6.tar.gz" ]; then
+  tar xzf subversion-1.5.6.tar.gz
+  cd subversion-1.5.6
+  ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
 
 # Subversion 1.6.x Series
 # echo "--------------------------------------------------"
 # echo "Installing Subversion 1.6"
-# curl -O http://subversion.tigris.org/downloads/subversion-1.6.0.tar.gz
-# tar xzf subversion-1.6.0.tar.gz
-# cd subversion-1.6.0
-# ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
-# make
-# sudo make install
-# cd ~/${DIR}
-
+# curl -O http://subversion.tigris.org/downloads/subversion-1.6.1.tar.gz
+# if [ -f "subversion-1.6.1.tar.gz" ]; then
+#   tar xzf subversion-1.6.1.tar.gz
+# c  d subversion-1.6.1
+#   ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-sqlite=${PREFIX} --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
+#   make
+#   sudo make install
+#   cd ~/${DIR}
+# fi
 
 # MySQL Config File
 sudo touch /etc/my.cnf
@@ -573,8 +592,9 @@ sudo env ARCHFLAGS="-arch i386" gem install mysql -- --with-mysql-config=${PREFI
 echo "--------------------------------------------------"
 echo "Patching MySQL Ruby Gem"
 curl -O http://and-the-kitchen-sink-plus.googlecode.com/files/mysql-ruby-2.7-less-string-copies-in-each-hash.diff
-sudo patch /usr/local/lib/ruby/gems/1.8/gems/mysql-2.7/mysql.c.in ~/${DIR}/mysql-ruby-2.7-less-string-copies-in-each-hash.diff
-
+if [ -f "mysql-ruby-2.7-less-string-copies-in-each-hash.diff" ]; then
+  sudo patch /usr/local/lib/ruby/gems/1.8/gems/mysql-2.7/mysql.c.in ~/${DIR}/mysql-ruby-2.7-less-string-copies-in-each-hash.diff
+fi
 
 # MySQL Python Driver
 # http://internap.dl.sourceforge.net/sourceforge/mysql-python/MySQL-python-1.2.2.tar.gz
@@ -582,23 +602,25 @@ sudo patch /usr/local/lib/ruby/gems/1.8/gems/mysql-2.7/mysql.c.in ~/${DIR}/mysql
 # http://www.wishingline.com/downloads/kitchensink/mysql-python-1.2.2.zip
 echo "--------------------------------------------------"
 curl -O http://and-the-kitchen-sink-plus.googlecode.com/files/mysql-python-1.2.2.zip
-echo "Installing MySQL-python"
-unzip -q mysql-python-1.2.2.zip
-cd MySQL-python-1.2.2
-sudo python setup.py build
-sudo python setup.py install
-cd ~/${DIR}
-
+if [ -f "mysql-python-1.2.2.zip" ]; then
+  echo "Installing MySQL-python"
+  unzip -q mysql-python-1.2.2.zip
+  cd MySQL-python-1.2.2
+  sudo python setup.py build
+  sudo python setup.py install
+  cd ~/${DIR}
+fi
 
 # Django
 echo "--------------------------------------------------"
 curl -O http://media.djangoproject.com/releases/1.0.2/Django-1.0.2-final.tar.gz
-echo "Installing Django"
-tar -zxf Django-1.0.2-final.tar.gz
-cd Django-1.0.2-final
-sudo python setup.py install
-cd ~/${DIR}
-
+if [ -f "Django-1.0.2-final.tar.gz" ]; then
+  echo "Installing Django"
+  tar -zxf Django-1.0.2-final.tar.gz
+  cd Django-1.0.2-final
+  sudo python setup.py install
+  cd ~/${DIR}
+fi
 
 # Other Ruby Gems
 echo "--------------------------------------------------"
