@@ -154,10 +154,10 @@ fi
 # lxml
 echo "--------------------------------------------------"
 echo "Installing lxml"
-curl -O http://codespeak.net/lxml/lxml-2.1.5.tgz
-if [ -f "lxml-2.1.5.tar.gz" ]; then
-  tar -zxf lxml-2.1.5.tgz
-  cd lxml-2.1.5
+curl -O http://codespeak.net/lxml/lxml-2.2.tgz
+if [ -f "lxml-2.2.tar.gz" ]; then
+  tar -zxf lxml-2.2.tgz
+  cd lxml-2.2
 
   sudo python setup.py install \
     --with-xml2-config=${PREFIX}/libxml2-2.7.3/bin/xml2-config \
@@ -320,10 +320,10 @@ fi
 # CFLAGS=-01 is for Intel Macs, 02 is the default for PPC
 echo "--------------------------------------------------"
 echo "Installing PCRE"
-curl -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-7.8.tar.gz
-if [ -f "pcre-7.8.tar.gz" ]; then
-  tar xzf pcre-7.8.tar.gz
-  cd pcre-7.8
+curl -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-7.9.tar.gz
+if [ -f "pcre-7.9.tar.gz" ]; then
+  tar xzf pcre-7.9.tar.gz
+  cd pcre-7.9
   ./configure --prefix=${PREFIX} CFLAGS=-01
   make
   sudo make install
@@ -386,10 +386,10 @@ fi
 # http://www.libpng.org
 echo "--------------------------------------------------"
 echo "Installing LibPNG"
-curl -O ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.34.tar.gz
-if [ -f "libpng-1.2.34.tar.gz" ]; then
-  tar zxf libpng-1.2.34.tar.gz
-  cd libpng-1.2.34
+curl -O ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.35.tar.gz
+if [ -f "libpng-1.2.35.tar.gz" ]; then
+  tar zxf libpng-1.2.35.tar.gz
+  cd libpng-1.2.35
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -441,10 +441,10 @@ fi
 # LCMS
 echo "--------------------------------------------------"
 echo "Installing LCMS"
-curl -O http://www.littlecms.com/lcms-1.17.tar.gz
-if [ -f "lcms-1.17.tar.gz" ]; then
-  tar xzf lcms-1.17.tar.gz
-  cd lcms-1.17 
+curl -O http://www.littlecms.com/lcms-1.18.tar.gz
+if [ -f "lcms-1.18.tar.gz" ]; then
+  tar xzf lcms-1.18.tar.gz
+  cd lcms-1.18
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -543,7 +543,7 @@ fi
 # curl -O http://subversion.tigris.org/downloads/subversion-1.6.1.tar.gz
 # if [ -f "subversion-1.6.1.tar.gz" ]; then
 #   tar xzf subversion-1.6.1.tar.gz
-# c  d subversion-1.6.1
+#   cd subversion-1.6.1
 #   ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-sqlite=${PREFIX} --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
 #   make
 #   sudo make install
