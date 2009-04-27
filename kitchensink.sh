@@ -246,10 +246,10 @@ fi
 # http://rubyforge.org/projects/rubygems/
 echo "--------------------------------------------------"
 echo "Installing Rubygems"
-curl -OL http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz
-if [ -f "rubygems-1.3.1.tgz" ]; then
-  tar xzf rubygems-1.3.1.tgz
-  cd rubygems-1.3.1
+curl -OL http://rubyforge.org/frs/download.php/55066/rubygems-1.3.2.tgz
+if [ -f "rubygems-1.3.2.tgz" ]; then
+  tar xzf rubygems-1.3.2.tgz
+  cd rubygems-1.3.2
   sudo ${PREFIX}/bin/ruby setup.rb
   cd ~/${DIR}
 fi
