@@ -598,14 +598,15 @@ fi
 
 # MySQL Python Driver
 # http://internap.dl.sourceforge.net/sourceforge/mysql-python/MySQL-python-1.2.2.tar.gz
+# http://voxel.dl.sourceforge.net/sourceforge/mysql-python/MySQL-python-1.2.3c1.tar.gz
 # Note, if using source download, it needs to be patched to compile in Mac OS X  10.5.x
 # http://www.wishingline.com/downloads/kitchensink/mysql-python-1.2.2.zip
 echo "--------------------------------------------------"
-curl -O http://and-the-kitchen-sink-plus.googlecode.com/files/mysql-python-1.2.2.zip
-if [ -f "mysql-python-1.2.2.zip" ]; then
+curl -OL http://voxel.dl.sourceforge.net/sourceforge/mysql-python/MySQL-python-1.2.3c1.tar.gz
+if [ -f "MySQL-python-1.2.3c1.tar.gz" ]; then
   echo "Installing MySQL-python"
-  unzip -q mysql-python-1.2.2.zip
-  cd MySQL-python-1.2.2
+  tar -zxf MySQL-python-1.2.3c1.tar.gz
+  cd MySQL-python-1.2.3c1
   sudo python setup.py build
   sudo python setup.py install
   cd ~/${DIR}
