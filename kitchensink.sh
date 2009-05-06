@@ -195,10 +195,10 @@ fi
 # MySQL for Intel Mac
 echo "--------------------------------------------------"
 echo "Installing MySQL Server"
-curl -O http://mirror.csclub.uwaterloo.ca/mysql/Downloads/MySQL-5.0/mysql-5.0.77.tar.gz
-if [ -f "mysql-5.0.77.tar.gz" ]; then
-  tar zxf mysql-5.0.77.tar.gz
-  cd mysql-5.0.77
+curl -O http://mirror.csclub.uwaterloo.ca/mysql/Downloads/MySQL-5.0/mysql-5.0.81.tar.gz
+if [ -f "mysql-5.0.81.tar.gz" ]; then
+  tar zxf mysql-5.0.81.tar.gz
+  cd mysql-5.0.81
   CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
 
   ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --localstatedir=${PREFIX}/mysql/data --libexecdir=${PREFIX}/mysql/bin --libdir=${PREFIX}/mysql/lib --with-server-suffix=-standard --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --with-archive-storage-engine --with-innodb --without-docs --without-bench 
