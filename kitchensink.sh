@@ -168,10 +168,10 @@ fi
 # SQLite 3
 echo "--------------------------------------------------"
 echo "Installing SQLite3"
-curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.13.tar.gz
-if [ -f "sqlite-amalgamation-3.6.13.tar.gz" ]; then
-  tar zxf sqlite-amalgamation-3.6.13.tar.gz
-  cd sqlite-3.6.13
+curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.14.tar.gz
+if [ -f "sqlite-amalgamation-3.6.14.tar.gz" ]; then
+  tar zxf sqlite-amalgamation-3.6.14.tar.gz
+  cd sqlite-3.6.14
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -246,10 +246,10 @@ fi
 # http://rubyforge.org/projects/rubygems/
 echo "--------------------------------------------------"
 echo "Installing Rubygems"
-curl -OL http://rubyforge.org/frs/download.php/55066/rubygems-1.3.2.tgz
-if [ -f "rubygems-1.3.2.tgz" ]; then
-  tar xzf rubygems-1.3.2.tgz
-  cd rubygems-1.3.2
+curl -OL http://rubyforge.org/frs/download.php/56227/rubygems-1.3.3.tgz
+if [ -f "rubygems-1.3.3.tgz" ]; then
+  tar xzf rubygems-1.3.3.tgz
+  cd rubygems-1.3.3
   sudo ${PREFIX}/bin/ruby setup.rb
   cd ~/${DIR}
 fi
@@ -305,9 +305,9 @@ fi
 # http://git-scm.com
 echo "--------------------------------------------------"
 echo "Installing GIT"
-curl -O http://kernel.org/pub/software/scm/git/git-1.6.2.5.tar.gz
-if [ -f "git-1.6.2.5.tar.gz" ]; then
-  tar -zxf git-1.6.2.5.tar.gz
+curl -O http://kernel.org/pub/software/scm/git/git-1.6.3.tar.gz
+if [ -f "git-1.6.3.tar.gz" ]; then
+  tar -zxf git-1.6.3.tar.gz
   cd git-1.6*
   ./configure --prefix=${PREFIX}
   make all
@@ -525,8 +525,8 @@ sudo gem install mongrel -y
 
 # Subversion 1.5.x Series
 echo "--------------------------------------------------"
-echo "Requires neon version 0.28.3 in order to use HTTP or HTTPS connections"
 echo "Installing Subversion 1.5"
+echo "Requires neon version 0.28.3 in order to use HTTP or HTTPS connections"
 curl -O http://subversion.tigris.org/downloads/subversion-1.5.6.tar.gz
 if [ -f "subversion-1.5.6.tar.gz" ]; then
   tar xzf subversion-1.5.6.tar.gz
@@ -540,10 +540,11 @@ fi
 # Subversion 1.6.x Series
 # echo "--------------------------------------------------"
 # echo "Installing Subversion 1.6"
-# curl -O http://subversion.tigris.org/downloads/subversion-1.6.1.tar.gz
-# if [ -f "subversion-1.6.1.tar.gz" ]; then
-#   tar xzf subversion-1.6.1.tar.gz
-#   cd subversion-1.6.1
+# echo "Requires neon version 0.28.4 in order to use HTTP or HTTPS connections"
+# curl -O http://subversion.tigris.org/downloads/subversion-1.6.2.tar.gz
+# if [ -f "subversion-1.6.2.tar.gz" ]; then
+#   tar xzf subversion-1.6.2.tar.gz
+#   cd subversion-1.6.2
 #   ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-sqlite=${PREFIX} --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
 #   make
 #   sudo make install
