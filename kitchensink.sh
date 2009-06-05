@@ -104,6 +104,7 @@ if [ -f "readline-5.2.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # zlib 1.2.3
 echo "--------------------------------------------------"
 echo "Installing zlib"
@@ -117,6 +118,7 @@ if [ -f "zlib-1.2.3.tar.gz" ]; then
   sudo make install
   cd ~/${DIR}
 fi
+
 
 # LibXML2 (with LibXSLT and lxml for Python)
 # Assumes the use of the default install of Python in Mac OS X
@@ -135,6 +137,7 @@ if [ -f "testfile" ]; then
   cd ~/${DIR}
 fi
 
+
 # LibXSLT
 echo "--------------------------------------------------"
 echo "Installing LibXSLT"
@@ -151,6 +154,7 @@ if [ -f "libxslt-1.1.24.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # lxml
 echo "--------------------------------------------------"
 echo "Installing lxml"
@@ -165,6 +169,7 @@ if [ -f "lxml-2.2.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # SQLite 3
 echo "--------------------------------------------------"
 echo "Installing SQLite3"
@@ -177,6 +182,7 @@ if [ -f "sqlite-amalgamation-3.6.14.2.tar.gz" ]; then
   sudo make install
   cd ~/${DIR}
 fi
+
 
 # Expat
 # http://downloads.sourceforge.net
@@ -191,6 +197,7 @@ if [ -f "expat-2.0.1.tar.gz" ]; then
   sudo make install
   cd ~/${DIR}
 fi
+
 
 # MySQL for Intel Mac (Optional)
 # echo "--------------------------------------------------"
@@ -243,6 +250,7 @@ if [ -f "ruby-1.8.7-p160.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # Rubygems
 # http://rubyforge.org/projects/rubygems/
 echo "--------------------------------------------------"
@@ -254,6 +262,7 @@ if [ -f "rubygems-1.3.4.tgz" ]; then
   sudo ${PREFIX}/bin/ruby setup.rb
   cd ~/${DIR}
 fi
+
 
 # FastCGI
 echo "--------------------------------------------------"
@@ -267,6 +276,7 @@ if [ -f "fcgi-2.4.0.tar.gz" ]; then
   sudo make install
   cd ~/${DIR}
 fi
+
 
 # Ruby FastCGI Bindings
 # http://rubyforge.org/projects/fcgi/
@@ -302,6 +312,7 @@ if [ -f "gettext-0.17.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # GIT
 # http://git-scm.com
 echo "--------------------------------------------------"
@@ -315,6 +326,7 @@ if [ -f "git-1.6.3.2.tar.gz" ]; then
   sudo make install
   cd ~/${DIR}
 fi
+
 
 # PCRE
 # www.pcre.org
@@ -331,6 +343,7 @@ if [ -f "pcre-7.9.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # Lighttpd
 echo "--------------------------------------------------"
 echo "Installing Lighttpd"
@@ -343,6 +356,7 @@ if [ -f "lighttpd-1.4.22.tar.gz" ]; then
   sudo make install
   cd ~/${DIR}
 fi
+
 
 # Ghostscript
 # http://pages.cs.wisc.edu/~ghost/
@@ -358,6 +372,7 @@ if [ -f "ghostscript-8.54-gpl.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # Ghostscript Fonts
 # http://sourceforge.net/projects/gs-fonts/
 echo "--------------------------------------------------"
@@ -368,6 +383,7 @@ if [ -f "ghostscript-fonts-std-8.11.tar.gz" ]; then
   sudo mv fonts ${PREFIX}/share/ghostscript
   cd ~/${DIR}
 fi
+
 
 # Freetype
 # http://www.freetype.org
@@ -383,6 +399,7 @@ if [ -f "freetype-2.3.5.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # LibPNG
 # http://www.libpng.org
 echo "--------------------------------------------------"
@@ -396,6 +413,7 @@ if [ -f "libpng-1.2.35.tar.gz" ]; then
   sudo make install
   cd ~/${DIR}
 fi
+
 
 # LibJPEG
 echo "--------------------------------------------------"
@@ -411,6 +429,7 @@ if [ -f "jpegsrc.v6b.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # LibTIFF
 # http://www.remotesensing.org/libtiff/
 echo "--------------------------------------------------"
@@ -424,6 +443,7 @@ if [ -f "tiff-3.8.2.tar.gz" ]; then
   sudo make install
   cd ~/${DIR}
 fi
+
 
 # LibWMF
 # http://wvware.sourceforge.net/libwmf.html
@@ -439,6 +459,7 @@ if [ -f "libwmf-0.2.8.4.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # LCMS
 echo "--------------------------------------------------"
 echo "Installing LCMS"
@@ -451,6 +472,7 @@ if [ -f "lcms-1.18.tar.gz" ]; then
   sudo make install
   cd ~/${DIR}
 fi
+
 
 # ImageMagick
 echo "--------------------------------------------------"
@@ -469,6 +491,7 @@ if [ -f "ImageMagick.tar.gz" ]; then
   sudo gem install rmagick
 fi
 
+
 # Pound Load Balancer
 echo "--------------------------------------------------"
 echo "Installing Pound"
@@ -483,6 +506,7 @@ if [ -f "Pound-2.4.4.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # Neon
 echo "--------------------------------------------------"
 echo "Installing Neon"
@@ -496,6 +520,7 @@ if [ -f "neon-0.28.3.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # LibArt 2
 echo "--------------------------------------------------"
 echo "Installing LibArt 2"
@@ -508,6 +533,7 @@ if [ -f "libart_lgpl-2.3.20.tar.gz" ]; then
   sudo make install
   cd ~/${DIR}
 fi
+
 
 # Rails
 # http://www.rubyonrails.org
@@ -538,6 +564,7 @@ if [ -f "subversion-1.5.6.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # Subversion 1.6.x Series
 # echo "--------------------------------------------------"
 # echo "Installing Subversion 1.6"
@@ -551,6 +578,7 @@ fi
 #   sudo make install
 #   cd ~/${DIR}
 # fi
+
 
 # MySQL Config File
 sudo touch /etc/my.cnf
@@ -596,6 +624,7 @@ if [ -f "mysql-ruby-2.8.1.tar.gz" ]; then
   sudo make install
 fi
 
+
 # Ruby MySQL Gem
 echo "--------------------------------------------------"
 echo "Installing MySQL Ruby Gem"
@@ -609,6 +638,7 @@ curl -O http://and-the-kitchen-sink-plus.googlecode.com/files/mysql-ruby-2.7-les
 if [ -f "mysql-ruby-2.7-less-string-copies-in-each-hash.diff" ]; then
   sudo patch /usr/local/lib/ruby/gems/1.8/gems/mysql-2.7/mysql.c.in ~/${DIR}/mysql-ruby-2.7-less-string-copies-in-each-hash.diff
 fi
+
 
 # MySQL Python Driver
 # http://internap.dl.sourceforge.net/sourceforge/mysql-python/MySQL-python-1.2.2.tar.gz
@@ -626,6 +656,21 @@ if [ -f "MySQL-python-1.2.3c1.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
+# SQLite3 Ruby Gem
+echo "--------------------------------------------------"
+curl -OL http://rubyforge.org/frs/download.php/42056/sqlite3-ruby-1.2.4.tar.gz
+if [ -f "sqlite3-ruby-1.2.4.tar.gz" ]; then
+  echo "Installing SQLite3 for Ruby"
+  tar -zxf sqlite3-ruby-1.2.4.tar.gz
+  cd sqlite3-ruby-1.2.4
+  ruby setup.rb config --prefix=${PREFIX}
+  ruby setup.rb setup
+  sudo ruby setup.rb install
+  cd ~/${DIR}
+fi
+
+
 # Django
 echo "--------------------------------------------------"
 curl -O http://media.djangoproject.com/releases/1.0.2/Django-1.0.2-final.tar.gz
@@ -637,20 +682,22 @@ if [ -f "Django-1.0.2-final.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+
 # Other Ruby Gems
 echo "--------------------------------------------------"
 echo "Installing Other Ruby Gems..."
-sudo gem install activemerchant acts_as_ferret acts_as_searchable acts_as_taggable amazon-ec2 aws-s3 bcrypt-ruby BlueCloth builder capazon capistrano character-encodings chronic columnize fcgi ferret flickraw gruff has_many_through_generator hoe hpricot htmlentities htmltools json_pure libxml-ruby login_generator magic_multi_connections memcache-client mime-types mocha mofo money needle net-scp net-sftp net-ssh net-ssh-gateway openid_login_generator paginator passenger payment piston rack radiant rapt rb-appscript RedCloth rmagick rspec rubigen ruby-openid ruby-prof ruby-yadis ruby2ruby rubyforge rubynode rubypants salted_login_generator sources sparklines sqlite3-ruby termios tidy tzinfo uuidtools xml-simple
+sudo gem install activemerchant acts_as_ferret acts_as_searchable acts_as_taggable amazon-ec2 aws-s3 bcrypt-ruby BlueCloth builder capazon capistrano character-encodings chronic columnize fcgi ferret flickraw gruff has_many_through_generator hoe hpricot htmlentities htmltools json_pure libxml-ruby login_generator magic_multi_connections memcache-client mime-types mocha mofo money needle net-scp net-sftp net-ssh net-ssh-gateway openid_login_generator paginator passenger payment piston rack radiant rapt rb-appscript RedCloth rmagick rspec rubigen ruby-openid ruby-prof ruby-yadis ruby2ruby rubyforge rubynode rubypants salted_login_generator sources sparklines termios tidy tzinfo uuidtools xml-simple
+
 
 # Juicer
 # http://www.cjohansen.no/en/ruby/juicer_a_css_and_javascript_packaging_tool
-
 sudo gem install juicer
 sudo juicer install yui_compressor
 sudo juicer install jslint
 
 # Usage:
 # juicer merge myfile.css myotherfile.css css/third.css
+
 
 # Closing Notes...
 echo "--------------------------------------------------"
