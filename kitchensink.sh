@@ -192,49 +192,50 @@ if [ -f "expat-2.0.1.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
-# MySQL for Intel Mac
-echo "--------------------------------------------------"
-echo "Installing MySQL Server"
-curl -O http://mirror.csclub.uwaterloo.ca/mysql/Downloads/MySQL-5.0/mysql-5.0.82.tar.gz
-if [ -f "mysql-5.0.82.tar.gz" ]; then
-  tar zxf mysql-5.0.82.tar.gz
-  cd mysql-5.0.82
-  CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
-
-  ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --localstatedir=${PREFIX}/mysql/data --libexecdir=${PREFIX}/mysql/bin --libdir=${PREFIX}/mysql/lib --with-server-suffix=-standard --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --with-archive-storage-engine --with-innodb --without-docs --without-bench 
-  make
-  sudo make install
-fi
-
-cd ${PREFIX}/mysql
-sudo ./bin/mysql_install_db --user=mysql
-sudo chown -R mysql data
-
-
-# MySQL 5.1.x for Intel Mac (Optional)
+# MySQL for Intel Mac (Optional)
 # echo "--------------------------------------------------"
-# curl -O http://mysql.mirror.rafal.ca/Downloads/MySQL-5.1/mysql-5.1.33.tar.gz
-# tar zxf mysql-5.1.33.tar.gz
-# cd mysql-5.1.33
-# CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
+# echo "Installing MySQL Server"
+# curl -O http://mirror.csclub.uwaterloo.ca/mysql/Downloads/MySQL-5.0/mysql-5.0.82.tar.gz
+# if [ -f "mysql-5.0.82.tar.gz" ]; then
+#   tar zxf mysql-5.0.82.tar.gz
+#   cd mysql-5.0.82
+#   CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
 # 
-# ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --localstatedir=${PREFIX}/mysql/data --libexecdir=${PREFIX}/mysql/bin --libdir=${PREFIX}/mysql/lib --with-server-suffix=-standard --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --with-archive-storage-engine --with-innodb --without-docs --without-bench 
-# make
-# sudo make install
+#   ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --localstatedir=${PREFIX}/mysql/data --libexecdir=${PREFIX}/mysql/bin --libdir=${PREFIX}/mysql/lib --with-server-suffix=-standard --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --with-archive-storage-engine --with-innodb --without-docs --without-bench 
+#   make
+#   sudo make install
+# fi
 # 
 # cd ${PREFIX}/mysql
 # sudo ./bin/mysql_install_db --user=mysql
 # sudo chown -R mysql data
 
 
+# MySQL 5.1.x for Intel Mac
+# echo "--------------------------------------------------"
+curl -O http://mysql.mirror.rafal.ca/Downloads/MySQL-5.1/mysql-5.1.35.tar.gz
+tar zxf mysql-5.1.35.tar.gz
+cd mysql-5.1.35
+
+CC=gcc CFLAGS="-O3 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-O3 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
+
+./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --enable-thread-safe-client --enable-local-infile --enable-shared --with-plugins=innobase
+make
+sudo make install
+
+cd ${PREFIX}/mysql
+sudo ./bin/mysql_install_db --user=mysql
+sudo chown -R mysql data
+
+
 # Ruby
 # http://www.ruby-lang.org/en/
 echo "--------------------------------------------------"
 echo "Installing Ruby"
-curl -O ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.7-p72.tar.gz
-if [ -f "ruby-1.8.7-p72.tar.gz" ]; then
-  tar xzf ruby-1.8.7-p72.tar.gz 
-  cd ruby-1.8.7-p72
+curl -O ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.7-p160.tar.gz
+if [ -f "ruby-1.8.7-p160.tar.gz" ]; then
+  tar xzf ruby-1.8.7-p160.tar.gz 
+  cd ruby-1.8.7-p160
   ./configure --prefix=${PREFIX} --enable-shared --with-readline-dir=${PREFIX} --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
   make
   sudo make install
@@ -305,9 +306,9 @@ fi
 # http://git-scm.com
 echo "--------------------------------------------------"
 echo "Installing GIT"
-curl -O http://kernel.org/pub/software/scm/git/git-1.6.3.1.tar.gz
-if [ -f "git-1.6.3.1.tar.gz" ]; then
-  tar -zxf git-1.6.3.1.tar.gz
+curl -O http://kernel.org/pub/software/scm/git/git-1.6.3.2.tar.gz
+if [ -f "git-1.6.3.2.tar.gz" ]; then
+  tar -zxf git-1.6.3.2.tar.gz
   cd git-1.6*
   ./configure --prefix=${PREFIX}
   make all
@@ -582,6 +583,18 @@ EOF
 
 sudo launchctl load -w /Library/LaunchDaemons/com.mysql.mysqld.plist
 
+
+# Ruby MySQL Bundle
+echo "--------------------------------------------------"
+echo "Installing MySQL Bundle for Ruby"
+curl -OL http://rubyforge.org/frs/download.php/51087/mysql-ruby-2.8.1.tar.gz
+if [ -f "mysql-ruby-2.8.1.tar.gz" ]; then
+  tar -zxf mysql-ruby-2.8.1.tar.gz
+  cd mysql-ruby-2.8.1
+  ruby extconf.rb --with-mysql-dir=${PREFIX}/mysql --with-mysql-include-dir=${PREFIX}/mysql/include/mysql --with-mysql-config=${PREFIX}/mysql/bin/mysql_config
+  make
+  sudo make install
+fi
 
 # Ruby MySQL Gem
 echo "--------------------------------------------------"
