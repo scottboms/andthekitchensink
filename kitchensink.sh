@@ -317,9 +317,9 @@ fi
 # http://git-scm.com
 echo "--------------------------------------------------"
 echo "Installing GIT"
-curl -O http://kernel.org/pub/software/scm/git/git-1.6.3.2.tar.gz
-if [ -f "git-1.6.3.2.tar.gz" ]; then
-  tar -zxf git-1.6.3.2.tar.gz
+curl -O http://kernel.org/pub/software/scm/git/git-1.6.3.3.tar.gz
+if [ -f "git-1.6.3.3.tar.gz" ]; then
+  tar -zxf git-1.6.3.3.tar.gz
   cd git-1.6*
   ./configure --prefix=${PREFIX}
   make all
@@ -347,10 +347,10 @@ fi
 # Lighttpd
 echo "--------------------------------------------------"
 echo "Installing Lighttpd"
-curl -O http://www.lighttpd.net/download/lighttpd-1.4.22.tar.gz
-if [ -f "lighttpd-1.4.22.tar.gz" ]; then
-  tar xzf lighttpd-1.4.22.tar.gz
-  cd lighttpd-1.4.22
+curl -O http://www.lighttpd.net/download/lighttpd-1.4.23.tar.gz
+if [ -f "lighttpd-1.4.23.tar.gz" ]; then
+  tar xzf lighttpd-1.4.23.tar.gz
+  cd lighttpd-1.4.23
   ./configure --prefix=${PREFIX} --with-pcre=${PREFIX}
   make
   sudo make install
