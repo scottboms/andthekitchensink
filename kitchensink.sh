@@ -173,10 +173,10 @@ fi
 # SQLite 3
 echo "--------------------------------------------------"
 echo "Installing SQLite3"
-curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.14.2.tar.gz
-if [ -f "sqlite-amalgamation-3.6.14.2.tar.gz" ]; then
-  tar zxf sqlite-amalgamation-3.6.14.2.tar.gz
-  cd sqlite-3.6.14.2
+curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.15.tar.gz
+if [ -f "sqlite-amalgamation-3.6.15.tar.gz" ]; then
+  tar zxf sqlite-amalgamation-3.6.15.tar.gz
+  cd sqlite-3.6.15
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -569,10 +569,10 @@ fi
 # echo "--------------------------------------------------"
 # echo "Installing Subversion 1.6"
 # echo "Requires neon version 0.28.4 in order to use HTTP or HTTPS connections"
-# curl -O http://subversion.tigris.org/downloads/subversion-1.6.2.tar.gz
-# if [ -f "subversion-1.6.2.tar.gz" ]; then
-#   tar xzf subversion-1.6.2.tar.gz
-#   cd subversion-1.6.2
+# curl -O http://subversion.tigris.org/downloads/subversion-1.6.3.tar.gz
+# if [ -f "subversion-1.6.3.tar.gz" ]; then
+#   tar xzf subversion-1.6.3.tar.gz
+#   cd subversion-1.6.3
 #   ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-sqlite=${PREFIX} --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
 #   make
 #   sudo make install
