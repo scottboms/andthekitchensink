@@ -173,10 +173,10 @@ fi
 # SQLite 3
 echo "--------------------------------------------------"
 echo "Installing SQLite3"
-curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.15.tar.gz
-if [ -f "sqlite-amalgamation-3.6.15.tar.gz" ]; then
-  tar zxf sqlite-amalgamation-3.6.15.tar.gz
-  cd sqlite-3.6.15
+curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.16.tar.gz
+if [ -f "sqlite-amalgamation-3.6.16.tar.gz" ]; then
+  tar zxf sqlite-amalgamation-3.6.16.tar.gz
+  cd sqlite-3.6.16
   ./configure --prefix=${PREFIX}
   make
   sudo make install
