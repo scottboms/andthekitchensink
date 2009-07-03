@@ -158,10 +158,10 @@ fi
 # lxml
 echo "--------------------------------------------------"
 echo "Installing lxml"
-curl -O http://codespeak.net/lxml/lxml-2.2.tgz
-if [ -f "lxml-2.2.tar.gz" ]; then
-  tar -zxf lxml-2.2.tgz
-  cd lxml-2.2
+curl -O http://codespeak.net/lxml/lxml-2.2.2.tgz
+if [ -f "lxml-2.2.2.tgz" ]; then
+  tar -zxf lxml-2.2.2.tgz
+  cd lxml-2.2.2
 
   sudo python setup.py install \
     --with-xml2-config=${PREFIX}/libxml2-2.7.3/bin/xml2-config \
@@ -404,10 +404,10 @@ fi
 # http://www.libpng.org
 echo "--------------------------------------------------"
 echo "Installing LibPNG"
-curl -O ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.35.tar.gz
-if [ -f "libpng-1.2.35.tar.gz" ]; then
-  tar zxf libpng-1.2.35.tar.gz
-  cd libpng-1.2.35
+curl -O ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.37.tar.gz
+if [ -f "libpng-1.2.37.tar.gz" ]; then
+  tar zxf libpng-1.2.37.tar.gz
+  cd libpng-1.2.37
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -463,9 +463,9 @@ fi
 # LCMS
 echo "--------------------------------------------------"
 echo "Installing LCMS"
-curl -O http://www.littlecms.com/lcms-1.18.tar.gz
-if [ -f "lcms-1.18.tar.gz" ]; then
-  tar xzf lcms-1.18.tar.gz
+curl -O http://www.littlecms.com/lcms-1.18a.tar.gz
+if [ -f "lcms-1.18a.tar.gz" ]; then
+  tar xzf lcms-1.18a.tar.gz
   cd lcms-1.18
   ./configure --prefix=${PREFIX}
   make
@@ -495,11 +495,11 @@ fi
 # Pound Load Balancer
 echo "--------------------------------------------------"
 echo "Installing Pound"
-curl -O http://www.apsis.ch/pound/Pound-2.4.4.tgz
-if [ -f "Pound-2.4.4.tar.gz" ]; then
+curl -O http://www.apsis.ch/pound/Pound-2.4.5.tgz
+if [ -f "Pound-2.4.5.tgz" ]; then
   CFLAGS=""
-  tar xzf Pound-2.4.4.tgz
-  cd Pound-2.4.4
+  tar xzf Pound-2.4.5.tgz
+  cd Pound-2.4.5
   ./configure --prefix=${PREFIX}
   make
   sudo make install
