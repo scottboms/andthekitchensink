@@ -220,19 +220,21 @@ fi
 
 # MySQL 5.1.x for Intel Mac
 # echo "--------------------------------------------------"
-curl -O http://mysql.mirror.rafal.ca/Downloads/MySQL-5.1/mysql-5.1.35.tar.gz
-tar zxf mysql-5.1.35.tar.gz
-cd mysql-5.1.35
+curl -O http://mysql.mirror.rafal.ca/Downloads/MySQL-5.1/mysql-5.1.36.tar.gz
+if [ -f "mysql-5.1.36.tar.gz" ]; then
+  tar zxf mysql-5.1.36.tar.gz
+  cd mysql-5.1.36
 
-CC=gcc CFLAGS="-O3 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-O3 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
+  CC=gcc CFLAGS="-O3 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-O3 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
 
-./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --enable-thread-safe-client --enable-local-infile --enable-shared --with-plugins=innobase
-make
-sudo make install
+  ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --with-plugins=all --without-docs
+  make
+  sudo make install
 
-cd ${PREFIX}/mysql
-sudo ./bin/mysql_install_db --user=mysql
-sudo chown -R mysql data
+  cd ${PREFIX}/mysql
+  sudo ./bin/mysql_install_db --user=mysql
+  sudo chown -R mysql data
+fi
 
 
 # Ruby
