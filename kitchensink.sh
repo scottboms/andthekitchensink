@@ -7,18 +7,19 @@
 #                                                                                                       #
 # REQUIREMENTS                                                                                          #
 # * Mac OS X Leopard 10.5.x                                                                             #
+# * Intel-based system (Core2 Duo, but probably works on Core Duo as well)                              #
 # * Xcode developer tools (free with Mac OS X or Apple Developer Connection)                            #
 # * Administrative access (via sudo)                                                                    #
 # * Internet connection (high speed preferrably)                                                        #
 #                                                                                                       #
 #                                                                                                       #
 # OWNERSHIP and DISTRIBUTION                                                                            #
-# Developed by Wishingline Design Studio, Inc.                                                          #
+# Developed by Scott Boms                                                                               #
 # This script may be freely distributed provided that this introductory                                 #
 # notice is not altered or removed in any way.                                                          #
 #                                                                                                       #
 # If you wish to contribute to a future version of the script, please send                              #
-# comments and suggestions by visiting www.wishingline.com/contact.                                     #
+# comments and suggestions by visiting www.scottboms.com/contact.                                       #
 #                                                                                                       #
 #########################################################################################################
 #                                                                                                       #
@@ -45,8 +46,7 @@
 # ./kitchensink.sh                                                                                      #
 #                                                                                                       #
 # The script will run, downloading and compiling the necessary source to build custom binaries for      #
-# your system(s). The script has been tested on both PowerPC and Intel flavour Macs or varying age      #
-# and should work for you. Like anything, YMMV.                                                         #
+# your system(s). The script has been tested on Intel-based Macs though YMMV.                           #
 #                                                                                                       #
 #########################################################################################################
 
@@ -59,45 +59,12 @@ cd ~/${DIR}
 
 # Readline 5.2
 echo "--------------------------------------------------"
-curl -O ftp://ftp.gnu.org/gnu/readline/readline-5.2.tar.gz
-if [ -f "readline-5.2.tar.gz" ]; then
-  tar zxf readline-5.2.tar.gz
-  cd readline-5.2
+curl -O ftp://ftp.cwru.edu/pub/bash/readline-6.0.tar.gz
+if [ -f "readline-6.0.tar.gz" ]; then
+  tar zxf readline-6.0.tar.gz
 
-  mkdir patches
-  cd patches
-  echo "Downloading patch files for Readline (1-12)"
-  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-001
-  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-002
-  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-003
-  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-004
-  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-005
-  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-006
-  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-007
-  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-008
-  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-009
-  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-010
-  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-011
-  curl -O http://ftp.gnu.org/gnu/readline/readline-5.2-patches/readline52-012
-
-  cd ..
-
-  echo "Patching Readline..."
-  patch < patches/readline52-001
-  patch < patches/readline52-002
-  patch < patches/readline52-003
-  patch < patches/readline52-004
-  patch < patches/readline52-005
-  patch < patches/readline52-006
-  patch < patches/readline52-007
-  patch < patches/readline52-008
-  patch < patches/readline52-009
-  patch < patches/readline52-010
-  patch < patches/readline52-011
-  patch support/shobj-conf patches/readline52-012
-
-  echo "Done patching Readline..."
-
+  cd readline-6.0
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -113,6 +80,7 @@ if [ -f "zlib-1.2.3.tar.gz" ]; then
   tar zxf zlib-1.2.3.tar.gz
 
   cd zlib-1.2.3
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -128,6 +96,7 @@ curl -O ftp://xmlsoft.org/libxml2/libxml2-2.7.3.tar.gz
 if [ -f "testfile" ]; then
   tar -zxf libxml2-2.7.3.tar.gz
   cd libxml2-2.7.3
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}/libxml2-2.7.3
   make
   sudo make install
@@ -145,6 +114,8 @@ curl -O ftp://xmlsoft.org/libxml2/libxslt-1.1.24.tar.gz
 if [ -f "libxslt-1.1.24.tar.gz" ]; then
   tar -zxf libxslt-1.1.24.tar.gz
   cd libxslt-1.1.24
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}/libxslt-1.1.24 --with-libxml-prefix=${PREFIX}/libxml2-2.7.3
   make
   sudo make install
@@ -163,6 +134,7 @@ if [ -f "lxml-2.2.2.tgz" ]; then
   tar -zxf lxml-2.2.2.tgz
   cd lxml-2.2.2
 
+  CFLAGS="-arch x86_64"
   sudo python setup.py install \
     --with-xml2-config=${PREFIX}/libxml2-2.7.3/bin/xml2-config \
     --with-xslt-config=${PREFIX}/libxslt-1.1.24/bin/xslt-config
@@ -177,6 +149,8 @@ curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.16.tar.gz
 if [ -f "sqlite-amalgamation-3.6.16.tar.gz" ]; then
   tar zxf sqlite-amalgamation-3.6.16.tar.gz
   cd sqlite-3.6.16
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -188,10 +162,12 @@ fi
 # http://downloads.sourceforge.net
 echo "--------------------------------------------------"
 echo "Installing expat Library"
-curl -O http://superb-east.dl.sourceforge.net/sourceforge/expat/expat-2.0.1.tar.gz
+curl -OL http://superb-east.dl.sourceforge.net/sourceforge/expat/expat-2.0.1.tar.gz
 if [ -f "expat-2.0.1.tar.gz" ]; then
   tar zxf expat-2.0.1.tar.gz
   cd expat-2.0.1
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -245,6 +221,8 @@ curl -O ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.7-p173.tar.gz
 if [ -f "ruby-1.8.7-p173.tar.gz" ]; then
   tar xzf ruby-1.8.7-p173.tar.gz 
   cd ruby-1.8.7-p173
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX} --enable-shared --with-readline-dir=${PREFIX} --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
   make
   sudo make install
@@ -261,6 +239,8 @@ curl -OL http://rubyforge.org/frs/download.php/57643/rubygems-1.3.4.tgz
 if [ -f "rubygems-1.3.4.tgz" ]; then
   tar xzf rubygems-1.3.4.tgz
   cd rubygems-1.3.4
+
+  CFLAGS="-arch x86_64"
   sudo ${PREFIX}/bin/ruby setup.rb
   cd ~/${DIR}
 fi
@@ -273,6 +253,8 @@ curl -O http://www.fastcgi.com/dist/fcgi-2.4.0.tar.gz
 if [ -f "fcgi-2.4.0.tar.gz" ]; then
   tar xzf fcgi-2.4.0.tar.gz
   cd fcgi-2.4.0
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -288,6 +270,8 @@ curl -O http://rubyforge.iasi.roedu.net/files/fcgi/ruby-fcgi-0.8.7.tar.gz
 if [ -f "ruby-fcgi-0.8.7.tar.gz" ]; then
   tar xzf ruby-fcgi-0.8.7.tar.gz
   cd ruby-fcgi-0.8.7
+
+  CFLAGS="-arch x86_64"
   ${PREFIX}/bin/ruby install.rb config --prefix=${PREFIX}
   ${PREFIX}/bin/ruby install.rb setup
   sudo ${PREFIX}/bin/ruby install.rb install
@@ -308,6 +292,8 @@ curl -O ftp://ftp.gnu.org/gnu/gettext/gettext-0.17.tar.gz
 if [ -f "gettext-0.17.tar.gz" ]; then
   tar -zxf gettext-0.17.tar.gz
   cd gettext-0.17
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -323,6 +309,8 @@ curl -O http://kernel.org/pub/software/scm/git/git-1.6.3.3.tar.gz
 if [ -f "git-1.6.3.3.tar.gz" ]; then
   tar -zxf git-1.6.3.3.tar.gz
   cd git-1.6*
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make all
   sudo make install
@@ -339,7 +327,9 @@ curl -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-7.9.tar.gz
 if [ -f "pcre-7.9.tar.gz" ]; then
   tar xzf pcre-7.9.tar.gz
   cd pcre-7.9
-  ./configure --prefix=${PREFIX} CFLAGS=-01
+
+  CFLAGS="-arch x86_64"
+  ./configure --prefix=${PREFIX}
   make
   sudo make install
   cd ~/${DIR}
@@ -353,6 +343,8 @@ curl -O http://www.lighttpd.net/download/lighttpd-1.4.23.tar.gz
 if [ -f "lighttpd-1.4.23.tar.gz" ]; then
   tar xzf lighttpd-1.4.23.tar.gz
   cd lighttpd-1.4.23
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX} --with-pcre=${PREFIX}
   make
   sudo make install
@@ -364,10 +356,12 @@ fi
 # http://pages.cs.wisc.edu/~ghost/
 echo "--------------------------------------------------"
 echo "Installing Ghostscript"
-curl -O http://superb-east.dl.sourceforge.net/sourceforge/ghostscript/ghostscript-8.54-gpl.tar.gz
+curl -OL http://superb-east.dl.sourceforge.net/sourceforge/ghostscript/ghostscript-8.54-gpl.tar.gz
 if [ -f "ghostscript-8.54-gpl.tar.gz" ]; then
   tar zfx ghostscript-8.54-gpl.tar.gz
   cd ghostscript-8.54-gpl/
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -379,7 +373,7 @@ fi
 # http://sourceforge.net/projects/gs-fonts/
 echo "--------------------------------------------------"
 echo "Installing Ghostscript-fonts"
-curl -O http://voxel.dl.sourceforge.net/sourceforge/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
+curl -OL http://voxel.dl.sourceforge.net/sourceforge/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
 if [ -f "ghostscript-fonts-std-8.11.tar.gz" ]; then
   tar zxf ghostscript-fonts-std-8.11.tar.gz
   sudo mv fonts ${PREFIX}/share/ghostscript
@@ -391,10 +385,13 @@ fi
 # http://www.freetype.org
 echo "--------------------------------------------------"
 echo "Installing Freetype"
-curl -O http://download.savannah.gnu.org/releases/freetype/freetype-2.3.5.tar.gz
+curl -OL http://internap.dl.sourceforge.net/sourceforge/freetype/freetype-2.3.9.tar.gz
+
 tar xzf freetype-2.3.5.tar.gz
 if [ -f "freetype-2.3.5.tar.gz" ]; then
   cd freetype-2.3.5
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -410,6 +407,8 @@ curl -O ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.37.tar.gz
 if [ -f "libpng-1.2.37.tar.gz" ]; then
   tar zxf libpng-1.2.37.tar.gz
   cd libpng-1.2.37
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -420,11 +419,13 @@ fi
 # LibJPEG
 echo "--------------------------------------------------"
 echo "Installing JPEG"
-curl -O http://www.ijg.org/files/jpegsrc.v6b.tar.gz
-if [ -f "jpegsrc.v6b.tar.gz" ]; then
-  tar xzf jpegsrc.v6b.tar.gz
-  cd jpeg-6b
+curl -O http://www.ijg.org/files/jpegsrc.v7.tar.gz
+if [ -f "jpegsrc.v7.tar.gz" ]; then
+  tar xzf jpegsrc.v7.tar.gz
+  cd jpeg-7
   ln -s /Developer/usr/bin/glibtool libtool
+
+  CFLAGS="-arch x86_64"
   ./configure --enable-shared --prefix=${PREFIX}
   make
   sudo make install
@@ -440,6 +441,8 @@ curl -O ftp://ftp.remotesensing.org/libtiff/tiff-3.8.2.tar.gz
 if [ -f "tiff-3.8.2.tar.gz" ]; then
   tar xzf tiff-3.8.2.tar.gz
   cd tiff-3.8.2
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -451,10 +454,12 @@ fi
 # http://wvware.sourceforge.net/libwmf.html
 echo "--------------------------------------------------"
 echo "Installing LibWMF"
-curl -O http://jaist.dl.sourceforge.net/sourceforge/wvware/libwmf-0.2.8.4.tar.gz
+curl -OL http://jaist.dl.sourceforge.net/sourceforge/wvware/libwmf-0.2.8.4.tar.gz
 if [ -f "libwmf-0.2.8.4.tar.gz" ]; then
   tar xzf libwmf-0.2.8.4.tar.gz
   cd libwmf-0.2.8.4
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -469,6 +474,8 @@ curl -O http://www.littlecms.com/lcms-1.18a.tar.gz
 if [ -f "lcms-1.18a.tar.gz" ]; then
   tar xzf lcms-1.18a.tar.gz
   cd lcms-1.18
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -483,6 +490,8 @@ curl -O ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick.tar.gz
 if [ -f "ImageMagick.tar.gz" ]; then
   tar xzf ImageMagick.tar.gz
   cd ImageMagick-6.*
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX} --with-quantum-depth=16 --disable-dependency-tracking --with-x=yes --x-includes=/usr/X11R6/include --x-libraries=/usr/X11R6/lib --without-perl
   make
   sudo make install
@@ -499,9 +508,10 @@ echo "--------------------------------------------------"
 echo "Installing Pound"
 curl -O http://www.apsis.ch/pound/Pound-2.4.5.tgz
 if [ -f "Pound-2.4.5.tgz" ]; then
-  CFLAGS=""
   tar xzf Pound-2.4.5.tgz
   cd Pound-2.4.5
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -516,6 +526,8 @@ curl -O http://www.webdav.org/neon/neon-0.28.3.tar.gz
 if [ -f "neon-0.28.3.tar.gz" ]; then
   tar xzf neon-0.28.3.tar.gz
   cd neon-0.28.3
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX} --enable-shared=yes --with-ssl=openssl --with-libxml2
   make
   sudo make install
@@ -530,6 +542,8 @@ curl -O http://ftp.acc.umu.se/pub/GNOME/sources/libart_lgpl/2.3/libart_lgpl-2.3.
 if [ -f "libart_lgpl-2.3.20.tar.gz" ]; then
   tar xzf libart_lgpl-2.3.20.tar.gz
   cd libart_lgpl-2.3.20
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -560,6 +574,8 @@ curl -O http://subversion.tigris.org/downloads/subversion-1.5.6.tar.gz
 if [ -f "subversion-1.5.6.tar.gz" ]; then
   tar xzf subversion-1.5.6.tar.gz
   cd subversion-1.5.6
+
+  CFLAGS="-arch x86_64"
   ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
   make
   sudo make install
@@ -621,6 +637,8 @@ curl -OL http://rubyforge.org/frs/download.php/51087/mysql-ruby-2.8.1.tar.gz
 if [ -f "mysql-ruby-2.8.1.tar.gz" ]; then
   tar -zxf mysql-ruby-2.8.1.tar.gz
   cd mysql-ruby-2.8.1
+
+  CFLAGS="-arch x86_64"
   ruby extconf.rb --with-mysql-dir=${PREFIX}/mysql --with-mysql-include-dir=${PREFIX}/mysql/include/mysql --with-mysql-config=${PREFIX}/mysql/bin/mysql_config
   make
   sudo make install
@@ -653,6 +671,8 @@ if [ -f "MySQL-python-1.2.3c1.tar.gz" ]; then
   echo "Installing MySQL-python"
   tar -zxf MySQL-python-1.2.3c1.tar.gz
   cd MySQL-python-1.2.3c1
+
+  CFLAGS="-arch x86_64"
   sudo python setup.py build
   sudo python setup.py install
   cd ~/${DIR}
@@ -666,6 +686,8 @@ if [ -f "sqlite3-ruby-1.2.4.tar.gz" ]; then
   echo "Installing SQLite3 for Ruby"
   tar -zxf sqlite3-ruby-1.2.4.tar.gz
   cd sqlite3-ruby-1.2.4
+
+  CFLAGS="-arch x86_64"
   ruby setup.rb config --prefix=${PREFIX}
   ruby setup.rb setup
   sudo ruby setup.rb install
@@ -680,6 +702,8 @@ if [ -f "Django-1.0.2-final.tar.gz" ]; then
   echo "Installing Django"
   tar -zxf Django-1.0.2-final.tar.gz
   cd Django-1.0.2-final
+
+  CFLAGS="-arch x86_64"
   sudo python setup.py install
   cd ~/${DIR}
 fi
