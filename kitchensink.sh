@@ -13,7 +13,7 @@
 #                                                                                                       #
 #                                                                                                       #
 # OWNERSHIP and DISTRIBUTION                                                                            #
-# Developed by Wishingline Design Studio, Inc.                                                          #
+# Developed by Scott Boms                                                                               #
 # This script may be freely distributed provided that this introductory                                 #
 # notice is not altered or removed in any way.                                                          #
 #                                                                                                       #
