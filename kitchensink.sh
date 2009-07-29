@@ -57,9 +57,9 @@ mkdir ~/${DIR}
 cd ~/${DIR}
 
 
-# Readline 5.2
+# Readline 6.0
 echo "--------------------------------------------------"
-curl -O ftp://ftp.cwru.edu/pub/bash/readline-6.0.tar.gz
+curl -O ftp://ftp.gnu.org/gnu/readline/readline-6.0.tar.gz
 if [ -f "readline-6.0.tar.gz" ]; then
   tar zxf readline-6.0.tar.gz
   cd readline-6.0
@@ -160,25 +160,6 @@ if [ -f "expat-2.0.1.tar.gz" ]; then
 fi
 
 
-# MySQL for Intel Mac (Optional)
-# echo "--------------------------------------------------"
-# echo "Installing MySQL Server"
-# curl -O http://mirror.csclub.uwaterloo.ca/mysql/Downloads/MySQL-5.0/mysql-5.0.82.tar.gz
-# if [ -f "mysql-5.0.82.tar.gz" ]; then
-#   tar zxf mysql-5.0.82.tar.gz
-#   cd mysql-5.0.82
-#   CC=gcc CFlags="-03 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-03 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
-# 
-#   ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --localstatedir=${PREFIX}/mysql/data --libexecdir=${PREFIX}/mysql/bin --libdir=${PREFIX}/mysql/lib --with-server-suffix=-standard --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --with-archive-storage-engine --with-innodb --without-docs --without-bench 
-#   make
-#   sudo make install
-# fi
-# 
-# cd ${PREFIX}/mysql
-# sudo ./bin/mysql_install_db --user=mysql
-# sudo chown -R mysql data
-
-
 # MySQL 5.1.x for Intel Mac
 # echo "--------------------------------------------------"
 curl -O http://mysql.mirror.rafal.ca/Downloads/MySQL-5.1/mysql-5.1.36.tar.gz
@@ -218,10 +199,10 @@ fi
 # http://rubyforge.org/projects/rubygems/
 echo "--------------------------------------------------"
 echo "Installing Rubygems"
-curl -OL http://rubyforge.org/frs/download.php/57643/rubygems-1.3.4.tgz
-if [ -f "rubygems-1.3.4.tgz" ]; then
-  tar xzf rubygems-1.3.4.tgz
-  cd rubygems-1.3.4
+curl -OL http://rubyforge.org/frs/download.php/60718/rubygems-1.3.5.tgz
+if [ -f "rubygems-1.3.5.tgz" ]; then
+  tar xzf rubygems-1.3.5.tgz
+  cd rubygems-1.3.5
   sudo ${PREFIX}/bin/ruby setup.rb
   cd ~/${DIR}
 fi
@@ -279,9 +260,9 @@ fi
 # http://git-scm.com
 echo "--------------------------------------------------"
 echo "Installing GIT"
-curl -O http://kernel.org/pub/software/scm/git/git-1.6.3.3.tar.gz
-if [ -f "git-1.6.3.3.tar.gz" ]; then
-  tar -zxf git-1.6.3.3.tar.gz
+curl -O http://kernel.org/pub/software/scm/git/git-1.6.3.4.tar.gz
+if [ -f "git-1.6.3.4.tar.gz" ]; then
+  tar -zxf git-1.6.3.4.tar.gz
   cd git-1.6*
   ./configure --prefix=${PREFIX}
   make all
@@ -366,10 +347,10 @@ fi
 # http://www.libpng.org
 echo "--------------------------------------------------"
 echo "Installing LibPNG"
-curl -O ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.37.tar.gz
-if [ -f "libpng-1.2.37.tar.gz" ]; then
-  tar zxf libpng-1.2.37.tar.gz
-  cd libpng-1.2.37
+curl -O ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.38.tar.gz
+if [ -f "libpng-1.2.38.tar.gz" ]; then
+  tar zxf libpng-1.2.38.tar.gz
+  cd libpng-1.2.38
   ./configure --prefix=${PREFIX}
   make
   sudo make install
@@ -502,7 +483,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing Rails with Dependencies"
 sudo gem install rails
-sudo gem install rails -v 1.2.6
+# sudo gem install rails -v 1.2.6
 
 
 # Mongrel
@@ -635,11 +616,11 @@ fi
 
 # Django
 echo "--------------------------------------------------"
-curl -O http://media.djangoproject.com/releases/1.0.2/Django-1.0.2-final.tar.gz
-if [ -f "Django-1.0.2-final.tar.gz" ]; then
+curl -O http://media.djangoproject.com/releases/1.1/Django-1.1.tar.gz
+if [ -f "Django-1.1.tar.gz" ]; then
   echo "Installing Django"
-  tar -zxf Django-1.0.2-final.tar.gz
-  cd Django-1.0.2-final
+  tar -zxf Django-1.1.tar.gz
+  cd Django-1.1
   sudo python setup.py install
   cd ~/${DIR}
 fi
