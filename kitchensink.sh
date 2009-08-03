@@ -83,13 +83,26 @@ if [ -f "zlib-1.2.3.tar.gz" ]; then
   cd ~/${DIR}
 fi
 
+# pkg-config
+echo "--------------------------------------------------"
+echo "Installing pkg-config"
+curl -O http://pkgconfig.freedesktop.org/releases/pkg-config-0.23.tar.gz
+if [ -f "pkg-config-0.23.tar.gz" ]; then
+  tar -zxf pkg-config-0.23.tar.gz
+  cd pkg-config-0.23
+  ./configure --prefix=${PREFIX}
+  make
+  sudo make install
+  cd ~/${DIR}
+fi
+
 
 # LibXML2 (with LibXSLT and lxml for Python)
 # Assumes the use of the default install of Python in Mac OS X
 echo "--------------------------------------------------"
 echo "Installing LibXML2"
 curl -O ftp://xmlsoft.org/libxml2/libxml2-2.7.3.tar.gz
-if [ -f "testfile" ]; then
+if [ -f "libxml2-2.7.3.tar.gz" ]; then
   tar -zxf libxml2-2.7.3.tar.gz
   cd libxml2-2.7.3
   ./configure --prefix=${PREFIX}/libxml2-2.7.3
