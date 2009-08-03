@@ -162,10 +162,10 @@ fi
 
 # MySQL 5.1.x for Intel Mac
 # echo "--------------------------------------------------"
-curl -O http://mysql.mirror.rafal.ca/Downloads/MySQL-5.1/mysql-5.1.36.tar.gz
-if [ -f "mysql-5.1.36.tar.gz" ]; then
-  tar zxf mysql-5.1.36.tar.gz
-  cd mysql-5.1.36
+curl -O http://mysql.mirror.rafal.ca/Downloads/MySQL-5.1/mysql-5.1.37.tar.gz
+if [ -f "mysql-5.1.37.tar.gz" ]; then
+  tar zxf mysql-5.1.37.tar.gz
+  cd mysql-5.1.37
 
   CC=gcc CFLAGS="-O3 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-O3 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
 
