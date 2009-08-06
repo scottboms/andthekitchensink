@@ -639,6 +639,19 @@ if [ -f "Django-1.1.tar.gz" ]; then
 fi
 
 
+# Mercurial
+# http://www.selenic.com/mercurial/wiki/
+echo "--------------------------------------------------"
+curl -O http://mercurial.selenic.com/release/mercurial-1.3.1.tar.gz
+if [ -f "mercurial-1.3.1.tar.gz" ]; then
+  echo "Installing Mercurial"
+  tar -zxf mercurial-1.3.1.tar.gz
+  cd mercurial-1.3.1
+  sudo python setup.py install --force --home=${PREFIX}
+  cd ~/${DIR}
+fi
+
+
 # Other Ruby Gems
 echo "--------------------------------------------------"
 echo "Installing Other Ruby Gems..."
@@ -657,4 +670,8 @@ sudo juicer install jslint
 
 # Closing Notes...
 echo "--------------------------------------------------"
+echo "Add the following line to your .bash_login file to properly use Mercurial's hg commands:"
+echo ""
+echo "export PYTHONPATH='/usr/local/lib/python:$PYTHONPATH'"
+echo ""
 echo "Done!"
