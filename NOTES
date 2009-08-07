@@ -1,0 +1,64 @@
+INSTALL GROUPINGS
+A planned feature is the ability to be able to selectively install packages without needing to run through the entire scripted builds. The intent is that these will be somewhat loosely coupled so that required libraries will be available but the main packages can be installed either as groups or individually based on the needs of the developer.
+
+This potentially will also aid in software updates and building newer versions of the included packages without needing to copy/paste code.
+
+-------
+
+General
+- Expat
+- GetText
+- Juicer
+- Neon
+- PCRE
+- pkg-config
+- Readline
+- zLib
+
+
+Databases
+- SQLite3
+- MySQL 5.1
+- MySQL Gem for Ruby
+- SQLite3 Gem for Ruby
+
+
+Version Control
+- Git
+- Mercurial
+- Subversion
+
+
+Servers
+- Lighttpd
+- Pound
+- FastCGI
+- Mongrel
+
+
+Ruby
+- Ruby
+- Ruby on Rails
+- Ruby Gems
+- Miscellaneous Ruby Gems
+
+
+Django
+- LibXML2
+- LibXSLT
+- lXML
+- Django
+
+
+Graphics
+- Freetype
+- Ghostscript
+- Ghostscript Fonts
+- LibArt2
+- LCMS
+- LibJPEG
+- LibPNG
+- LibTIFF
+- LibWMF
+- Graphics Magick
+- Image Magick
