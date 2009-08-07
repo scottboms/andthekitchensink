@@ -448,6 +448,21 @@ if [ -f "ImageMagick.tar.gz" ]; then
 fi
 
 
+# Graphics Magick
+# http://www.graphicsmagick.org
+# echo "--------------------------------------------------"
+# echo "Installing Graphics Magick"
+# curl -OL http://iweb.dl.sourceforge.net/project/graphicsmagick/graphicsmagick/1.3.6/GraphicsMagick-1.3.6.tar.gz
+# if [ -f "GraphicsMagick-1.3.6.tar.gz" ]; then
+#   tar -zxf GraphicsMagick-1.3.6.tar.gz
+#   cd GraphicsMagick-1.3.6
+#   ./configure --prefix=${PREFIX}
+#   make
+#   sudo make install
+#   cd ~/${DIR}
+# fi
+
+
 # Pound Load Balancer
 echo "--------------------------------------------------"
 echo "Installing Pound"
