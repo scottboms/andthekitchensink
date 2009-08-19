@@ -360,10 +360,10 @@ fi
 # http://www.libpng.org
 echo "--------------------------------------------------"
 echo "Installing LibPNG"
-curl -O ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.38.tar.gz
-if [ -f "libpng-1.2.38.tar.gz" ]; then
-  tar zxf libpng-1.2.38.tar.gz
-  cd libpng-1.2.38
+curl -O ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.39.tar.gz
+if [ -f "libpng-1.2.39.tar.gz" ]; then
+  tar zxf libpng-1.2.39.tar.gz
+  cd libpng-1.2.39
   ./configure --prefix=${PREFIX}
   make
   sudo make install
