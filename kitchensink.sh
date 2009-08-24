@@ -60,7 +60,7 @@ cd ~/${DIR}
 # Readline 6.0
 echo "--------------------------------------------------"
 curl -O ftp://ftp.gnu.org/gnu/readline/readline-6.0.tar.gz
-if [ -f "readline-6.0.tar.gz" ]; then
+if [ -s "readline-6.0.tar.gz" ]; then
   tar zxf readline-6.0.tar.gz
   cd readline-6.0
   ./configure --prefix=${PREFIX}
@@ -74,7 +74,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing zlib"
 curl -O http://www.zlib.net/zlib-1.2.3.tar.gz
-if [ -f "zlib-1.2.3.tar.gz" ]; then
+if [ -s "zlib-1.2.3.tar.gz" ]; then
   tar zxf zlib-1.2.3.tar.gz
   cd zlib-1.2.3
   ./configure --prefix=${PREFIX}
@@ -87,7 +87,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing pkg-config"
 curl -O http://pkgconfig.freedesktop.org/releases/pkg-config-0.23.tar.gz
-if [ -f "pkg-config-0.23.tar.gz" ]; then
+if [ -s "pkg-config-0.23.tar.gz" ]; then
   tar -zxf pkg-config-0.23.tar.gz
   cd pkg-config-0.23
   ./configure --prefix=${PREFIX}
@@ -102,7 +102,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing LibXML2"
 curl -O ftp://xmlsoft.org/libxml2/libxml2-2.7.3.tar.gz
-if [ -f "libxml2-2.7.3.tar.gz" ]; then
+if [ -s "libxml2-2.7.3.tar.gz" ]; then
   tar -zxf libxml2-2.7.3.tar.gz
   cd libxml2-2.7.3
   ./configure --prefix=${PREFIX}/libxml2-2.7.3
@@ -118,7 +118,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing LibXSLT"
 curl -O ftp://xmlsoft.org/libxml2/libxslt-1.1.24.tar.gz
-if [ -f "libxslt-1.1.24.tar.gz" ]; then
+if [ -s "libxslt-1.1.24.tar.gz" ]; then
   tar -zxf libxslt-1.1.24.tar.gz
   cd libxslt-1.1.24
   ./configure --prefix=${PREFIX}/libxslt-1.1.24 --with-libxml-prefix=${PREFIX}/libxml2-2.7.3
@@ -134,7 +134,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing lxml"
 curl -O http://codespeak.net/lxml/lxml-2.2.2.tgz
-if [ -f "lxml-2.2.2.tgz" ]; then
+if [ -s "lxml-2.2.2.tgz" ]; then
   tar -zxf lxml-2.2.2.tgz
   cd lxml-2.2.2
   sudo python setup.py install \
@@ -148,7 +148,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing SQLite3"
 curl -O http://www.sqlite.org/sqlite-amalgamation-3.6.17.tar.gz
-if [ -f "sqlite-amalgamation-3.6.17.tar.gz" ]; then
+if [ -s "sqlite-amalgamation-3.6.17.tar.gz" ]; then
   tar zxf sqlite-amalgamation-3.6.17.tar.gz
   cd sqlite-3.6.17
   ./configure --prefix=${PREFIX}
@@ -163,7 +163,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing expat Library"
 curl -OL http://superb-east.dl.sourceforge.net/sourceforge/expat/expat-2.0.1.tar.gz
-if [ -f "expat-2.0.1.tar.gz" ]; then
+if [ -s "expat-2.0.1.tar.gz" ]; then
   tar zxf expat-2.0.1.tar.gz
   cd expat-2.0.1
   ./configure --prefix=${PREFIX}
@@ -176,7 +176,7 @@ fi
 # MySQL 5.1.x for Intel Mac
 # echo "--------------------------------------------------"
 curl -O http://mysql.mirror.rafal.ca/Downloads/MySQL-5.1/mysql-5.1.37.tar.gz
-if [ -f "mysql-5.1.37.tar.gz" ]; then
+if [ -s "mysql-5.1.37.tar.gz" ]; then
   tar zxf mysql-5.1.37.tar.gz
   cd mysql-5.1.37
 
@@ -197,7 +197,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing Ruby"
 curl -O ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.7-p173.tar.gz
-if [ -f "ruby-1.8.7-p173.tar.gz" ]; then
+if [ -s "ruby-1.8.7-p173.tar.gz" ]; then
   tar xzf ruby-1.8.7-p173.tar.gz 
   cd ruby-1.8.7-p173
   ./configure --prefix=${PREFIX} --enable-shared --with-readline-dir=${PREFIX} --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
@@ -213,7 +213,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing Rubygems"
 curl -OL http://rubyforge.org/frs/download.php/60718/rubygems-1.3.5.tgz
-if [ -f "rubygems-1.3.5.tgz" ]; then
+if [ -s "rubygems-1.3.5.tgz" ]; then
   tar xzf rubygems-1.3.5.tgz
   cd rubygems-1.3.5
   sudo ${PREFIX}/bin/ruby setup.rb
@@ -225,7 +225,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing FastCGI"
 curl -O http://www.fastcgi.com/dist/fcgi-2.4.0.tar.gz
-if [ -f "fcgi-2.4.0.tar.gz" ]; then
+if [ -s "fcgi-2.4.0.tar.gz" ]; then
   tar xzf fcgi-2.4.0.tar.gz
   cd fcgi-2.4.0
   ./configure --prefix=${PREFIX}
@@ -240,7 +240,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing Ruby FastCGI Bindings"
 curl -O http://rubyforge.iasi.roedu.net/files/fcgi/ruby-fcgi-0.8.7.tar.gz
-if [ -f "ruby-fcgi-0.8.7.tar.gz" ]; then
+if [ -s "ruby-fcgi-0.8.7.tar.gz" ]; then
   tar xzf ruby-fcgi-0.8.7.tar.gz
   cd ruby-fcgi-0.8.7
   ${PREFIX}/bin/ruby install.rb config --prefix=${PREFIX}
@@ -259,7 +259,7 @@ sudo gem install fcgi
 echo "--------------------------------------------------"
 echo "Installing gettext"
 curl -O ftp://ftp.gnu.org/gnu/gettext/gettext-0.17.tar.gz
-if [ -f "gettext-0.17.tar.gz" ]; then
+if [ -s "gettext-0.17.tar.gz" ]; then
   tar -zxf gettext-0.17.tar.gz
   cd gettext-0.17
   ./configure --prefix=${PREFIX}
@@ -273,9 +273,9 @@ fi
 # http://git-scm.com
 echo "--------------------------------------------------"
 echo "Installing GIT"
-curl -O http://kernel.org/pub/software/scm/git/git-1.6.4.tar.gz
-if [ -f "git-1.6.4.tar.gz" ]; then
-  tar -zxf git-1.6.4.tar.gz
+curl -O http://kernel.org/pub/software/scm/git/git-1.6.4.1.tar.gz
+if [ -s "git-1.6.4.1.tar.gz" ]; then
+  tar -zxf git-1.6.4.1.tar.gz
   cd git-1.6*
   ./configure --prefix=${PREFIX}
   make all
@@ -290,7 +290,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing PCRE"
 curl -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-7.9.tar.gz
-if [ -f "pcre-7.9.tar.gz" ]; then
+if [ -s "pcre-7.9.tar.gz" ]; then
   tar xzf pcre-7.9.tar.gz
   cd pcre-7.9
   ./configure --prefix=${PREFIX} CFLAGS=-01
@@ -304,7 +304,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing Lighttpd"
 curl -O http://www.lighttpd.net/download/lighttpd-1.4.23.tar.gz
-if [ -f "lighttpd-1.4.23.tar.gz" ]; then
+if [ -s "lighttpd-1.4.23.tar.gz" ]; then
   tar xzf lighttpd-1.4.23.tar.gz
   cd lighttpd-1.4.23
   ./configure --prefix=${PREFIX} --with-pcre=${PREFIX}
@@ -319,7 +319,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing Ghostscript"
 curl -OL http://superb-east.dl.sourceforge.net/sourceforge/ghostscript/ghostscript-8.54-gpl.tar.gz
-if [ -f "ghostscript-8.54-gpl.tar.gz" ]; then
+if [ -s "ghostscript-8.54-gpl.tar.gz" ]; then
   tar zfx ghostscript-8.54-gpl.tar.gz
   cd ghostscript-8.54-gpl/
   ./configure --prefix=${PREFIX}
@@ -334,7 +334,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing Ghostscript-fonts"
 curl -OL http://voxel.dl.sourceforge.net/sourceforge/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
-if [ -f "ghostscript-fonts-std-8.11.tar.gz" ]; then
+if [ -s "ghostscript-fonts-std-8.11.tar.gz" ]; then
   tar zxf ghostscript-fonts-std-8.11.tar.gz
   sudo mv fonts ${PREFIX}/share/ghostscript
   cd ~/${DIR}
@@ -347,7 +347,7 @@ echo "--------------------------------------------------"
 echo "Installing Freetype"
 curl -OL http://internap.dl.sourceforge.net/sourceforge/freetype/freetype-2.3.9.tar.gz
 tar xzf freetype-2.3.9.tar.gz
-if [ -f "freetype-2.3.9.tar.gz" ]; then
+if [ -s "freetype-2.3.9.tar.gz" ]; then
   cd freetype-2.3.9
   ./configure --prefix=${PREFIX}
   make
@@ -361,7 +361,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing LibPNG"
 curl -O ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.2.39.tar.gz
-if [ -f "libpng-1.2.39.tar.gz" ]; then
+if [ -s "libpng-1.2.39.tar.gz" ]; then
   tar zxf libpng-1.2.39.tar.gz
   cd libpng-1.2.39
   ./configure --prefix=${PREFIX}
@@ -375,7 +375,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing JPEG"
 curl -O http://www.ijg.org/files/jpegsrc.v7.tar.gz
-if [ -f "jpegsrc.v7.tar.gz" ]; then
+if [ -s "jpegsrc.v7.tar.gz" ]; then
   tar xzf jpegsrc.v7.tar.gz
   cd jpeg-7
   ln -s /Developer/usr/bin/glibtool libtool
@@ -391,7 +391,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing TIFF"
 curl -O ftp://ftp.remotesensing.org/libtiff/tiff-3.8.2.tar.gz
-if [ -f "tiff-3.8.2.tar.gz" ]; then
+if [ -s "tiff-3.8.2.tar.gz" ]; then
   tar xzf tiff-3.8.2.tar.gz
   cd tiff-3.8.2
   ./configure --prefix=${PREFIX}
@@ -406,7 +406,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing LibWMF"
 curl -OL http://jaist.dl.sourceforge.net/sourceforge/wvware/libwmf-0.2.8.4.tar.gz
-if [ -f "libwmf-0.2.8.4.tar.gz" ]; then
+if [ -s "libwmf-0.2.8.4.tar.gz" ]; then
   tar xzf libwmf-0.2.8.4.tar.gz
   cd libwmf-0.2.8.4
   ./configure --prefix=${PREFIX}
@@ -420,7 +420,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing LCMS"
 curl -O http://www.littlecms.com/lcms-1.18a.tar.gz
-if [ -f "lcms-1.18a.tar.gz" ]; then
+if [ -s "lcms-1.18a.tar.gz" ]; then
   tar xzf lcms-1.18a.tar.gz
   cd lcms-1.18
   ./configure --prefix=${PREFIX}
@@ -434,7 +434,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing ImageMagick"
 curl -O ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick.tar.gz
-if [ -f "ImageMagick.tar.gz" ]; then
+if [ -s "ImageMagick.tar.gz" ]; then
   tar xzf ImageMagick.tar.gz
   cd ImageMagick-6.*
   ./configure --prefix=${PREFIX} --with-quantum-depth=16 --disable-dependency-tracking --with-x=yes --x-includes=/usr/X11R6/include --x-libraries=/usr/X11R6/lib --without-perl
@@ -453,7 +453,7 @@ fi
 # echo "--------------------------------------------------"
 # echo "Installing Graphics Magick"
 # curl -OL http://iweb.dl.sourceforge.net/project/graphicsmagick/graphicsmagick/1.3.6/GraphicsMagick-1.3.6.tar.gz
-# if [ -f "GraphicsMagick-1.3.6.tar.gz" ]; then
+# if [ -s "GraphicsMagick-1.3.6.tar.gz" ]; then
 #   tar -zxf GraphicsMagick-1.3.6.tar.gz
 #   cd GraphicsMagick-1.3.6
 #   ./configure --prefix=${PREFIX}
@@ -467,7 +467,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing Pound"
 curl -O http://www.apsis.ch/pound/Pound-2.4.5.tgz
-if [ -f "Pound-2.4.5.tgz" ]; then
+if [ -s "Pound-2.4.5.tgz" ]; then
   CFLAGS=""
   tar xzf Pound-2.4.5.tgz
   cd Pound-2.4.5
@@ -482,7 +482,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing Neon"
 curl -O http://www.webdav.org/neon/neon-0.28.3.tar.gz
-if [ -f "neon-0.28.3.tar.gz" ]; then
+if [ -s "neon-0.28.3.tar.gz" ]; then
   tar xzf neon-0.28.3.tar.gz
   cd neon-0.28.3
   ./configure --prefix=${PREFIX} --enable-shared=yes --with-ssl=openssl --with-libxml2
@@ -496,7 +496,7 @@ fi
 echo "--------------------------------------------------"
 echo "Installing LibArt 2"
 curl -O http://ftp.acc.umu.se/pub/GNOME/sources/libart_lgpl/2.3/libart_lgpl-2.3.20.tar.gz
-if [ -f "libart_lgpl-2.3.20.tar.gz" ]; then
+if [ -s "libart_lgpl-2.3.20.tar.gz" ]; then
   tar xzf libart_lgpl-2.3.20.tar.gz
   cd libart_lgpl-2.3.20
   ./configure --prefix=${PREFIX}
@@ -526,7 +526,7 @@ echo "--------------------------------------------------"
 echo "Installing Subversion 1.5"
 echo "Requires neon version 0.28.3 in order to use HTTP or HTTPS connections"
 curl -O http://subversion.tigris.org/downloads/subversion-1.5.6.tar.gz
-if [ -f "subversion-1.5.6.tar.gz" ]; then
+if [ -s "subversion-1.5.6.tar.gz" ]; then
   tar xzf subversion-1.5.6.tar.gz
   cd subversion-1.5.6
   ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
@@ -541,7 +541,7 @@ fi
 # echo "Installing Subversion 1.6"
 # echo "Requires neon version 0.28.4 in order to use HTTP or HTTPS connections"
 # curl -O http://subversion.tigris.org/downloads/subversion-1.6.4.tar.gz
-# if [ -f "subversion-1.6.4.tar.gz" ]; then
+# if [ -s "subversion-1.6.4.tar.gz" ]; then
 #   tar xzf subversion-1.6.4.tar.gz
 #   cd subversion-1.6.4
 #   ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-sqlite=${PREFIX} --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
@@ -587,7 +587,7 @@ sudo launchctl load -w /Library/LaunchDaemons/com.mysql.mysqld.plist
 echo "--------------------------------------------------"
 echo "Installing MySQL Bundle for Ruby"
 curl -OL http://rubyforge.org/frs/download.php/51087/mysql-ruby-2.8.1.tar.gz
-if [ -f "mysql-ruby-2.8.1.tar.gz" ]; then
+if [ -s "mysql-ruby-2.8.1.tar.gz" ]; then
   tar -zxf mysql-ruby-2.8.1.tar.gz
   cd mysql-ruby-2.8.1
   ruby extconf.rb --with-mysql-dir=${PREFIX}/mysql --with-mysql-include-dir=${PREFIX}/mysql/include/mysql --with-mysql-config=${PREFIX}/mysql/bin/mysql_config
@@ -606,7 +606,7 @@ sudo env ARCHFLAGS="-arch i386" gem install mysql -- --with-mysql-config=${PREFI
 echo "--------------------------------------------------"
 echo "Patching MySQL Ruby Gem"
 curl -O http://and-the-kitchen-sink-plus.googlecode.com/files/mysql-ruby-2.7-less-string-copies-in-each-hash.diff
-if [ -f "mysql-ruby-2.7-less-string-copies-in-each-hash.diff" ]; then
+if [ -s "mysql-ruby-2.7-less-string-copies-in-each-hash.diff" ]; then
   sudo patch /usr/local/lib/ruby/gems/1.8/gems/mysql-2.7/mysql.c.in ~/${DIR}/mysql-ruby-2.7-less-string-copies-in-each-hash.diff
 fi
 
@@ -618,7 +618,7 @@ fi
 # http://www.wishingline.com/downloads/kitchensink/mysql-python-1.2.2.zip
 echo "--------------------------------------------------"
 curl -OL http://voxel.dl.sourceforge.net/sourceforge/mysql-python/MySQL-python-1.2.3c1.tar.gz
-if [ -f "MySQL-python-1.2.3c1.tar.gz" ]; then
+if [ -s "MySQL-python-1.2.3c1.tar.gz" ]; then
   echo "Installing MySQL-python"
   tar -zxf MySQL-python-1.2.3c1.tar.gz
   cd MySQL-python-1.2.3c1
@@ -631,7 +631,7 @@ fi
 # SQLite3 Ruby Gem
 echo "--------------------------------------------------"
 curl -OL http://rubyforge.org/frs/download.php/42056/sqlite3-ruby-1.2.4.tar.gz
-if [ -f "sqlite3-ruby-1.2.4.tar.gz" ]; then
+if [ -s "sqlite3-ruby-1.2.4.tar.gz" ]; then
   echo "Installing SQLite3 for Ruby"
   tar -zxf sqlite3-ruby-1.2.4.tar.gz
   cd sqlite3-ruby-1.2.4
@@ -645,7 +645,7 @@ fi
 # Django
 echo "--------------------------------------------------"
 curl -O http://media.djangoproject.com/releases/1.1/Django-1.1.tar.gz
-if [ -f "Django-1.1.tar.gz" ]; then
+if [ -s "Django-1.1.tar.gz" ]; then
   echo "Installing Django"
   tar -zxf Django-1.1.tar.gz
   cd Django-1.1
@@ -658,7 +658,7 @@ fi
 # http://www.selenic.com/mercurial/wiki/
 echo "--------------------------------------------------"
 curl -O http://mercurial.selenic.com/release/mercurial-1.3.1.tar.gz
-if [ -f "mercurial-1.3.1.tar.gz" ]; then
+if [ -s "mercurial-1.3.1.tar.gz" ]; then
   echo "Installing Mercurial"
   tar -zxf mercurial-1.3.1.tar.gz
   cd mercurial-1.3.1
