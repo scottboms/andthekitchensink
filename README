@@ -1,0 +1,62 @@
+###############################################################################
+#                                                                             #
+#                                                                             #
+# ...AND THE KITCHEN SINK...                                                  #
+# http://github.com/scottboms/andthekitchensink                               #
+#                                                                             #
+# Written and maintained by Scott Boms                                        #
+# Copyright (c) 2009 The Office of Scott Boms                                 #
+#                                                                             #
+# Last Updated: August 26, 2009                                               #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+The (ALL NEW) kitchen sink script does one thing - it builds a fully functional and fairly exhaustive web development environment on your super awesome Intel Mac computer. Best of all - you don't need MacPorts, Fink or some other crummy package manager mucking up your system.
+
+This updated version of "...And the Kitchen Sink" has been reworked from the ground up to be a bit smarter and splits several parts of the overall build process into separate tasks (download, build, setup-mysql) in order to eliminate some of the quirkiness in the original version. It has also been specifically tailored to build 64bit binaries for Snow Leopard, so you probably want to have a Core 2 Duo-based Intel Mac. And by probably want to, I mean "must have".
+
+
+PREREQUISITES
+-------------
+* Macintosh with an Core 2 Duo Intel processor (RIP PPC support)
+* Mac OS X 10.6 (Snow Leopard)
+* Snow Leopard Xcode Developer Tools
+* Environment variables for $PATH and $PYTHON_PATH (see below)
+
+
+HOW TO GET STARTED
+------------------
+Getting started with the script is fairly easy. First off - read the requirements above. Pay particular attention to the fact that you MUST (seriously) have the latest version of the Xcode Tools installed. You can install them from your Snow Leopard DVD. They're handy and you should do it anyway. Be sure to install the old 10.4 libraries as part of the install. Just in case - some older Unix software behaves better if that's there.
+
+Assuming you've done the above and that you've downloaded the "...And the Kitchen Sink" scripts to your Desktop (and decompressed the files or have cloned the source from github), what you need to do next is simply open up a new Terminal window and type each of the following commands:
+
+$ cd ~/Desktop/kitchensink
+$ chmod 755 *.sh
+$ ./start.sh download
+
+NOTE: If you run ./start.sh without passing a parameter (download, build, setup-mysql) you'll get the built-in help notes that'll explain what to do. Unix is only kinda scary, trust me.
+
+When the download processes have completed, you should have a new 'src' folder containing all the downloaded packages. The next step is to build and install the packages. To do that, type the following at a new shell prompt (the dollar sign in the Terminal window, yo).
+
+$ ./start.sh build
+
+Now - go out for lunch or go see a movie. This part takes a long time. The script will configure, compile and install each of the packages in turn. You'll see all kinds of crazy looking stuff fly by in your Terminal window. Just be sure to leave it open and running. It'll tell you when it's done and drop you back at a new prompt.
+
+If this is the first time you're running things, you'll likely also want to run the last command which does some additional stuff for MySQL - creates a basic configuration file (secures MySQL to only accept local connections - this is a development environment, right?), creates a Launch Daemon file so that MySQL can load up when your system starts and then attempts to start MySQL as a background process.
+
+$ ./start.sh setup-mysql
+
+BOOM! That's it.
+
+
+SUPPORT
+-------
+This script has been developed over the last couple of years primarily to serve my own needs but I keep it up to date and ensure the included packages are also largely kept up to date (except in rare cases where there are known incompatibilities with Mac OS X). That all said, I'll do what I can to help out if you run into a problem, but mostly you're on your own.
+
+Support requests can be submitted via the project's hosting on Github via the Issues tab. Go here: http://github.com/scottboms/andthekitchensink/issues
+
+
+LICENSING AND DISTRIBUTION
+--------------------------
+Simply - use common sense. Do not redistribute this software without including all the required components. Although I haven't picked out an appropriate Open Source License, feel free to modify it for your own purposes but keep in mind that no support is implied if you do. You break it, you buy it.
