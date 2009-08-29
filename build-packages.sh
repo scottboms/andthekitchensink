@@ -4,320 +4,409 @@
 
 #------------------------------------------------------------------------------
 
+PKG=""
+
 echo "##------ Building pkg-config"
-if [ -d ${DIR}/pkg-config-* ]; then
+PKG="${DIR}/pkg-config-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/pkg-config-*
   ./configure --prefix=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with pkg-config"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building zlib"
-if [ -d ${DIR}/zlib-* ]; then
+PKG="${DIR}/zlib-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/zlib-*
   ./configure --prefix=${PREFIX}
   make -s
   make install
   clear
+else
+  echo "There was a problem with zlib"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building expat"
-if [ -d ${DIR}/expat-* ]; then
+PKG="${DIR}/expat-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/expat-*
   ./configure --prefix=${PREFIX}
   make -s
   make install
   clear
+else
+  echo "There was a problem with expat"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building readline"
-if [ -d ${DIR}/readline-* ]; then
+PKG="${DIR}/readline-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/readline-*
   ./configure --prefix=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with readline"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building pcre"
-if [ -d ${DIR}/pcre-* ]; then
+PKG="${DIR}/pcre-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/pcre-*
   ./configure --prefix=${PREFIX} CFLAGS=-01
   make
   make install
   clear
+else
+  echo "There was a problem with pcre"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building gettext"
-if [ -d ${DIR}/gettext-* ]; then
+PKG="${DIR}/gettext-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/gettext-*
   ./configure --prefix=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with gettext"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building libxml2"
-if [ -d ${DIR}/libxml2-* ]; then
+PKG="${DIR}/libxml2-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/libxml2-*
   ./configure --prefix=${PREFIX}/libxml2-2.7.3
   make
   make install
-  cd /Library/Python/2.5/site-packages
-  ln -s ${PREFIX}/libxml2-2.7.3/lib/python2.5/site-packages/* .
+  cd /Library/Python/2.6/site-packages
+  ln -s ${PREFIX}/libxml2-2.7.3/lib/python2.6/site-packages/* .
   clear
+else
+  echo "There was a problem with libxml2"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building libxslt"
-if [ -d ${DIR}/libxslt-* ]; then
+PKG="${DIR}/libxslt-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/libxslt-*
   ./configure --prefix=${PREFIX}/libxslt-1.1.24 --with-libxml-prefix=${PREFIX}/libxml2-2.7.3
   make
   make install
-  cd /Library/Python/2.5/site-packages
-  ln -s ${PREFIX}/libxslt-1.1.24/lib/python2.5/site-packages/* .
+  cd /Library/Python/2.6/site-packages
+  ln -s ${PREFIX}/libxslt-1.1.24/lib/python2.6/site-packages/* .
   clear
+else
+  echo "There was a problem with libxslt"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building lxml"
-if [ -d ${DIR}/lxml-* ]; then
+PKG="${DIR}/lxml-*/"
+if [ -d ${PKG} ]; then
   cd lxml-*
   python setup.py install --with-xml2-config=${PREFIX}/libxml2-2.7.3/bin/xml2-config --with-xslt-config=${PREFIX}/libxslt-1.1.24/bin/xslt-config
   clear
+else
+  echo "There was a problem with lxml"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building django"
-if [ -d ${DIR}/Django-* ]; then
+PKG="${DIR}/Django-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/Django-*
   python setup.py install
   clear
+else
+  echo "There was a problem with django"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building neon"
-if [ -d ${DIR}/neon-* ]; then
+PKG="${DIR}/neon-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/neon-*
   ./configure --prefix=${PREFIX} --enable-shared=yes --with-ssl=openssl --with-libxml2
   make
   make install
   clear
+else
+  echo "There was a problem with neon"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building subversion"
-if [ -d ${DIR}/subversion-* ]; then
+PKG="${DIR}/subversion-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/subversion-*
   ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
   make
   make install
   clear
+else
+  echo "There was a problem with subversion"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building git"
-if [ -d ${DIR}/git-* ]; then
+PKG="${DIR}/git-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/git-*
   ./configure --prefix=${PREFIX}
   make all
   make install
   clear
+else
+  echo "There was a problem with git"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building mercurial"
-if [ -d ${DIR}/mercurial-* ]; then
+PKG="${DIR}/mercurial-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/mercurial-*
   python setup.py install --force --home=${PREFIX}
   clear
+else
+  echo "There was a problem with mercurial"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building lighttpd"
-if [ -d ${DIR}/lighttpd-* ]; then
+PKG="${DIR}/lighttpd-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/lighttpd-*
   ./configure --prefix=${PREFIX} --with-pcre=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with lighttpd"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building fast-cgi"
-if [ -d ${DIR}/fcgi-* ]; then
+PKG="${DIR}/fcgi-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/fcgi-*
   ./configure --prefix=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with fcgi"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building pound"
-if [ -d ${DIR}/Pound-* ]; then
+PKG="${DIR}/Pound-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/Pound-*
   ./configure --prefix=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with pound"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building freetype"
-if [ -d ${DIR}/freetype-* ]; then
+PKG="${DIR}/freetype-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/freetype-*
   ./configure --prefix=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with freetype"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building ghostscript"
-if [ -d ${DIR}/ghostscript-8* ]; then
+PKG="${DIR}/ghostscript-8-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/ghostscript-8*
   ./configure --prefix=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with ghostscript"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building ghostscript-fonts"
 # Nothing to build for this package, install only
-if [ -d ${DIR}/fonts ]; then
+PKG="${DIR}/fonts/"
+if [ -d ${PKG} ]; then
   cd ${DIR}
   mv fonts ${PREFIX}/share/ghostscript
   clear
+else
+  echo "There was a problem with ghostscript-fonts"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building libjpeg"
-if [ -d ${DIR}/jpeg-* ]; then
+PKG="${DIR}/jpeg-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/jpeg-*
   ln -s /Developer/usr/bin/glibtool libtool
   ./configure --prefix=${PREFIX} --enable-shared
   make
   make install
   clear
+else
+  echo "There was a problem with libjpeg"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building libtiff"
-if [ -d ${DIR}/tiff-* ]; then
+PKG="${DIR}/tiff-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/tiff-*
   ./configure --prefix=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with libtiff"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building libpng"
-if [ -d ${DIR}/libpng-* ]; then
+PKG="${DIR}/libpng-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/libpng-*
   ./configure --prefix=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with libpng"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building libwmf"
-if [ -d ${DIR}/libwmf-* ]; then
+PKG="${DIR}/libwmf-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/libwmf-*
   ./configure --prefix=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with libwmf"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building lcms"
-if [ -d ${DIR}/lcms-* ]; then
+PKG="${DIR}/lcms-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/lcms-*
   ./configure --prefix=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with lcms"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building libart2"
-if [ -d ${DIR}/libart_* ]; then
+PKG="${DIR}/libart_*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/libart_*
   ./configure --prefix=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with libart2"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building imagemagick"
-if [ -d ${DIR}/ImageMagick-* ]; then
+PKG="${DIR}/ImageMagick-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/ImageMagick-*
   ./configure --prefix=${PREFIX} --with-quantum-depth=16 --disable-dependency-tracking --with-x=yes --x-includes=/usr/X11R6/include --x-libraries=/usr/X11R6/lib --without-perl
   make
   make install
   clear
+else
+  echo "There was a problem with imagemagick"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building sqlite3"
-if [ -d ${DIR}/sqlite-* ]; then
+PKG="${DIR}/sqlite-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/sqlite-*
   ./configure --prefix=${PREFIX}
   make
   make install
   clear
+else
+  echo "There was a problem with sqlite3"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building mysql"
-if [ -d ${DIR}/mysql-* ]; then
-  cd ${DIR}/mysql-*
+PKG="${DIR}/mysql-5*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/mysql-5*
   CC=gcc CFLAGS="-O3 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-O3 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti"
   ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --with-plugins=all --without-docs
   make
   make install
   clear
+else
+  echo "There was a problem with mysql"
 fi
 
 # Initial MySQL configuration and db setup is separate
@@ -325,65 +414,83 @@ fi
 #------------------------------------------------------------------------------
 
 echo "##------ Building ruby"
-if [ -d ${DIR}/ruby-1* ]; then
+PKG="${DIR}/ruby-1*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/ruby-1*
   ./configure --prefix=${PREFIX} --enable-shared --with-readline-dir=${PREFIX} --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
   make
   make install
   make install-doc
   clear
+else
+  echo "There was a problem with ruby"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building rubygems"
-if [ -d ${DIR}/rubygems-* ]; then
+PKG="${DIR}/rubygems-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/rubygems-*
   ${PREFIX}/bin/ruby setup.rb
   clear
+else
+  echo "There was a problem with rubygems"
 fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building ruby fast-cgi"
-if [ -d ${DIR}/ruby-fcgi-* ]; then
+echo "##------ Building ruby-fcgi"
+PKG="${DIR}/ruby-fcgi-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/ruby-fcgi-*
   ${PREFIX}/bin/ruby install.rb config --prefix=${PREFIX}
   ${PREFIX}/bin/ruby install.rb setup
   ${PREFIX}/bin/ruby install.rb install
   clear
+else
+  echo "There was a problem with ruby-fcgi"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "Building ruby-mysql"
-if [ -d ${DIR}/mysql-ruby-* ]; then
+PKG="${DIR}/mysql-ruby-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/mysql-ruby-*
   ruby extconf.rb --with-mysql-dir=${PREFIX}/mysql --with-mysql-include-dir=${PREFIX}/mysql/include/mysql --with-mysql-config=${PREFIX}/mysql/bin/mysql_config
   make
   make install
   clear
+else
+  echo "There was a problem with ruby-mysql"
 fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building ruby sqlite3"
-if [ -d ${DIR}/sqlite3-ruby-* ]; then
+echo "##------ Building ruby-sqlite3"
+PKG="${DIR}/sqlite3-ruby-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/sqlite3-ruby-*
   ruby setup.rb config --prefix=${PREFIX}
   ruby setup.rb setup
   ruby setup.rb install
   clear
+else
+  echo "There was a problem with ruby-sqlite3"
 fi
 
 #------------------------------------------------------------------------------
 
 echo "##------ Building python mysql"
-if [ -d ${DIR}/MySQL-python-* ]; then
+PKG="${DIR}/MySQL-python-*/"
+if [ -d ${PKG} ]; then
   cd ${DIR}/MySQL-python-*
   python setup.py build
   python setup.py install
   clear
+else
+  echo "There was a problem with python mysql"
 fi
 
 #------------------------------------------------------------------------------

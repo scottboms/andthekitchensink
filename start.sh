@@ -23,7 +23,7 @@ setup-mysql   Will create the initial MySQL database, users and config files\r\n
 
 For example: $ ./start.sh download
              $ sudo ./start.sh build
-             $ sudo ./start.sh setup-msql
+             $ sudo ./start.sh setup-mysql
 -----------------------------------------------------------------------------"
 elif [ $COMMAND = "download" ]; then
   echo ${DIR}
