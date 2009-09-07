@@ -19,6 +19,7 @@ Please pass on of the following arguments to the script:\r\n
 help          Print help information\r
 download      Download all the included component source code\r
 build         Will build all components in the 'packages' directory\r
+update        Update an installed package (eg. update imagemagick)\r
 setup-mysql   Will create the initial MySQL database, users and config files\r\n
 
 For example: $ ./start.sh download
@@ -35,6 +36,9 @@ elif [ $COMMAND = "build" ]; then
   sh ${HOME}/build-packages.sh
 elif [ $COMMAND = "setup-mysql" ]; then
   sh ${HOME}/setup-mysql.sh
+elif [ $COMMAND = "update" ]; then
+  # TODO: Create updater code
+  # sh ${HOME}/update-packages.sh
 elif [ $COMMAND = "help" ]; then
   echo "Help? Did you read the README file first? You should really do that. No really - do it. Now."
 fi
