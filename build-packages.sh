@@ -326,20 +326,6 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building libwmf"
-PKG="${DIR}/libwmf-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/libwmf-*
-  ./configure --prefix=${PREFIX}
-  make
-  make install
-  clear
-else
-  echo "There was a problem with libwmf"
-fi
-
-#------------------------------------------------------------------------------
-
 echo "##------ Building lcms"
 PKG="${DIR}/lcms-*/"
 if [ -d ${PKG} ]; then
@@ -372,7 +358,7 @@ echo "##------ Building imagemagick"
 PKG="${DIR}/ImageMagick-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/ImageMagick-*
-  ./configure --prefix=${PREFIX} --with-quantum-depth=16 --disable-dependency-tracking --with-x=yes --x-includes=/usr/X11R6/include --x-libraries=/usr/X11R6/lib --without-perl
+  ./configure --prefix=${PREFIX} --with-quantum-depth=16 --disable-dependency-tracking --with-x=yes --x-includes=/usr/X11R6/include --x-libraries=/usr/X11R6/lib --without-perl --without-wmf
   make
   make install
   clear
