@@ -523,6 +523,7 @@ gem install sparklines
 gem install termios
 gem install tiny
 gem install xml-simple
+gem install mysql2
 clear
 
 #------------------------------------------------------------------------------
