@@ -8,7 +8,7 @@ if [ -d ${PKG} ]; then
 	./configure --prefix=${PREFIX} --enable-shared --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
 	make
 	make install
-	make insall-doc
+	make install-doc
 	clear
 else
   echo "There was a problem with ruby"
