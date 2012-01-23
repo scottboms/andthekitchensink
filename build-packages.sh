@@ -402,7 +402,7 @@ echo "##------ Building ruby"
 PKG="${DIR}/ruby-1*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/ruby-1*
-  ./configure --prefix=${PREFIX} --enable-shared --with-readline-dir=${PREFIX} --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
+  ./configure --prefix=${PREFIX} --enable-shared --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
   make
   make install
   make install-doc
