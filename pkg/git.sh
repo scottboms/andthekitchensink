@@ -2,9 +2,10 @@
 # git
 #------------------------------------------------------------------------------
 echo "##------ Building git"
-PKG="${DIR}/git-*/"
-if [ -d ${PKG} ]; then
+PKG="${DIR}/v1.7*/"
+if [ -d "git-*" ]; then
   cd ${DIR}/git-*
+  make configure
   ./configure --prefix=${PREFIX}
   make all
   make install install-doc install-html

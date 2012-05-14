@@ -178,6 +178,7 @@ echo "##------ Building git"
 PKG="${DIR}/git-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/git-*
+  make configure
   ./configure --prefix=${PREFIX}
   make all
   make install install-doc install-html
