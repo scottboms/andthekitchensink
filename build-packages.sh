@@ -132,104 +132,6 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building gettext"
-PKG="${DIR}/gettext-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/gettext-*
-  ./configure --prefix=${PREFIX}
-  make
-  make install
-  clear
-else
-  echo "There was a problem with gettext"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building libxml2"
-PKG="${DIR}/libxml2-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/libxml2-*
-  ./configure --prefix=${PREFIX}/libxml2-2.7.3
-  make
-  make install
-  cd /Library/Python/2.6/site-packages
-  ln -s ${PREFIX}/libxml2-2.7.3/lib/python2.6/site-packages/* .
-  clear
-else
-  echo "There was a problem with libxml2"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building libxslt"
-PKG="${DIR}/libxslt-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/libxslt-*
-  ./configure --prefix=${PREFIX}/libxslt-1.1.24 --with-libxml-prefix=${PREFIX}/libxml2-2.7.3
-  make
-  make install
-  cd /Library/Python/2.6/site-packages
-  ln -s ${PREFIX}/libxslt-1.1.24/lib/python2.6/site-packages/* .
-  clear
-else
-  echo "There was a problem with libxslt"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building lxml"
-PKG="${DIR}/lxml-*/"
-if [ -d ${PKG} ]; then
-  cd lxml-*
-  python setup.py install --with-xml2-config=${PREFIX}/libxml2-2.7.3/bin/xml2-config --with-xslt-config=${PREFIX}/libxslt-1.1.24/bin/xslt-config
-  clear
-else
-  echo "There was a problem with lxml"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building django"
-PKG="${DIR}/Django-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/Django-*
-  python setup.py install
-  clear
-else
-  echo "There was a problem with django"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building neon"
-PKG="${DIR}/neon-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/neon-*
-  ./configure --prefix=${PREFIX} --enable-shared=yes --with-ssl=openssl --with-libxml2
-  make
-  make install
-  clear
-else
-  echo "There was a problem with neon"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building subversion"
-PKG="${DIR}/subversion-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/subversion-*
-  ./configure --prefix=${PREFIX} --disable-mod-activation --with-apxs=/usr/sbin/apxs --with-neon=${PREFIX} --without-berkeley-db --with-ssl --with-zlib=${PREFIX} --without-sasl
-  make
-  make install
-  clear
-else
-  echo "There was a problem with subversion"
-fi
-
-#------------------------------------------------------------------------------
-
 echo "##------ Building git"
 PKG="${DIR}/git-*/"
 if [ -d ${PKG} ]; then
@@ -253,34 +155,6 @@ if [ -d ${PKG} ]; then
   clear
 else
   echo "There was a problem with mercurial"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building lighttpd"
-PKG="${DIR}/lighttpd-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/lighttpd-*
-  ./configure --prefix=${PREFIX} --with-pcre=${PREFIX}
-  make
-  make install
-  clear
-else
-  echo "There was a problem with lighttpd"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building fast-cgi"
-PKG="${DIR}/fcgi-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/fcgi-*
-  ./configure --prefix=${PREFIX}
-  make
-  make install
-  clear
-else
-  echo "There was a problem with fcgi"
 fi
 
 #------------------------------------------------------------------------------
@@ -482,20 +356,6 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building ruby-fcgi"
-PKG="${DIR}/ruby-fcgi-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/ruby-fcgi-*
-  ${PREFIX}/bin/ruby install.rb config --prefix=${PREFIX}
-  ${PREFIX}/bin/ruby install.rb setup
-  ${PREFIX}/bin/ruby install.rb install
-  clear
-else
-  echo "There was a problem with ruby-fcgi"
-fi
-
-#------------------------------------------------------------------------------
-
 echo "Building ruby-mysql"
 PKG="${DIR}/mysql-ruby-*/"
 if [ -d ${PKG} ]; then
@@ -524,19 +384,6 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building python mysql"
-PKG="${DIR}/MySQL-python-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/MySQL-python-*
-  python setup.py build
-  python setup.py install
-  clear
-else
-  echo "There was a problem with python mysql"
-fi
-
-#------------------------------------------------------------------------------
-
 echo "##------ Installing ruby gems"
 gem install rails
 gem install activemerchant
@@ -550,7 +397,6 @@ gem install BlueCloth
 gem install capazon
 gem install capistrano
 gem install columnize
-gem install fcgi
 gem install ferret
 gem install flickraw
 gem install gruff
@@ -573,7 +419,6 @@ gme install radiant
 gem install rb-appscript
 gem install RedCloth
 gem install rmagick
-gem install ruby-openid
 gem install rubypants
 gem install salted_login_generator
 gem install sparklines

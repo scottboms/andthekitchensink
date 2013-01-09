@@ -1,6 +1,9 @@
 CHANGELOG
 #########
 
+1.0.4 (2013-01-09)
+Starting the process of greatly reducing the overall feature set of this build script to focus it more on a simple extension of a LAMP stack and core tools for web designers.
+
 1.0.3 (2009-07-29)
 Major bug fixes and improved conditional checks to ensure things are a bit more
 sane. Fewer build errors should slip through now resulting in partly broken 
