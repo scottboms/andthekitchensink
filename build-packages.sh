@@ -218,7 +218,7 @@ echo "##------ Building libjpeg"
 PKG="${DIR}/jpeg-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/jpeg-*
-  ln -s /Developer/usr/bin/glibtool libtool
+  # ln -s /Developer/usr/bin/glibtool libtool
   ./configure --prefix=${PREFIX} --enable-shared
   make
   make install
@@ -267,20 +267,6 @@ if [ -d ${PKG} ]; then
   clear
 else
   echo "There was a problem with lcms"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building libart2"
-PKG="${DIR}/libart_*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/libart_*
-  ./configure --prefix=${PREFIX}
-  make
-  make install
-  clear
-else
-  echo "There was a problem with libart2"
 fi
 
 #------------------------------------------------------------------------------
