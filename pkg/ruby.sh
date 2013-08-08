@@ -6,6 +6,7 @@ PKG="${DIR}/ruby-1.9.3*"
 if [ -d ${PKG} ]; then
 	cd ${DIR}/ruby-1.9.3*
 	./configure --prefix=${PREFIX} --enable-shared --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
+  # ./configure --prefix=${PREFIX} --enable-shared --enable-pthread --with-out-ext=openssl CFLAGS=-D_XOPEN_SOURCE=1
 	make
 	make install
 	make install-doc
