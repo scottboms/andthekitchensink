@@ -188,9 +188,9 @@ fi
 #------------------------------------------------------------------------------
 
 echo "##------ Building ghostscript"
-PKG="${DIR}/ghostscript-8-*/"
+PKG="${DIR}/ghostscript-9-*/"
 if [ -d ${PKG} ]; then
-  cd ${DIR}/ghostscript-8*
+  cd ${DIR}/ghostscript-9*
   ./configure --prefix=${PREFIX}
   make
   make install
@@ -258,9 +258,9 @@ fi
 #------------------------------------------------------------------------------
 
 echo "##------ Building lcms"
-PKG="${DIR}/lcms-*/"
+PKG="${DIR}/lcms2-*/"
 if [ -d ${PKG} ]; then
-  cd ${DIR}/lcms-*
+  cd ${DIR}/lcms2-*
   ./configure --prefix=${PREFIX}
   make
   make install
