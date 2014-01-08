@@ -1,4 +1,4 @@
-Required for FontForge
+# Required for FontForge
 
 svn co http://libspiro.svn.sourceforge.net/svnroot/libspiro/
 

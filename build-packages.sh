@@ -275,7 +275,7 @@ echo "##------ Building imagemagick"
 PKG="${DIR}/ImageMagick-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/ImageMagick-*
-  ./configure --prefix=${PREFIX} --with-quantum-depth=16 --disable-dependency-tracking --with-x=yes --x-includes=/usr/X11R6/include --x-libraries=/usr/X11R6/lib --without-perl --without-wmf
+  ./configure --prefix=${PREFIX} --with-quantum-depth=16 --disable-dependency-tracking --with-x=yes --x-includes=/opt/X11/include --x-libraries=/opt/X11/lib --without-perl --without-wmf
   make
   make install
   clear
@@ -432,7 +432,7 @@ exist by default and you'll need to create it in your users' Home directory)
 as follows:
 
  export PATH='/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/
- libexec/git-core:/usr/X11R6/bin:/Developer/usr/bin/:\$PATH'"
+ libexec/git-core:/opt/X11/bin:/Developer/usr/bin/:\$PATH'"
 echo 
 echo "Add the following line to your .bash_login file to properly use 
 Mercurial's hg commands:
