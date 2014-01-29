@@ -76,7 +76,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building zlib"
+echo "##------ Building zLib"
 PKG="${DIR}/zlib-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/zlib-*
@@ -85,12 +85,12 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with zlib"
+  echo "There was a problem with zLib"
 fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building expat"
+echo "##------ Building Expat"
 PKG="${DIR}/expat-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/expat-*
@@ -99,12 +99,12 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with expat"
+  echo "There was a problem with Expat"
 fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building readline"
+echo "##------ Building Readline"
 PKG="${DIR}/readline-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/readline-*
@@ -113,7 +113,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with readline"
+  echo "There was a problem with Readline"
 fi
 
 #------------------------------------------------------------------------------
@@ -147,19 +147,19 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building mercurial"
+echo "##------ Building Mercurial"
 PKG="${DIR}/mercurial-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/mercurial-*
   python setup.py install --force --home=${PREFIX}
   clear
 else
-  echo "There was a problem with mercurial"
+  echo "There was a problem with Mercurial"
 fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building pound"
+echo "##------ Building Pound"
 PKG="${DIR}/Pound-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/Pound-*
@@ -168,12 +168,12 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with pound"
+  echo "There was a problem with Pound"
 fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building freetype"
+echo "##------ Building FreeType"
 PKG="${DIR}/freetype-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/freetype-*
@@ -182,12 +182,12 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with freetype"
+  echo "There was a problem with FreeType"
 fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building ghostscript"
+echo "##------ Building Ghostscript"
 PKG="${DIR}/ghostscript-9-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/ghostscript-9*
@@ -196,12 +196,12 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with ghostscript"
+  echo "There was a problem with Ghostscript"
 fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building ghostscript-fonts"
+echo "##------ Building Ghostscript Fonts"
 # Nothing to build for this package, install only
 PKG="${DIR}/fonts/"
 if [ -d ${PKG} ]; then
@@ -209,7 +209,7 @@ if [ -d ${PKG} ]; then
   mv fonts ${PREFIX}/share/ghostscript
   clear
 else
-  echo "There was a problem with ghostscript-fonts"
+  echo "There was a problem with Ghostscript Fonts"
 fi
 
 #------------------------------------------------------------------------------
@@ -271,7 +271,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building imagemagick"
+echo "##------ Building ImageMagick"
 PKG="${DIR}/ImageMagick-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/ImageMagick-*
@@ -280,12 +280,12 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with imagemagick"
+  echo "There was a problem with ImageMagick"
 fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building sqlite3"
+echo "##------ Building SQlite3"
 PKG="${DIR}/sqlite-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/sqlite-*
@@ -294,12 +294,12 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with sqlite3"
+  echo "There was a problem with SQLite3"
 fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building mysql"
+echo "##------ Building MySQL"
 PKG="${DIR}/mysql-5*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/mysql-5*
@@ -308,55 +308,46 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with mysql"
+  echo "There was a problem with MySQL"
 fi
 
 # Initial MySQL configuration and db setup is separate
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building ruby"
-PKG="${DIR}/ruby-1*/"
+echo "##------ Building Ruby"
+PKG="${DIR}/ruby-2*"
 if [ -d ${PKG} ]; then
-  cd ${DIR}/ruby-1*
-  ./configure --prefix=${PREFIX} --enable-shared --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
+  cd ${DIR}/ruby-2*
+  ./configure --prefix=${PREFIX} --with-opt-dir=${PREFIX}/openssl --enable-shared --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
   make
+  make test
   make install
   make install-doc
   clear
 else
-  echo "There was a problem with ruby"
+  echo "There was a problem with Ruby"
 fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building rubygems"
-PKG="${DIR}/rubygems-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/rubygems-*
-  ${PREFIX}/bin/ruby setup.rb
-  clear
-else
-  echo "There was a problem with rubygems"
-fi
+echo "##------ Updating Rubygems"
+
+gem --version
+gem update --system
 
 #------------------------------------------------------------------------------
 
-echo "Building ruby-mysql"
-PKG="${DIR}/mysql-ruby-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/mysql-ruby-*
-  ruby extconf.rb --with-mysql-dir=${PREFIX}/mysql --with-mysql-include-dir=${PREFIX}/mysql/include/mysql --with-mysql-config=${PREFIX}/mysql/bin/mysql_config
-  make
-  make install
-  clear
-else
-  echo "There was a problem with ruby-mysql"
-fi
+echo "Building MySQL2 Gem for Ruby"
+
+sudo env ARCHFLAGS="-arch x86_64" gem install mysql2 -- --with-mysql-config=${PREFIX}/mysql/bin/mysql_config
+
+sudo install_name_tool -change libmysqlclient.18.dylib ${PREFIX}/mysql/lib/libmysqlclient.18.dylib ${PREFIX}/lib/ruby/gems/2.1.0/gems/mysql2-0.3.15/lib/mysql2/mysql2.bundle
+
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building ruby-sqlite3"
+echo "##------ Building SQLite3 for Ruby"
 PKG="${DIR}/sqlite3-ruby-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/sqlite3-ruby-*
@@ -365,26 +356,21 @@ if [ -d ${PKG} ]; then
   ruby setup.rb install
   clear
 else
-  echo "There was a problem with ruby-sqlite3"
+  echo "There was a problem with SQLite3 for Ruby"
 fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Installing ruby gems"
+echo "##------ Installing Misc. Ruby Gems"
 gem install rails
-gem install activemerchant
 gem install acts_as_ferret
 gem install acts_as_searchable
 gem install acts_as_taggable
-gem install amazon-ec2
-gem install aws-s3
 gem install bcrypt-ruby
 gem install BlueCloth
-gem install capazon
 gem install capistrano
 gem install columnize
 gem install ferret
-gem install flickraw
 gem install gruff
 gem install has_many_through_generator
 gem install hpricot
@@ -396,13 +382,9 @@ gem install magic_multi_connections
 gem install memcache-client
 gem install mofo
 gem install mongrel
-gem install openid_login_generator
 gem install paginator
-gem install passenger
 gem install payment
 gem install piston
-gme install radiant
-gem install rb-appscript
 gem install RedCloth
 gem install rmagick
 gem install rubypants
@@ -411,12 +393,11 @@ gem install sparklines
 gem install termios
 gem install tiny
 gem install xml-simple
-gem install mysql2
 clear
 
 #------------------------------------------------------------------------------
 
-echo "Installing extras"
+echo "Installing Extras"
 gem install juicer
 juicer install yui_compressor
 juicer install jslint
