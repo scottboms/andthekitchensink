@@ -66,7 +66,7 @@ echo "##------ Building pkg-config"
 PKG="${DIR}/pkg-config-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/pkg-config-*
-  ./configure --prefix=${PREFIX}
+  ./configure --prefix=${PREFIX} --with-internal-glib
   make
   make install
   clear
@@ -86,48 +86,6 @@ if [ -d ${PKG} ]; then
   clear
 else
   echo "There was a problem with zLib"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building Expat"
-PKG="${DIR}/expat-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/expat-*
-  ./configure --prefix=${PREFIX}
-  make -s
-  make install
-  clear
-else
-  echo "There was a problem with Expat"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building Readline"
-PKG="${DIR}/readline-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/readline-*
-  ./configure --prefix=${PREFIX}
-  make
-  make install
-  clear
-else
-  echo "There was a problem with Readline"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building pcre"
-PKG="${DIR}/pcre-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/pcre-*
-  ./configure --prefix=${PREFIX} CFLAGS=-01
-  make
-  make install
-  clear
-else
-  echo "There was a problem with pcre"
 fi
 
 #------------------------------------------------------------------------------
@@ -155,20 +113,6 @@ if [ -d ${PKG} ]; then
   clear
 else
   echo "There was a problem with Mercurial"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building Pound"
-PKG="${DIR}/Pound-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/Pound-*
-  ./configure --prefix=${PREFIX}
-  make
-  make install
-  clear
-else
-  echo "There was a problem with Pound"
 fi
 
 #------------------------------------------------------------------------------
