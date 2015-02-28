@@ -150,7 +150,7 @@ echo "##------ Building Ghostscript Fonts"
 PKG="${DIR}/fonts/"
 if [ -d ${PKG} ]; then
   cd ${DIR}
-  mv fonts ${PREFIX}/share/ghostscript
+  mv fonts ${PREFIX}/share/ghostscript/
   clear
 else
   echo "There was a problem with Ghostscript Fonts"
