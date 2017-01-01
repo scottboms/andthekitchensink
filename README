@@ -1,31 +1,31 @@
-###############################################################################
+####################################################
 #                                                                             #
 #                                                                             #
-# ...AND THE KITCHEN SINK...                                                  #
-# http://github.com/scottboms/andthekitchensink                               #
+# ...AND THE KITCHEN SINK...                                        #
+# http://github.com/scottboms/andthekitchensink                  #
 #                                                                             #
-# Written and maintained by Scott Boms                                        #
-# Copyright (c) 2011 The Office of Scott Boms                                 #
+# Written and maintained by Scott Boms                             #
+# Copyright (c) 2017 The Office of Scott Boms                       #
 #                                                                             #
 #                                                                             #
 ###############################################################################
 
 The (ALL NEW) kitchen sink script does one thing - it builds a fully functional and fairly exhaustive web development environment on your super awesome Intel Mac computer. Best of all - you don't need MacPorts, Fink or some other crummy package manager mucking up your system.
 
-This updated version of "...And the Kitchen Sink" has been reworked from the ground up to be a bit smarter and splits several parts of the overall build process into separate tasks (download, build, setup-mysql) in order to eliminate some of the quirkiness in the original version. It has also been specifically tailored to build 64bit binaries for Snow Leopard, so you probably want to have a Core 2 Duo-based Intel Mac. And by probably want to, I mean "must have".
+This updated version of "...And the Kitchen Sink" has been reworked from the ground up to be a bit smarter and splits several parts of the overall build process into separate tasks (download, build, setup-mysql) in order to eliminate some of the quirkiness in the original version. It has also been specifically tailored to build 64bit binaries, so you probably want to have a Core 2 Duo-based Intel Mac. And by probably want to, I mean "must have".
 
 
 PREREQUISITES
 -------------
 * Macintosh with an Core 2 Duo Intel processor (RIP PPC support)
-* Mac OS X 10.6 (Snow Leopard)
-* Snow Leopard Xcode Developer Tools
+* Mac OS X 10.6 (Snow Leopard or newer)
+* Xcode Developer Tools
 * Environment variables for $PATH and $PYTHON_PATH (see below)
 
 
 HOW TO GET STARTED
 ------------------
-Getting started with the script is fairly easy. First off - read the requirements above. Pay particular attention to the fact that you MUST (seriously) have the latest version of the Xcode Tools installed. You can install them from your Snow Leopard DVD. They're handy and you should do it anyway. Be sure to install the old 10.4 libraries as part of the install. Just in case - some older Unix software behaves better if that's there.
+Getting started with the script is fairly easy. First off - read the requirements above. Pay particular attention to the fact that you MUST (seriously) have the latest version of the Xcode Tools installed.
 
 Assuming you've done the above and that you've downloaded the "...And the Kitchen Sink" scripts to your Desktop (and decompressed the files or have cloned the source from github), what you need to do next is simply open up a new Terminal window and type each of the following commands:
 
@@ -50,7 +50,7 @@ BOOM! That's it.
 
 SUPPORT
 -------
-This script has been developed over the last couple of years primarily to serve my own needs but I keep it up to date and ensure the included packages are also largely kept up to date (except in rare cases where there are known incompatibilities with Mac OS X). That all said, I'll do what I can to help out if you run into a problem, but mostly you're on your own.
+This script has been developed over the last few years primarily to serve my own needs but I keep it up to date and ensure the included packages are also largely kept up to date (except in rare cases where there are known incompatibilities with Mac OS X). That all said, I'll do what I can to help out if you run into a problem, but mostly you're on your own.
 
 Support requests can be submitted via the project's hosting on Github via the Issues tab. Go here: http://github.com/scottboms/andthekitchensink/issues
 

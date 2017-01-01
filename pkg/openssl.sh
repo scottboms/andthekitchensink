@@ -3,7 +3,7 @@
 #------------------------------------------------------------------------------
 echo "##------ Building OpenSSL"
 PKG="${DIR}/openssl-*/"
-VERS="1.0.1h"
+VERS="1.1.0c"
 SYMLINK="${PREFIX}/openssl"
 if [ -d ${PKG} ]; then
   cd ${DIR}/openssl-*

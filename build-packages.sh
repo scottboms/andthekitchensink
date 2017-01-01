@@ -90,12 +90,38 @@ fi
 
 #------------------------------------------------------------------------------
 
+echo "##------ Building OpenSSL"
+PKG="${DIR}/openssl-*/"
+VERS="1.1.0c"
+SYMLINK="${PREFIX}/openssl"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/openssl-*
+  make configure
+  ./configure darwin64-x86_64-cc --prefix=${PREFIX}/openssl-${VERS}
+  make
+  make test
+  make install
+
+  if[ -f ${SYMLINK} ]; then
+    ln -s ${PREFIX}/openssl-${VERS} ${PREFIX}/openssl
+  else
+    rm ${PREFIX}/openssl-${VERS}
+    ln -s ${PREFIX}/openssl-${VERS} ${PREFIX}/openssl
+  fi
+
+  clear
+else
+  echo "There was a problem with OpenSSL"
+fi
+
+#------------------------------------------------------------------------------
+
 echo "##------ Building git"
 PKG="${DIR}/git-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/git-*
   make configure
-  ./configure --prefix=${PREFIX}
+  ./configure --prefix=${PREFIX} --with-openssl=${PREFIX}/openssl
   make all
   make install install-doc install-html
   clear
@@ -263,7 +289,7 @@ echo "##------ Building Ruby"
 PKG="${DIR}/ruby-2*"
 if [ -d ${PKG} ]; then
   cd ${DIR}/ruby-2*
-  ./configure --prefix=${PREFIX} --with-opt-dir=${PREFIX}/openssl --enable-shared --enable-pthread CFLAGS=-D_XOPEN_SOURCE=1
+  ./configure --prefix=${PREFIX} --with-opt-dir=${PREFIX}/openssl --enable-shared --with-readline-dir=${PREFIX} CFLAGS=-D_XOPEN_SOURCE=1
   make
   make test
   make install
