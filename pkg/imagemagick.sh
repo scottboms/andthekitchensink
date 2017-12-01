@@ -11,6 +11,7 @@ if [ -d "ImageMagick-*" ]; then
   ldconfig /usr/local/lib
   make check
   make install
+  /usr/local/bin/convert logo: logo.gif
   clear
 else
   echo "There was a problem with ImageMagick"

@@ -6,7 +6,8 @@ PKG="${DIR}/v1.7*/"
 if [ -d "git-*" ]; then
   cd ${DIR}/git-*
   make configure
-  ./configure --prefix=${PREFIX} --with-openssl=${PREFIX}/openssl
+  # ./configure --prefix=${PREFIX} --with-openssl=${PREFIX}/openssl
+  ./configure --prefix=${PREFIX}
   make all
   make install install-doc install-html
   clear
