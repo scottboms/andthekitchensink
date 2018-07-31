@@ -1,7 +1,7 @@
 #!/bin/bash
-# Ruby 2.4.2
+# Ruby 2.5.0
 #------------------------------------------------------------------------------
-echo "##------ Building ruby 2.4"
+echo "##------ Building ruby 2.5"
 PKG="${DIR}/ruby-2*"
 if [ -d ${PKG} ]; then
 	cd ${DIR}/ruby-2*
