@@ -143,6 +143,20 @@ fi
 
 #------------------------------------------------------------------------------
 
+echo "##------ Building msmtp"
+PKG="${DIR}/msmtp-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/msmtp-*
+  ./configure --prefix=${PREFIX}
+  make
+  make install
+  clear
+else
+  echo "There was a problem with msmtp"
+fi
+
+#------------------------------------------------------------------------------
+
 echo "##------ Building FreeType"
 PKG="${DIR}/freetype-*/"
 if [ -d ${PKG} ]; then
