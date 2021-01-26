@@ -6,7 +6,7 @@ echo "##------ Building pcre"
 PKG="${DIR}/pcre-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/pcre-*
-  ./configure --prefix=${PREFIX} CFLAGS=-01
+  ./configure --prefix=${PREFIX} CFLAGS='-O2 -Wall'
   make
   make install
   clear
