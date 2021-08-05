@@ -6,7 +6,7 @@ PKG="${DIR}/sqlite-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/sqlite-*
   ./configure --prefix=${PREFIX}
-  make
+  make -j8
   make install
   clear
 else

@@ -8,7 +8,7 @@ if [ -d "git-*" ]; then
   make configure
   # ./configure --prefix=${PREFIX} --with-openssl=${PREFIX}/openssl
   ./configure --prefix=${PREFIX}
-  make all
+  make all -j8
   make install install-doc install-html
   clear
 else
