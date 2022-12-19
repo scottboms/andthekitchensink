@@ -6,12 +6,12 @@
 
 PKG=""
 
-echo "##------ Building m4"
+echo "##------ Building m4 1.4.19"
 PKG="${DIR}/m4-1*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/m4-1*
   ./configure --prefix=${PREFIX}
-  make
+  make -j8
   make install
   clear
 else
@@ -20,12 +20,12 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building autoconf"
+echo "##------ Building autoconf 2.71"
 PKG="${DIR}/autoconf-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/autoconf-*
   ./configure --prefix=${PREFIX}
-  make
+  make -j8
   make install
   clear
 else
@@ -34,12 +34,12 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building automake"
+echo "##------ Building automake 1.16.5"
 PKG="${DIR}/automake-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/automake-*
   ./configure --prefix=${PREFIX}
-  make
+  make -j8
   make install
   clear
 else
@@ -48,12 +48,12 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building libtool"
+echo "##------ Building libtool 2.4.6"
 PKG="${DIR}/libtool-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/libtool-*
   ./configure --prefix=${PREFIX}
-  make
+  make -j8
   make install
   clear
 else
@@ -62,12 +62,12 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building pkg-config"
+echo "##------ Building pkg-config 0.29.2"
 PKG="${DIR}/pkg-config-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/pkg-config-*
   ./configure --prefix=${PREFIX} --with-internal-glib
-  make
+  make -j8
   make install
   clear
 else
@@ -76,7 +76,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building zLib"
+echo "##------ Building zLib 1.2.13"
 PKG="${DIR}/zlib-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/zlib-*
@@ -90,16 +90,178 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building OpenSSL"
+echo "##------ Building PCRE2 10.42"
+PKG="${DIR}/pcre2-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/pcre-*
+  ./configure --prefix=${PREFIX} CFLAGS='-O2 -Wall'
+  make -s
+  make install
+  clear
+else
+  echo "There was a problem with PCRE2"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building re2c 3.0 (was 2.2)"
+PKG="${DIR}/re2c-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/re2c-*
+  ./configure --prefix=${PREFIX}
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with re2c"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building YAML C library 0.2.5"
+PKG="${DIR}/yaml-*"
+if [ -d ${PKG} ]; then
+	cd ${DIR}/yaml-*
+	./configure --prefix=${PREFIX}
+	make -j8
+	make install
+	clear
+else
+  echo "There was a problem with YAML"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building Readline 8.1"
+PKG="${DIR}/readline-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/readline-*
+  ./configure --prefix=${PREFIX}
+  make -s
+  make install
+  clear
+else
+  echo "There was a problem with Readline"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building gettext 0.21"
+PKG="${DIR}/gettext-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/gettext-*
+  ./configure --prefix=${PREFIX}
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with gettext"
+fi
+
+#------------------------------------------------------------------------------
+
+# Requires GetText
+echo "##------ Building libonig 6.9.8"
+PKG="${DIR}/onig-*"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/onig-*
+  autoreconf -vfi
+  ./configure --prefix=${PREFIX}
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with libonig"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building iconv 1.17"
+PKG="${DIR}/iconv-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/iconv-*
+  ./configure --prefix=${PREFIX}
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with iconv"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building Expat 2.5.0"
+PKG="${DIR}/expat-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/expat-*
+  ./configure --prefix=${PREFIX}
+  make -s
+  make install
+  clear
+else
+  echo "There was a problem with Expat"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building bzip2 1.0.8"
+# Required for PHP
+PKG="${DIR}/bzip2-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/bzip2-*
+  make -j8
+  make install PREFIX=${PREFIX}
+  clear
+else
+  echo "There was a problem with bzip2"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building bison 3.8.2"
+# Required for PHP
+PKG="${DIR}/bison-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/bison-*
+  ./configure --prefix=${PREFIX}
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with bison"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building gmp 6.2.1"
+PKG="${DIR}/gmp-6*/"
+if [ -d "gmp-*" ]; then
+  cd ${DIR}/gmp-*
+  # CC=gcc-4.2 CXX=g++4.2 ./configure --prefix=${PREFIX}
+  ./configure --prefix=${PREFIX}
+  make check
+  make  -j8
+  make install
+  clear
+else
+  echo "There was a problem with gmp"
+fi
+
+#------------------------------------------------------------------------------
+
+## First patch files manually as necessary and noted
+## Also change Darwin type below -- darwin64-x86_64-cc | darwin64-arm64-cc
+
+echo "##------ Building OpenSSL 1.1.1s"
 PKG="${DIR}/openssl-*/"
-VERS="1.1.0c"
+VERS="1.1.1q"
 SYMLINK="${PREFIX}/openssl"
 if [ -d ${PKG} ]; then
   cd ${DIR}/openssl-*
   make configure
-  ./configure darwin64-x86_64-cc --prefix=${PREFIX}/openssl-${VERS}
-  make
-  make test
+  ./configure --prefix=${PREFIX}/openssl-${VERS} shared enable-rc5 zlib darwin64-x86_64-cc no-asm
+  make -j8
+  # make test
   make install
 
   if[ -f ${SYMLINK} ]; then
@@ -116,13 +278,60 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building git"
+echo "##------ Building curl 7.86.0"
+# Requires OpenSSL
+export PKG_CONFIG_PATH=${PREFIX}/openssl/lib/pkgconfig
+
+PKG="${DIR}/curl-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/curl-*
+  ./configure --prefix=${PREFIX} --with-openssl
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with curl"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building LibXML2 2.9.14"
+PKG="${DIR}/libxml2-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/libxml2-*
+  ./autogen.sh --prefix=${PREFIX}
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with LibXML2"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building LibXSLT 1.1.35"
+PKG="${DIR}/libxslt-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/libxslt-*
+  ./autogen.sh --prefix=${PREFIX}
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with LibXML2"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building git 2.39"
+
+## MAYBE HAS PROBLEM WITH LIBICONV...
 PKG="${DIR}/git-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/git-*
   make configure
-  ./configure --prefix=${PREFIX} --with-openssl=${PREFIX}/openssl
-  make all
+  ./configure --prefix=${PREFIX} --with-openssl=${PREFIX}/openssl --with-iconv=${PREFIX}
+  make all -j8
   make install install-doc install-html
   clear
 else
@@ -131,38 +340,12 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building Mercurial"
-PKG="${DIR}/mercurial-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/mercurial-*
-  python setup.py install --force --home=${PREFIX}
-  clear
-else
-  echo "There was a problem with Mercurial"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building msmtp"
-PKG="${DIR}/msmtp-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/msmtp-*
-  ./configure --prefix=${PREFIX}
-  make
-  make install
-  clear
-else
-  echo "There was a problem with msmtp"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building FreeType"
+echo "##------ Building FreeType 2.12.1"
 PKG="${DIR}/freetype-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/freetype-*
   ./configure --prefix=${PREFIX}
-  make
+  make -j8
   make install
   clear
 else
@@ -171,40 +354,13 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building Ghostscript"
-PKG="${DIR}/ghostscript-9-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/ghostscript-9*
-  ./configure --prefix=${PREFIX}
-  make
-  make install
-  clear
-else
-  echo "There was a problem with Ghostscript"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building Ghostscript Fonts"
-# Nothing to build for this package, install only
-PKG="${DIR}/fonts/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}
-  mv fonts ${PREFIX}/share/ghostscript/
-  clear
-else
-  echo "There was a problem with Ghostscript Fonts"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building libjpeg"
+echo "##------ Building libjpeg 0.9e"
 PKG="${DIR}/jpeg-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/jpeg-*
   # ln -s /Developer/usr/bin/glibtool libtool
-  ./configure --prefix=${PREFIX} --enable-shared
-  make
+  ./configure --prefix=${PREFIX}
+  make -j8
   make install
   clear
 else
@@ -213,12 +369,12 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building libtiff"
+echo "##------ Building libtiff 4.4.0"
 PKG="${DIR}/tiff-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/tiff-*
   ./configure --prefix=${PREFIX}
-  make
+  make -j8
   make install
   clear
 else
@@ -227,12 +383,12 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building libpng"
+echo "##------ Building libpng 1.6.39"
 PKG="${DIR}/libpng-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/libpng-*
   ./configure --prefix=${PREFIX}
-  make
+  make -j8
   make install
   clear
 else
@@ -241,12 +397,27 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building lcms"
+echo "##------ Building libwebp 1.24"
+PKG="${DIR}/libwebp/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/libwebp
+  ./autogen.sh
+  ./configure --prefix=${PREFIX} --with-pnglibdir=${PREFIX}/lib --with-pngincludedir=${PREFIX}/include --with-jpeglibdir=${PREFIX}/lib --with-jpegincludedir=${PREFIX}/include --with-tifflibdir=${PREFIX}/lib --with-tiffincludedir=${PREFIX}/include --disable-gif
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with libpng"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building lcms 2.14"
 PKG="${DIR}/lcms2-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/lcms2-*
   ./configure --prefix=${PREFIX}
-  make
+  make -j8
   make install
   clear
 else
@@ -255,12 +426,27 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building ImageMagick"
+echo "##------ Building Ghostscript 10.0.0"
+# TODO: Look at fixing jpeg, webp, and png support, etc.
+PKG="${DIR}/ghostscript-10*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/ghostscript-10*
+  ./configure --prefix=${PREFIX}
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with Ghostscript"
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building ImageMagick 7.10-55"
 PKG="${DIR}/ImageMagick-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/ImageMagick-*
-  ./configure --prefix=${PREFIX} --with-quantum-depth=16 --disable-dependency-tracking --with-x=yes --x-includes=/opt/X11/include --x-libraries=/opt/X11/lib --without-perl --without-wmf
-  make
+  ./configure --prefix=${PREFIX} --with-quantum-depth=16 --disable-dependency-tracking --with-x=no --without-perl --without-wmf
+  make -j8
   make install
   clear
 else
@@ -269,12 +455,12 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building SQlite3"
+echo "##------ Building SQlite3 3.40.00"
 PKG="${DIR}/sqlite-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/sqlite-*
   ./configure --prefix=${PREFIX}
-  make
+  make -j8
   make install
   clear
 else
@@ -283,109 +469,20 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building MySQL"
-PKG="${DIR}/mysql-5*/"
+echo "##------ Building PHP8 8.2.0 (and 8.1.13)"
+PKG="${DIR}/php*"
 if [ -d ${PKG} ]; then
-  cd ${DIR}/mysql-5*
-  CC=gcc CFLAGS="-O3 -fno-omit-frame-pointer" CXX=gcc CXXFLAGS="-O3 -fno-omit-frame-pointer -felide-constructors -fno-exceptions -fno-rtti" ./configure --prefix=${PREFIX}/mysql --with-extra-charsets=complex --enable-thread-safe-client --enable-local-infile --enable-shared --with-zlib-dir=bundled --with-big-tables --with-readline --with-plugins=all --without-docs
-  make
+  cd ${DIR}/php*
+  export LDFLAGS=-L/usr/local/custom/openssl/lib
+  export CPPFLAGS=-I/usr/local/custom/openssl/include
+  export PKG_CONFIG_PATH="/usr/local/custom/openssl/lib/pkgconfig"
+  ./configure --prefix=${PREFIX} --with-config-file-path=${PREFIX}/lib --enable-bcmath --enable-cli --enable-exif --enable-mbstring --enable-gd --enable-gd-jis-conv --enable-sockets --enable-opcache --enable-simplexml --with-sqlite3 --enable-xmlreader --enable-xmlwriter --with-pdo-sqlite --with-bz2=${PREFIX} --with-curl --with-xsl --with-zlib --enable-gd --with-jpeg --with-iconv=${PREFIX} --with-openssl OPENSSL_CFLAGS=-I${PREFIX}/openssl/include OPENSSL_LIBS="-L${PREFIX}/openssl/lib -lssl -lcrypto" --without-pcre-jit --with-webp --with-freetype 
+  make -j4
   make install
-  clear
-else
-  echo "There was a problem with MySQL"
-fi
-
-# Initial MySQL configuration and db setup is separate
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building Ruby"
-PKG="${DIR}/ruby-2*"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/ruby-2*
-  ./configure --prefix=${PREFIX} --with-opt-dir=${PREFIX}/openssl --enable-shared --with-readline-dir=${PREFIX} CFLAGS=-D_XOPEN_SOURCE=1
-  make
-  make test
-  make install
-  make install-doc
   clear
 else
   echo "There was a problem with Ruby"
 fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Updating Rubygems"
-
-gem --version
-gem update --system
-
-#------------------------------------------------------------------------------
-
-echo "Building MySQL2 Gem for Ruby"
-
-sudo env ARCHFLAGS="-arch x86_64" gem install mysql2 -- --with-mysql-config=${PREFIX}/mysql/bin/mysql_config
-
-sudo install_name_tool -change libmysqlclient.18.dylib ${PREFIX}/mysql/lib/libmysqlclient.18.dylib ${PREFIX}/lib/ruby/gems/2.1.0/gems/mysql2-0.3.15/lib/mysql2/mysql2.bundle
-
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building SQLite3 for Ruby"
-PKG="${DIR}/sqlite3-ruby-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/sqlite3-ruby-*
-  ruby setup.rb config --prefix=${PREFIX}
-  ruby setup.rb setup
-  ruby setup.rb install
-  clear
-else
-  echo "There was a problem with SQLite3 for Ruby"
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Installing Misc. Ruby Gems"
-gem install rails
-gem install acts_as_ferret
-gem install acts_as_searchable
-gem install acts_as_taggable
-gem install bcrypt-ruby
-gem install BlueCloth
-gem install capistrano
-gem install columnize
-gem install ferret
-gem install gruff
-gem install has_many_through_generator
-gem install hpricot
-gem install htmlentities
-gem install json_pure
-gem install libxml-ruby
-gem install login_generator
-gem install magic_multi_connections
-gem install memcache-client
-gem install mofo
-gem install mongrel
-gem install paginator
-gem install payment
-gem install piston
-gem install RedCloth
-gem install rmagick
-gem install rubypants
-gem install salted_login_generator
-gem install sparklines
-gem install termios
-gem install tiny
-gem install xml-simple
-clear
-
-#------------------------------------------------------------------------------
-
-echo "Installing Extras"
-gem install juicer
-juicer install yui_compressor
-juicer install jslint
-clear
 
 #------------------------------------------------------------------------------
 
@@ -396,12 +493,6 @@ echo "Be sure to set the \$PATH variable in your .bash_login file (doesn't
 exist by default and you'll need to create it in your users' Home directory) 
 as follows:
 
- export PATH='/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/
- libexec/git-core:/opt/X11/bin:/Developer/usr/bin/:\$PATH'"
-echo 
-echo "Add the following line to your .bash_login file to properly use 
-Mercurial's hg commands:
-
- export PYTHONPATH='/usr/local/lib/python:\$PYTHONPATH'"
+ export PATH='/usr/local/custom/bin:/usr/local/custom/sbin:/usr/local/bin:/usr/local/sbin:\$PATH'"
 echo
 echo "DONE! Enjoy. Now go build something awesome."

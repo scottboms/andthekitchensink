@@ -5,11 +5,11 @@
 
 COMMAND="$1"
 HOME=$(pwd)
-export PREFIX="/usr/local"
+export PREFIX="/usr/local/custom"
 export DIR=${HOME}/src
 export ARCHFLAGS="-Os -arch x86_64 -fno-common"
 export LC_CTYPE=en_US.UTF-8
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
+export PATH="/usr/local/custom/bin:/usr/local/custom/sbin:$PATH"
 
 #-------------------------------------------------------------------------------
 
