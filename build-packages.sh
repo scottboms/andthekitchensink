@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Compile the downloaded packages one at a time
 # DEBUG: echo $(env)
 
@@ -15,7 +15,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with m4"
+  echo "There was a problem with m4" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with autoconf"
+  echo "There was a problem with autoconf" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with automake"
+  echo "There was a problem with automake" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with libtool"
+  echo "There was a problem with libtool" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -71,7 +71,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with pkg-config"
+  echo "There was a problem with pkg-config" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with zLib"
+  echo "There was a problem with zLib" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -99,7 +99,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with PCRE2"
+  echo "There was a problem with PCRE2" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -113,7 +113,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with re2c"
+  echo "There was a problem with re2c" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -127,7 +127,7 @@ if [ -d ${PKG} ]; then
 	make install
 	clear
 else
-  echo "There was a problem with YAML"
+  echo "There was a problem with YAML" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -141,7 +141,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with Readline"
+  echo "There was a problem with Readline" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -155,7 +155,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with gettext"
+  echo "There was a problem with gettext" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -171,7 +171,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with libonig"
+  echo "There was a problem with libonig" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -185,7 +185,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with iconv"
+  echo "There was a problem with iconv" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -199,7 +199,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with Expat"
+  echo "There was a problem with Expat" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -213,7 +213,7 @@ if [ -d ${PKG} ]; then
   make install PREFIX=${PREFIX}
   clear
 else
-  echo "There was a problem with bzip2"
+  echo "There was a problem with bzip2" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -228,7 +228,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with bison"
+  echo "There was a problem with bison" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -244,7 +244,7 @@ if [ -d "gmp-*" ]; then
   make install
   clear
 else
-  echo "There was a problem with gmp"
+  echo "There was a problem with gmp" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -273,7 +273,7 @@ if [ -d ${PKG} ]; then
 
   clear
 else
-  echo "There was a problem with OpenSSL"
+  echo "There was a problem with OpenSSL" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -290,7 +290,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with curl"
+  echo "There was a problem with curl" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -304,7 +304,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with LibXML2"
+  echo "There was a problem with LibXML2" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -318,7 +318,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with LibXML2"
+  echo "There was a problem with LibXML2" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -335,7 +335,7 @@ if [ -d ${PKG} ]; then
   make install install-doc install-html
   clear
 else
-  echo "There was a problem with git"
+  echo "There was a problem with git" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -349,7 +349,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with FreeType"
+  echo "There was a problem with FreeType" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -364,7 +364,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with libjpeg"
+  echo "There was a problem with libjpeg" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -378,7 +378,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with libtiff"
+  echo "There was a problem with libtiff" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -392,7 +392,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with libpng"
+  echo "There was a problem with libpng" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -407,7 +407,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with libpng"
+  echo "There was a problem with libpng" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -421,7 +421,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with lcms"
+  echo "There was a problem with lcms" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -436,7 +436,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with Ghostscript"
+  echo "There was a problem with Ghostscript" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -450,7 +450,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with ImageMagick"
+  echo "There was a problem with ImageMagick" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -464,12 +464,12 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with SQLite3"
+  echo "There was a problem with SQLite3" >&2
 fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building PHP8 8.2.0 (and 8.1.13)"
+echo "##------ Building PHP8 8.1.13 (and 8.2.0)"
 PKG="${DIR}/php*"
 if [ -d ${PKG} ]; then
   cd ${DIR}/php*
@@ -481,7 +481,7 @@ if [ -d ${PKG} ]; then
   make install
   clear
 else
-  echo "There was a problem with Ruby"
+  echo "There was a problem with PHP 8" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -493,6 +493,6 @@ echo "Be sure to set the \$PATH variable in your .bash_login file (doesn't
 exist by default and you'll need to create it in your users' Home directory) 
 as follows:
 
- export PATH='/usr/local/custom/bin:/usr/local/custom/sbin:/usr/local/bin:/usr/local/sbin:\$PATH'"
+ export PATH='/usr/local/bin:/usr/local/sbin:/usr/local/custom/bin:/usr/local/custom/sbin:\$PATH'"
 echo
 echo "DONE! Enjoy. Now go build something awesome."

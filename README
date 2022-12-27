@@ -1,23 +1,20 @@
 ####################################################
-#                                                                             #
-#                                                                             #
-# ...AND THE KITCHEN SINK...                                        #
-# http://github.com/scottboms/andthekitchensink                  #
-#                                                                             #
-# Written and maintained by Scott Boms                             #
-# Copyright (c) 2017 The Office of Scott Boms                       #
-#                                                                             #
-#                                                                             #
-###############################################################################
+#                                                  #
+#                                                  #
+# ...AND THE KITCHEN SINK...                       #
+# http://github.com/scottboms/andthekitchensink    #
+#                                                  #
+# Written and maintained by Scott Boms             #
+# From the Office of Scott Boms                    #
+#                                                  #
+#                                                  #
+####################################################
 
-The (ALL NEW) kitchen sink script does one thing - it builds a fully functional and fairly exhaustive web development environment on your super awesome Intel Mac computer. Best of all - you don't need MacPorts, Fink or some other crummy package manager mucking up your system.
-
-This updated version of "...And the Kitchen Sink" has been reworked from the ground up to be a bit smarter and splits several parts of the overall build process into separate tasks (download, build, setup-mysql) in order to eliminate some of the quirkiness in the original version. It has also been specifically tailored to build 64bit binaries, so you probably want to have a Core 2 Duo-based Intel Mac. And by probably want to, I mean "must have".
-
+The (ALL NEW) kitchen sink script does one thing - it builds a fully functional and sufficiently exhaustive web development environment for Intel Mac computers without requiring a package manager or additional framework overhead.
 
 PREREQUISITES
 -------------
-* Macintosh with an Core 2 Duo Intel processor (RIP PPC support)
+* Macintosh with an Intel processor
 * Mac OS X 10.6 (Snow Leopard or newer)
 * Xcode Developer Tools
 * Environment variables for $PATH and $PYTHON_PATH (see below)
@@ -33,24 +30,19 @@ $ cd ~/Desktop/kitchensink
 $ chmod 755 *.sh
 $ ./start.sh download
 
-NOTE: If you run ./start.sh without passing a parameter (download, build, setup-mysql) you'll get the built-in help notes that'll explain what to do. Unix is only kinda scary, trust me.
+NOTE: If you run ./start.sh without passing a parameter (download, build) you'll get the built-in help notes that'll explain what to do. Unix is only kinda scary, trust me.
 
 When the download processes have completed, you should have a new 'src' folder containing all the downloaded packages. The next step is to build and install the packages. To do that, type the following at a new shell prompt (the dollar sign in the Terminal window, yo).
 
 $ ./start.sh build
 
-Now - go out for lunch or go see a movie. This part takes a long time. The script will configure, compile and install each of the packages in turn. You'll see all kinds of crazy looking stuff fly by in your Terminal window. Just be sure to leave it open and running. It'll tell you when it's done and drop you back at a new prompt.
-
-If this is the first time you're running things, you'll likely also want to run the last command which does some additional stuff for MySQL - creates a basic configuration file (secures MySQL to only accept local connections - this is a development environment, right?), creates a Launch Daemon file so that MySQL can load up when your system starts and then attempts to start MySQL as a background process.
-
-$ ./start.sh setup-mysql
+Now - go out for lunch or go see a movie. This part takes a while. The script will configure, compile and install each of the packages in turn. You'll see all kinds of crazy looking stuff fly by in your Terminal window. Just be sure to leave it open and running. It'll tell you when it's done and drop you back at a new prompt.
 
 BOOM! That's it.
 
-
 SUPPORT
 -------
-This script has been developed over the last few years primarily to serve my own needs but I keep it up to date and ensure the included packages are also largely kept up to date (except in rare cases where there are known incompatibilities with Mac OS X). That all said, I'll do what I can to help out if you run into a problem, but mostly you're on your own.
+This script has been developed primarily to serve my own needs but I keep it up to date and ensure the included packages are also reasonably updated with the latest security and compatibility fixes. I'll do what I can to help out if you run into a problem, but mostly you're on your own.
 
 Support requests can be submitted via the project's hosting on Github via the Issues tab. Go here: http://github.com/scottboms/andthekitchensink/issues
 

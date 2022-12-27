@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Downloads the included packages and checks that the actual downloads 
 # completed by verifying that the files exist on the local system
