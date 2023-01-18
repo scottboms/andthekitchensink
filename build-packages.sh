@@ -441,7 +441,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building ImageMagick 7.10-55"
+echo "##------ Building ImageMagick 7.10-57"
 PKG="${DIR}/ImageMagick-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/ImageMagick-*
@@ -455,7 +455,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building SQlite3 3.40.00"
+echo "##------ Building SQlite3 3.40.1"
 PKG="${DIR}/sqlite-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/sqlite-*
@@ -469,7 +469,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building PHP8 8.1.13 (and 8.2.0)"
+echo "##------ Building PHP8 8.1.13 (and 8.2.1)"
 PKG="${DIR}/php*"
 if [ -d ${PKG} ]; then
   cd ${DIR}/php*
