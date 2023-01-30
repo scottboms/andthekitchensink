@@ -1,6 +1,9 @@
 CHANGELOG
 #########
 
+1.0.5 (2023-01-29)
+Updated for macOS Ventura (Intel) including PHP 8.2.1 though it will work with 8.1.x as well.
+
 1.0.4 (2013-01-09)
 Starting the process of greatly reducing the overall feature set of this build script to focus it more on a simple extension of a LAMP stack and core tools for web designers.
 

@@ -323,7 +323,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building git 2.39"
+echo "##------ Building git 2.39.1"
 
 ## MAYBE HAS PROBLEM WITH LIBICONV...
 PKG="${DIR}/git-*/"
@@ -441,7 +441,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building ImageMagick 7.10-57"
+echo "##------ Building ImageMagick 7.10-60"
 PKG="${DIR}/ImageMagick-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/ImageMagick-*
