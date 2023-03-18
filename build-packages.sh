@@ -252,7 +252,7 @@ fi
 ## First patch files manually as necessary and noted
 ## Also change Darwin type below -- darwin64-x86_64-cc | darwin64-arm64-cc
 
-echo "##------ Building OpenSSL 1.1.1s"
+echo "##------ Building OpenSSL 1.1.1t"
 PKG="${DIR}/openssl-*/"
 VERS="1.1.1q"
 SYMLINK="${PREFIX}/openssl"
@@ -323,7 +323,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building git 2.39.1"
+echo "##------ Building git 2.40"
 
 ## MAYBE HAS PROBLEM WITH LIBICONV...
 PKG="${DIR}/git-*/"
@@ -383,6 +383,20 @@ fi
 
 #------------------------------------------------------------------------------
 
+echo "##------ Building GIFLIB 5.1.4"
+PKG="${DIR}/giflib-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/giflib-*
+	./configure --prefix=${PREFIX}
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with giflib" >&2
+fi
+
+#------------------------------------------------------------------------------
+
 echo "##------ Building libpng 1.6.39"
 PKG="${DIR}/libpng-*/"
 if [ -d ${PKG} ]; then
@@ -397,7 +411,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building libwebp 1.24"
+echo "##------ Building libwebp 1.30"
 PKG="${DIR}/libwebp/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/libwebp
@@ -441,7 +455,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building ImageMagick 7.10-60"
+echo "##------ Building ImageMagick 7.1.1-3"
 PKG="${DIR}/ImageMagick-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/ImageMagick-*
@@ -469,7 +483,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building PHP8 8.1.13 (and 8.2.1)"
+echo "##------ Building PHP8 8.1.16 (and 8.2.4)"
 PKG="${DIR}/php*"
 if [ -d ${PKG} ]; then
   cd ${DIR}/php*
