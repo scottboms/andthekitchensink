@@ -76,6 +76,34 @@ fi
 
 #------------------------------------------------------------------------------
 
+echo "##------ Building cmake 3.26.3"
+PKG="${DIR}/cmake-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/cmake-*
+  ./configure --prefix=${PREFIX}
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with cmake" >&2
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building nasm 2.16.01"
+PKG="${DIR}/nasm-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/nasm-*
+  ./configure --prefix=${PREFIX}
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with nasm" >&2
+fi
+
+#------------------------------------------------------------------------------
+
 echo "##------ Building zLib 1.2.13"
 PKG="${DIR}/zlib-*/"
 if [ -d ${PKG} ]; then
@@ -132,7 +160,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building Readline 8.1"
+echo "##------ Building Readline 8.2"
 PKG="${DIR}/readline-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/readline-*
@@ -254,7 +282,7 @@ fi
 
 echo "##------ Building OpenSSL 1.1.1t"
 PKG="${DIR}/openssl-*/"
-VERS="1.1.1q"
+VERS="1.1.1t"
 SYMLINK="${PREFIX}/openssl"
 if [ -d ${PKG} ]; then
   cd ${DIR}/openssl-*
@@ -274,6 +302,34 @@ if [ -d ${PKG} ]; then
   clear
 else
   echo "There was a problem with OpenSSL" >&2
+fi
+
+#------------------------------------------------------------------------------
+
+## For Apple Silicon, change Darwin type below -- darwin64-x86_64-cc | darwin64-arm64-cc
+
+echo "##------ Building OpenSSL 3.1.0"
+PKG="${DIR}/openssl-*/"
+VERS="3.1.0"
+SYMLINK="${PREFIX}/openssl"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/openssl-*
+  make configure
+  ./configure --prefix=${PREFIX}/openssl-${VERS} shared enable-rc5 zlib darwin64-x86_64-cc no-asm
+  make -j8
+  # make test
+  make install
+
+  if[ -f ${SYMLINK} ]; then
+    ln -s ${PREFIX}/openssl-${VERS} ${PREFIX}/openssl
+  else
+    rm ${PREFIX}/openssl-${VERS}
+    ln -s ${PREFIX}/openssl-${VERS} ${PREFIX}/openssl
+  fi
+
+  clear
+else
+  echo "There was a problem with OpenSSL 3.x" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -323,7 +379,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building git 2.40"
+echo "##------ Building git 2.40.1"
 
 ## MAYBE HAS PROBLEM WITH LIBICONV...
 PKG="${DIR}/git-*/"
@@ -369,7 +425,22 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building libtiff 4.4.0"
+echo "##------ Building jpeg-turbo 2.1.91"
+PKG="${DIR}/libjpeg-turbo-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/libjpeg-turbo-*
+  cmake -G"Unix Makefiles" . CMAKE_INSTALL_PREFIX=${PREFIX} -DWITH_JPEG8=1
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with libjpeg-turbo" >&2
+fi
+
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building libtiff 4.5.0"
 PKG="${DIR}/tiff-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/tiff-*
@@ -383,7 +454,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building GIFLIB 5.1.4"
+echo "##------ Building GIFLIB 5.2.1r"
 PKG="${DIR}/giflib-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/giflib-*
@@ -440,11 +511,10 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building Ghostscript 10.0.0"
-# TODO: Look at fixing jpeg, webp, and png support, etc.
-PKG="${DIR}/ghostscript-10*/"
+echo "##------ Building FontConfig 2.14.0"
+PKG="${DIR}/fontconfig-*/"
 if [ -d ${PKG} ]; then
-  cd ${DIR}/ghostscript-10*
+  cd ${DIR}/fontconfig-*
   ./configure --prefix=${PREFIX}
   make -j8
   make install
@@ -455,7 +525,22 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building ImageMagick 7.1.1-3"
+echo "##------ Building Ghostscript 10.00.0"
+# TODO: Look at fixing jpeg, webp, and png support, etc.
+PKG="${DIR}/ghostscript-10*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/ghostscript-10*
+  ./configure --prefix=${PREFIX} --with-libiconv=${PREFIX} --disable-compile-inits --disable-cups --disable-gtk --without-x CC="gcc -arch x86_64" CPP="gcc -E"
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with Ghostscript" >&2
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building ImageMagick 7.1.1-8"
 PKG="${DIR}/ImageMagick-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/ImageMagick-*
@@ -469,7 +554,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building SQlite3 3.40.1"
+echo "##------ Building SQlite3 3.41.2"
 PKG="${DIR}/sqlite-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/sqlite-*
@@ -483,7 +568,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building PHP8 8.1.16 (and 8.2.4)"
+echo "##------ Building PHP8 8.1.16 (and 8.2.5)"
 PKG="${DIR}/php*"
 if [ -d ${PKG} ]; then
   cd ${DIR}/php*
