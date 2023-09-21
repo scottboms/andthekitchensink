@@ -174,7 +174,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building gettext 0.21"
+echo "##------ Building gettext 0.21.1"
 PKG="${DIR}/gettext-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/gettext-*
@@ -208,8 +208,9 @@ echo "##------ Building iconv 1.17"
 PKG="${DIR}/iconv-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/iconv-*
-  ./configure --prefix=${PREFIX}
+  env CPPFLAGS=-I${PREFIX}/include LDFLAGS=-s ./configure --prefix=${PREFIX}
   make -j8
+  libtool --finish /usr/local/custom/lib
   make install
   clear
 else
@@ -277,31 +278,21 @@ fi
 
 #------------------------------------------------------------------------------
 
-## First patch files manually as necessary and noted
-## Also change Darwin type below -- darwin64-x86_64-cc | darwin64-arm64-cc
+## For Apple Silicon, change Darwin type below -- darwin64-x86_64-cc | darwin64-arm64-cc
 
 echo "##------ Building OpenSSL 1.1.1t"
 PKG="${DIR}/openssl-*/"
-VERS="1.1.1t"
-SYMLINK="${PREFIX}/openssl"
+VERS="3.1.0"
 if [ -d ${PKG} ]; then
   cd ${DIR}/openssl-*
   make configure
-  ./configure --prefix=${PREFIX}/openssl-${VERS} shared enable-rc5 zlib darwin64-x86_64-cc no-asm
+  ./configure --prefix=${PREFIX} shared enable-rc5 zlib darwin64-x86_64-cc no-asm
   make -j8
   # make test
   make install
-
-  if[ -f ${SYMLINK} ]; then
-    ln -s ${PREFIX}/openssl-${VERS} ${PREFIX}/openssl
-  else
-    rm ${PREFIX}/openssl-${VERS}
-    ln -s ${PREFIX}/openssl-${VERS} ${PREFIX}/openssl
-  fi
-
   clear
 else
-  echo "There was a problem with OpenSSL" >&2
+  echo "There was a problem with OpenSSL 1.x" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -315,18 +306,10 @@ SYMLINK="${PREFIX}/openssl"
 if [ -d ${PKG} ]; then
   cd ${DIR}/openssl-*
   make configure
-  ./configure --prefix=${PREFIX}/openssl-${VERS} shared enable-rc5 zlib darwin64-x86_64-cc no-asm
+  ./configure --prefix=${PREFIX} shared enable-rc5 zlib darwin64-x86_64-cc no-asm
   make -j8
   # make test
   make install
-
-  if[ -f ${SYMLINK} ]; then
-    ln -s ${PREFIX}/openssl-${VERS} ${PREFIX}/openssl
-  else
-    rm ${PREFIX}/openssl-${VERS}
-    ln -s ${PREFIX}/openssl-${VERS} ${PREFIX}/openssl
-  fi
-
   clear
 else
   echo "There was a problem with OpenSSL 3.x" >&2
@@ -336,7 +319,7 @@ fi
 
 echo "##------ Building curl 7.86.0"
 # Requires OpenSSL
-export PKG_CONFIG_PATH=${PREFIX}/openssl/lib/pkgconfig
+export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
 
 PKG="${DIR}/curl-*/"
 if [ -d ${PKG} ]; then
@@ -347,6 +330,23 @@ if [ -d ${PKG} ]; then
   clear
 else
   echo "There was a problem with curl" >&2
+fi
+
+#------------------------------------------------------------------------------
+
+echo "##------ Building wget2"
+
+# Note: Builds, but there's an issue with linked libraries or something
+
+PKG="${DIR}/wget2-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/wget2-*
+  ./configure --prefix=${PREFIX} LDFLAGS=-L/usr/local/custom/lib CPPFLAGS=-I/usr/local/custom/include
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with wget2" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -386,26 +386,12 @@ PKG="${DIR}/git-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/git-*
   make configure
-  ./configure --prefix=${PREFIX} --with-openssl=${PREFIX}/openssl --with-iconv=${PREFIX}
+  ./configure --prefix=${PREFIX} --with-openssl=${PREFIX} --with-iconv=${PREFIX}
   make all -j8
   make install install-doc install-html
   clear
 else
   echo "There was a problem with git" >&2
-fi
-
-#------------------------------------------------------------------------------
-
-echo "##------ Building FreeType 2.12.1"
-PKG="${DIR}/freetype-*/"
-if [ -d ${PKG} ]; then
-  cd ${DIR}/freetype-*
-  ./configure --prefix=${PREFIX}
-  make -j8
-  make install
-  clear
-else
-  echo "There was a problem with FreeType" >&2
 fi
 
 #------------------------------------------------------------------------------
@@ -454,7 +440,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building GIFLIB 5.2.1r"
+echo "##------ Building GIFLIB 5.2.1"
 PKG="${DIR}/giflib-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/giflib-*
@@ -511,6 +497,20 @@ fi
 
 #------------------------------------------------------------------------------
 
+echo "##------ Building FreeType 2.12.1"
+PKG="${DIR}/freetype-*/"
+if [ -d ${PKG} ]; then
+  cd ${DIR}/freetype-*
+  ./configure --prefix=${PREFIX}
+  make -j8
+  make install
+  clear
+else
+  echo "There was a problem with FreeType" >&2
+fi
+
+#------------------------------------------------------------------------------
+
 echo "##------ Building FontConfig 2.14.0"
 PKG="${DIR}/fontconfig-*/"
 if [ -d ${PKG} ]; then
@@ -540,7 +540,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building ImageMagick 7.1.1-8"
+echo "##------ Building ImageMagick 7.1.1-10"
 PKG="${DIR}/ImageMagick-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/ImageMagick-*
@@ -554,7 +554,7 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building SQlite3 3.41.2"
+echo "##------ Building SQlite3 3.42.0"
 PKG="${DIR}/sqlite-*/"
 if [ -d ${PKG} ]; then
   cd ${DIR}/sqlite-*
@@ -568,14 +568,14 @@ fi
 
 #------------------------------------------------------------------------------
 
-echo "##------ Building PHP8 8.1.16 (and 8.2.5)"
+echo "##------ Building PHP8 8.1.19 (and 8.2.6)"
 PKG="${DIR}/php*"
 if [ -d ${PKG} ]; then
   cd ${DIR}/php*
-  export LDFLAGS=-L/usr/local/custom/openssl/lib
-  export CPPFLAGS=-I/usr/local/custom/openssl/include
-  export PKG_CONFIG_PATH="/usr/local/custom/openssl/lib/pkgconfig"
-  ./configure --prefix=${PREFIX} --with-config-file-path=${PREFIX}/lib --enable-bcmath --enable-cli --enable-exif --enable-mbstring --enable-gd --enable-gd-jis-conv --enable-sockets --enable-opcache --enable-simplexml --with-sqlite3 --enable-xmlreader --enable-xmlwriter --with-pdo-sqlite --with-bz2=${PREFIX} --with-curl --with-xsl --with-zlib --enable-gd --with-jpeg --with-iconv=${PREFIX} --with-openssl OPENSSL_CFLAGS=-I${PREFIX}/openssl/include OPENSSL_LIBS="-L${PREFIX}/openssl/lib -lssl -lcrypto" --without-pcre-jit --with-webp --with-freetype 
+  export LDFLAGS=-L/usr/local/custom/lib
+  export CPPFLAGS=-I/usr/local/custom/include
+  export PKG_CONFIG_PATH="/usr/local/custom/lib/pkgconfig"
+  ./configure --prefix=${PREFIX} --with-config-file-path=${PREFIX}/lib --enable-bcmath --enable-cli --enable-exif --enable-mbstring --enable-gd --enable-gd-jis-conv --enable-sockets --enable-opcache --enable-simplexml --with-sqlite3 --enable-xmlreader --enable-xmlwriter --with-pdo-sqlite --with-bz2=${PREFIX} --with-curl --with-xsl --with-zlib --enable-gd --with-jpeg --with-iconv=${PREFIX} --with-openssl OPENSSL_CFLAGS=-I${PREFIX}/include OPENSSL_LIBS="-L${PREFIX}/lib -lssl -lcrypto" --without-pcre-jit --with-webp --with-freetype 
   make -j4
   make install
   clear
@@ -592,6 +592,6 @@ echo "Be sure to set the \$PATH variable in your .bash_login file (doesn't
 exist by default and you'll need to create it in your users' Home directory) 
 as follows:
 
- export PATH='/usr/local/bin:/usr/local/sbin:/usr/local/custom/bin:/usr/local/custom/sbin:\$PATH'"
+ export PATH='/usr/local/custom/bin:/usr/local/custom/sbin:/usr/local/bin:/usr/local/sbin:\$PATH'"
 echo
 echo "DONE! Enjoy. Now go build something awesome."
